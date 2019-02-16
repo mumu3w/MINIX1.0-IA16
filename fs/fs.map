@@ -2,12 +2,12 @@ Archive member included to satisfy reference by file (symbol)
 
 ../lib/libsys.a(divmodsi3.o)  write.o (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(printk.o)     cache.o (printk)
+../lib/libsys.a(syslib.o)     read.o (sys_copy)
 ../lib/libsys.a(getutils.o)   main.o (get_base)
 ../lib/libsys.a(sendrec.o)    pipe.o (send)
-../lib/libsys.a(syslib.o)     read.o (sys_copy)
-../lib/libsys.a(printk.o)     cache.o (printk)
-../lib/libsys.a(call.o)       ../lib/libsys.a(syslib.o) (callx)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(syslib.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(syslib.o) (callx)
 
 Allocating common symbols
 Common symbol       size              file
@@ -61,10 +61,10 @@ Discarded input sections
  .comment       0x0000000000000000       0x12 super.o
  .comment       0x0000000000000000       0x12 time.o
  .comment       0x0000000000000000       0x12 write.o
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(syslib.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(printk.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(syslib.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
 
 Memory Configuration
 
@@ -205,34 +205,34 @@ Linker script and memory map
  .text          0x0000000000003cac       0xda ../lib/libsys.a(ldivmod.o)
                 0x0000000000003cac                ldivmod
                 0x0000000000003cc8                ludivmod
- .text          0x0000000000003d86       0x2d ../lib/libsys.a(getutils.o)
-                0x0000000000003d86                get_base
-                0x0000000000003d89                get_size
-                0x0000000000003d8d                get_tot_mem
- .text          0x0000000000003db3       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000003db3                send
-                0x0000000000003db8                receive
-                0x0000000000003dbd                send_rec
-                0x0000000000003dbd                sendrec
- .text          0x0000000000003dcf      0x19a ../lib/libsys.a(syslib.o)
-                0x0000000000003dcf                sys_xit
-                0x0000000000003df1                sys_getsp
-                0x0000000000003e19                sys_sig
-                0x0000000000003e40                sys_fork
-                0x0000000000003e64                sys_exec
-                0x0000000000003e86                sys_newmap
-                0x0000000000003ea8                sys_copy
-                0x0000000000003ed6                sys_times
-                0x0000000000003f2e                sys_abort
-                0x0000000000003f46                tell_fs
- .text          0x0000000000003f69      0x347 ../lib/libsys.a(printk.o)
-                0x0000000000003f69                printk
+ .text          0x0000000000003d86      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000003d86                printk
+ .text          0x00000000000040cd      0x19a ../lib/libsys.a(syslib.o)
+                0x00000000000040cd                sys_xit
+                0x00000000000040ef                sys_getsp
+                0x0000000000004117                sys_sig
+                0x000000000000413e                sys_fork
+                0x0000000000004162                sys_exec
+                0x0000000000004184                sys_newmap
+                0x00000000000041a6                sys_copy
+                0x00000000000041d4                sys_times
+                0x000000000000422c                sys_abort
+                0x0000000000004244                tell_fs
+ .text          0x0000000000004267       0x2d ../lib/libsys.a(getutils.o)
+                0x0000000000004267                get_base
+                0x000000000000426a                get_size
+                0x000000000000426e                get_tot_mem
+ .text          0x0000000000004294       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000004294                send
+                0x0000000000004299                receive
+                0x000000000000429e                send_rec
+                0x000000000000429e                sendrec
+ .text          0x00000000000042b0        0x0 ../lib/libsys.a(message.o)
  .text          0x00000000000042b0       0xc8 ../lib/libsys.a(call.o)
                 0x00000000000042b0                callx
                 0x00000000000042df                callm1
                 0x0000000000004316                len
                 0x000000000000432f                callm3
- .text          0x0000000000004378        0x0 ../lib/libsys.a(message.o)
                 0x0000000000004380                . = ALIGN (0x10)
  *fill*         0x0000000000004378        0x8 
                 0x00000000000043a0                _begindata = (_begintext + .)
@@ -271,12 +271,12 @@ Linker script and memory map
  .data          0x00000000000000da        0x0 write.o
  .data          0x00000000000000da        0x0 ../lib/libsys.a(divmodsi3.o)
  .data          0x00000000000000da        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x00000000000000da        0x0 ../lib/libsys.a(printk.o)
+ .data          0x00000000000000da        0x0 ../lib/libsys.a(syslib.o)
  .data          0x00000000000000da        0x0 ../lib/libsys.a(getutils.o)
  .data          0x00000000000000da        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x00000000000000da        0x0 ../lib/libsys.a(syslib.o)
- .data          0x00000000000000da        0x0 ../lib/libsys.a(printk.o)
- .data          0x00000000000000da        0x0 ../lib/libsys.a(call.o)
  .data          0x00000000000000da        0x0 ../lib/libsys.a(message.o)
+ .data          0x00000000000000da        0x0 ../lib/libsys.a(call.o)
  *(.rodata*)
  .rodata.str1.1
                 0x00000000000000da       0x94 cache.o
@@ -297,9 +297,9 @@ Linker script and memory map
                 0x00000000000003d9       0x70 super.o
  .rodata.str1.1
                 0x0000000000000449        0xf time.o
+ .rodata        0x0000000000000458       0x6a ../lib/libsys.a(printk.o)
  .rodata.str1.1
-                0x0000000000000458       0x14 ../lib/libsys.a(syslib.o)
- .rodata        0x000000000000046c       0x6a ../lib/libsys.a(printk.o)
+                0x00000000000004c2       0x14 ../lib/libsys.a(syslib.o)
                 0x00000000000004d6                _begbss = .
 
 .bss            0x00000000000004d6     0x61d0 load address 0x0000000000004876
@@ -327,12 +327,12 @@ Linker script and memory map
  .bss           0x00000000000005d4        0x0 write.o
  .bss           0x00000000000005d4        0x0 ../lib/libsys.a(divmodsi3.o)
  .bss           0x00000000000005d4        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x00000000000005d4        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x00000000000005d4        0x0 ../lib/libsys.a(syslib.o)
  .bss           0x00000000000005d4        0x0 ../lib/libsys.a(getutils.o)
  .bss           0x00000000000005d4        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x00000000000005d4        0x0 ../lib/libsys.a(syslib.o)
- .bss           0x00000000000005d4        0x0 ../lib/libsys.a(printk.o)
- .bss           0x00000000000005d4        0x0 ../lib/libsys.a(call.o)
  .bss           0x00000000000005d4        0x0 ../lib/libsys.a(message.o)
+ .bss           0x00000000000005d4        0x0 ../lib/libsys.a(call.o)
  *(COMMON)
  COMMON         0x00000000000005d4     0x60b6 table.o
                 0x00000000000005d4                rear
@@ -360,10 +360,10 @@ Linker script and memory map
                 0x000000000000640a                filp
  COMMON         0x000000000000668a        0x2 read.o
                 0x000000000000668a                rdwt_err
- COMMON         0x000000000000668c        0x2 ../lib/libsys.a(call.o)
-                0x000000000000668c                errno
- COMMON         0x000000000000668e       0x18 ../lib/libsys.a(message.o)
-                0x000000000000668e                M
+ COMMON         0x000000000000668c       0x18 ../lib/libsys.a(message.o)
+                0x000000000000668c                M
+ COMMON         0x00000000000066a4        0x2 ../lib/libsys.a(call.o)
+                0x00000000000066a4                errno
                 0x00000000000066a6                _endbss = .
 
 /DISCARD/

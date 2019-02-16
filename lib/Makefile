@@ -9,12 +9,18 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mcmodel=small
 	
 OBJS	= divmodsi3.o ldivmod.o memset.o memcpy.o \
-		getutils.o sendrec.o catchsig.o \
-		call.o exec.o exit.o fork.o open.o wait.o write.o close.o signal.o \
-		sync.o read.o message.o brk.o syslib.o printk.o creat.o fstat.o 
-CRTS	= head.o
+		catchsig.o getutils.o sendrec.o \
+		access.o chdir.o close.o exec.o getgid.o kill.o mount.o read.o \
+		stat.o times.o utime.o alarm.o chmod.o creat.o exit.o getpid.o \
+		link.o open.o setgid.o stime.o umask.o wait.o brk2.o chown.o dup2.o \
+		fork.o getuid.o lseek.o pause.o setuid.o sync.o umount.o write.o \
+		brk.o chroot.o dup.o fstat.o ioctl.o mknod.o pipe.o signal.o time.o \
+		unlink.o message.o printk.o call.o syslib.o 
+CRTS	= head.o crtso.o
 
-all : $(OBJS) $(CRTS)
+all : libsys.a
+
+libsys.a : $(OBJS) $(CRTS)
 	$(AR) rcs libsys.a $(OBJS)
 	
 %.o : %.c
@@ -35,6 +41,10 @@ ldivmod.o : ldivmod.s
 head.o : head.s
 	$(CPP) head.s -o head.tmp 
 	$(AS) -o head.o head.tmp
+	
+crtso.o : crtso.s
+	$(CPP) crtso.s -o crtso.tmp 
+	$(AS) -o crtso.o crtso.tmp
 	
 getutils.o : getutils.s
 	$(CPP) getutils.s -o getutils.tmp 

@@ -3,9 +3,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(divmodsi3.o)  clock.o (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
 ../lib/libsys.a(memcpy.o)     wini.o (memcpy)
+../lib/libsys.a(printk.o)     dmp.o (printk)
 ../lib/libsys.a(getutils.o)   memory.o (get_base)
 ../lib/libsys.a(sendrec.o)    clock.o (send)
-../lib/libsys.a(printk.o)     dmp.o (printk)
 
 Allocating common symbols
 Common symbol       size              file
@@ -159,17 +159,17 @@ Linker script and memory map
                 0x0000000000005041                ludivmod
  .text          0x00000000000050ff       0x24 ../lib/libsys.a(memcpy.o)
                 0x00000000000050ff                memcpy
- .text          0x0000000000005123       0x2d ../lib/libsys.a(getutils.o)
-                0x0000000000005123                get_base
-                0x0000000000005126                get_size
-                0x000000000000512a                get_tot_mem
- .text          0x0000000000005150       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000005150                send
-                0x0000000000005155                receive
-                0x000000000000515a                send_rec
-                0x000000000000515a                sendrec
- .text          0x000000000000516c      0x347 ../lib/libsys.a(printk.o)
-                0x000000000000516c                printk
+ .text          0x0000000000005123      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000005123                printk
+ .text          0x000000000000546a       0x2d ../lib/libsys.a(getutils.o)
+                0x000000000000546a                get_base
+                0x000000000000546d                get_size
+                0x0000000000005471                get_tot_mem
+ .text          0x0000000000005497       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000005497                send
+                0x000000000000549c                receive
+                0x00000000000054a1                send_rec
+                0x00000000000054a1                sendrec
                 0x00000000000054c0                . = ALIGN (0x10)
  *fill*         0x00000000000054b3        0xd 
                 0x00000000000054e0                _begindata = (_begintext + .)
@@ -201,9 +201,9 @@ Linker script and memory map
  .data          0x000000000000019c        0x0 ../lib/libsys.a(divmodsi3.o)
  .data          0x000000000000019c        0x0 ../lib/libsys.a(ldivmod.o)
  .data          0x000000000000019c        0x0 ../lib/libsys.a(memcpy.o)
+ .data          0x000000000000019c        0x0 ../lib/libsys.a(printk.o)
  .data          0x000000000000019c        0x0 ../lib/libsys.a(getutils.o)
  .data          0x000000000000019c        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x000000000000019c        0x0 ../lib/libsys.a(printk.o)
  *(.rodata*)
  .rodata.str1.1
                 0x000000000000019c       0x1b clock.o
@@ -244,9 +244,9 @@ Linker script and memory map
  .bss           0x000000000000140a        0x0 ../lib/libsys.a(divmodsi3.o)
  .bss           0x000000000000140a        0x0 ../lib/libsys.a(ldivmod.o)
  .bss           0x000000000000140a        0x0 ../lib/libsys.a(memcpy.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(printk.o)
  .bss           0x000000000000140a        0x0 ../lib/libsys.a(getutils.o)
  .bss           0x000000000000140a        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x000000000000140a        0x0 ../lib/libsys.a(printk.o)
  *(COMMON)
  COMMON         0x000000000000140a       0x57 dmp.o
                 0x000000000000140a                aout

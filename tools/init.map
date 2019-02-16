@@ -1,18 +1,18 @@
 Archive member included to satisfy reference by file (symbol)
 
+../lib/libsys.a(close.o)      init.o (close)
 ../lib/libsys.a(exec.o)       init.o (execn)
+../lib/libsys.a(read.o)       init.o (read)
 ../lib/libsys.a(exit.o)       init.o (exit)
-../lib/libsys.a(fork.o)       init.o (fork)
 ../lib/libsys.a(open.o)       init.o (open)
 ../lib/libsys.a(wait.o)       init.o (wait)
-../lib/libsys.a(write.o)      init.o (write)
-../lib/libsys.a(close.o)      init.o (close)
-../lib/libsys.a(signal.o)     init.o (signal)
+../lib/libsys.a(fork.o)       init.o (fork)
 ../lib/libsys.a(sync.o)       init.o (sync)
-../lib/libsys.a(read.o)       init.o (read)
+../lib/libsys.a(write.o)      init.o (write)
+../lib/libsys.a(signal.o)     init.o (signal)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(wait.o) (M)
-../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
 ../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 
 Allocating common symbols
@@ -29,16 +29,16 @@ M                   0x18              ../lib/libsys.a(message.o)
 Discarded input sections
 
  .comment       0x0000000000000000       0x12 init.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(exec.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(fork.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(wait.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(signal.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fork.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(sync.o)
- .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(signal.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
  .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
 
@@ -69,38 +69,38 @@ Linker script and memory map
                 0x0000000000000019                startup
                 0x00000000000000bb                getline
                 0x00000000000000f3                main
- .text          0x00000000000001fd      0x1f9 ../lib/libsys.a(exec.o)
-                0x00000000000001fd                execve
-                0x0000000000000363                execl
-                0x000000000000037b                execle
-                0x00000000000003a2                execv
-                0x00000000000003b9                execn
- .text          0x00000000000003f6       0x1d ../lib/libsys.a(exit.o)
-                0x00000000000003f6                exit
- .text          0x0000000000000413       0x15 ../lib/libsys.a(fork.o)
-                0x0000000000000413                fork
- .text          0x0000000000000428       0x1b ../lib/libsys.a(open.o)
-                0x0000000000000428                open
- .text          0x0000000000000443       0x24 ../lib/libsys.a(wait.o)
-                0x0000000000000443                wait
- .text          0x0000000000000467       0x24 ../lib/libsys.a(write.o)
-                0x0000000000000467                write
- .text          0x000000000000048b       0x20 ../lib/libsys.a(close.o)
-                0x000000000000048b                close
- .text          0x00000000000004ab       0x42 ../lib/libsys.a(signal.o)
-                0x00000000000004ab                signal
- .text          0x00000000000004ed       0x18 ../lib/libsys.a(sync.o)
-                0x00000000000004ed                sync
- .text          0x0000000000000505       0x24 ../lib/libsys.a(read.o)
-                0x0000000000000505                read
+ .text          0x00000000000001fd       0x20 ../lib/libsys.a(close.o)
+                0x00000000000001fd                close
+ .text          0x000000000000021d      0x1f9 ../lib/libsys.a(exec.o)
+                0x000000000000021d                execve
+                0x0000000000000383                execl
+                0x000000000000039b                execle
+                0x00000000000003c2                execv
+                0x00000000000003d9                execn
+ .text          0x0000000000000416       0x24 ../lib/libsys.a(read.o)
+                0x0000000000000416                read
+ .text          0x000000000000043a       0x1d ../lib/libsys.a(exit.o)
+                0x000000000000043a                exit
+ .text          0x0000000000000457       0x1b ../lib/libsys.a(open.o)
+                0x0000000000000457                open
+ .text          0x0000000000000472       0x24 ../lib/libsys.a(wait.o)
+                0x0000000000000472                wait
+ .text          0x0000000000000496       0x15 ../lib/libsys.a(fork.o)
+                0x0000000000000496                fork
+ .text          0x00000000000004ab       0x18 ../lib/libsys.a(sync.o)
+                0x00000000000004ab                sync
+ .text          0x00000000000004c3       0x24 ../lib/libsys.a(write.o)
+                0x00000000000004c3                write
+ .text          0x00000000000004e7       0x42 ../lib/libsys.a(signal.o)
+                0x00000000000004e7                signal
  .text          0x0000000000000529        0x0 ../lib/libsys.a(message.o)
- .text          0x0000000000000529       0x2f ../lib/libsys.a(catchsig.o)
-                0x0000000000000529                begsig
- .text          0x0000000000000558       0xc8 ../lib/libsys.a(call.o)
-                0x0000000000000558                callx
-                0x0000000000000587                callm1
-                0x00000000000005be                len
-                0x00000000000005d7                callm3
+ .text          0x0000000000000529       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000000529                callx
+                0x0000000000000558                callm1
+                0x000000000000058f                len
+                0x00000000000005a8                callm3
+ .text          0x00000000000005f1       0x2f ../lib/libsys.a(catchsig.o)
+                0x00000000000005f1                begsig
  .text          0x0000000000000620       0x1c ../lib/libsys.a(sendrec.o)
                 0x0000000000000620                send
                 0x0000000000000625                receive
@@ -121,19 +121,19 @@ Linker script and memory map
  .data          0x0000000000000014        0xc init.o
                 0x0000000000000014                stackpt
                 0x0000000000000016                name
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(close.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(exec.o)
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(read.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(exit.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(fork.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(open.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(wait.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(write.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(close.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(signal.o)
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(fork.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(sync.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(read.o)
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(write.o)
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(signal.o)
  .data          0x0000000000000020        0x0 ../lib/libsys.a(message.o)
+ .data          0x0000000000000020        0x0 ../lib/libsys.a(call.o)
  .data          0x0000000000000020        0x2 ../lib/libsys.a(catchsig.o)
- .data          0x0000000000000022        0x0 ../lib/libsys.a(call.o)
  .data          0x0000000000000022        0x0 ../lib/libsys.a(sendrec.o)
  *(.rodata*)
  .rodata.str1.1
@@ -144,19 +144,19 @@ Linker script and memory map
  *(.bss)
  .bss           0x0000000000000088        0x0 ../lib/head.o
  .bss           0x0000000000000088        0x0 init.o
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(close.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(exec.o)
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(read.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(exit.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(fork.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(open.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(wait.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(write.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(close.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(signal.o)
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(fork.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(sync.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(read.o)
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(write.o)
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(signal.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(message.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(catchsig.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000000088        0x0 ../lib/libsys.a(catchsig.o)
  .bss           0x0000000000000088        0x0 ../lib/libsys.a(sendrec.o)
  *(COMMON)
  COMMON         0x0000000000000088      0x116 init.o

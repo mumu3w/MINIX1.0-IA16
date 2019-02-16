@@ -16,4 +16,5 @@ bug:  2019-02-16
     ./test/test5  ./test/test8  /* The ramdisk is too small */  
     ./test/test11   
   
-  
+
+![image](https://github.com/mumu3w/MINIX1.0-IA16/blob/master/01.PNG)   
