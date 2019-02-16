@@ -66,15 +66,15 @@ Linker script and memory map
 .hdr            0x0000000000000000       0x20
                 0x0000000000000000        0x4 LONG 0x4200301
                 0x0000000000000004        0x4 LONG 0x20
-                0x0000000000000008        0x4 LONG 0x5780 SIZEOF (.text)
-                0x000000000000000c        0x4 LONG 0x922 SIZEOF (.data)
-                0x0000000000000010        0x4 LONG 0x1c22 SIZEOF (.bss)
+                0x0000000000000008        0x4 LONG 0x54c0 SIZEOF (.text)
+                0x000000000000000c        0x4 LONG 0x8d6 SIZEOF (.data)
+                0x0000000000000010        0x4 LONG 0x1c0e SIZEOF (.bss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x7cc4 ((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss))
+                0x0000000000000018        0x4 LONG 0x79a4 ((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss))
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
-.text           0x0000000000000000     0x5780 load address 0x0000000000000020
+.text           0x0000000000000000     0x54c0 load address 0x0000000000000020
  *(.text)
  .text          0x0000000000000000      0x146 mpx88.o
                 0x0000000000000000                start
@@ -145,36 +145,36 @@ Linker script and memory map
                 0x00000000000036cf                tty_task
                 0x00000000000044b2                keyboard
                 0x00000000000045e7                putc
- .text          0x00000000000045fb      0xc78 wini.o
-                0x0000000000004e33                swap
-                0x0000000000004e65                sort
-                0x0000000000004efb                winchester_task
- .text          0x0000000000005273       0x74 ../lib/libsys.a(divmodsi3.o)
-                0x0000000000005273                __divsi3
-                0x0000000000005291                __modsi3
-                0x00000000000052ad                __udivsi3
-                0x00000000000052cb                __umodsi3
- .text          0x00000000000052e7       0xda ../lib/libsys.a(ldivmod.o)
-                0x00000000000052e7                ldivmod
-                0x0000000000005303                ludivmod
- .text          0x00000000000053c1       0x24 ../lib/libsys.a(memcpy.o)
-                0x00000000000053c1                memcpy
- .text          0x00000000000053e5       0x2d ../lib/libsys.a(getutils.o)
-                0x00000000000053e5                get_base
-                0x00000000000053e8                get_size
-                0x00000000000053ec                get_tot_mem
- .text          0x0000000000005412       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000005412                send
-                0x0000000000005417                receive
-                0x000000000000541c                send_rec
-                0x000000000000541c                sendrec
- .text          0x000000000000542e      0x347 ../lib/libsys.a(printk.o)
-                0x000000000000542e                printk
-                0x0000000000005780                . = ALIGN (0x10)
- *fill*         0x0000000000005775        0xb 
-                0x00000000000057a0                _begindata = (_begintext + .)
+ .text          0x00000000000045fb      0x9b6 wini.o
+                0x0000000000004cd1                sort
+                0x0000000000004d57                winchester_task
+                0x0000000000004fa4                delay
+ .text          0x0000000000004fb1       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000004fb1                __divsi3
+                0x0000000000004fcf                __modsi3
+                0x0000000000004feb                __udivsi3
+                0x0000000000005009                __umodsi3
+ .text          0x0000000000005025       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000005025                ldivmod
+                0x0000000000005041                ludivmod
+ .text          0x00000000000050ff       0x24 ../lib/libsys.a(memcpy.o)
+                0x00000000000050ff                memcpy
+ .text          0x0000000000005123       0x2d ../lib/libsys.a(getutils.o)
+                0x0000000000005123                get_base
+                0x0000000000005126                get_size
+                0x000000000000512a                get_tot_mem
+ .text          0x0000000000005150       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000005150                send
+                0x0000000000005155                receive
+                0x000000000000515a                send_rec
+                0x000000000000515a                sendrec
+ .text          0x000000000000516c      0x347 ../lib/libsys.a(printk.o)
+                0x000000000000516c                printk
+                0x00000000000054c0                . = ALIGN (0x10)
+ *fill*         0x00000000000054b3        0xd 
+                0x00000000000054e0                _begindata = (_begintext + .)
 
-.data           0x0000000000000000      0x922 load address 0x00000000000057a0
+.data           0x0000000000000000      0x8d6 load address 0x00000000000054e0
  *(.begdata)
  .begdata       0x0000000000000000       0x10 mpx88.o
                 0x0000000000000000                sizes
@@ -223,65 +223,65 @@ Linker script and memory map
  .rodata        0x00000000000005d0       0x14 system.o
  .rodata        0x00000000000005e4      0x1bc tty.o
  .rodata.str1.1
-                0x00000000000007a0      0x116 wini.o
- *fill*         0x00000000000008b6        0x2 
- .rodata        0x00000000000008b8       0x6a ../lib/libsys.a(printk.o)
-                0x0000000000000922                _begbss = .
+                0x00000000000007a0       0xcb wini.o
+ *fill*         0x000000000000086b        0x1 
+ .rodata        0x000000000000086c       0x6a ../lib/libsys.a(printk.o)
+                0x00000000000008d6                _begbss = .
 
-.bss            0x0000000000000922     0x1c22 load address 0x00000000000060c2
+.bss            0x00000000000008d6     0x1c0e load address 0x0000000000005db6
  *(.bss)
- .bss           0x0000000000000922       0x34 clock.o
- .bss           0x0000000000000956        0x0 dmp.o
- .bss           0x0000000000000956       0x5a floppy.o
- .bss           0x00000000000009b0        0x0 main.o
- .bss           0x00000000000009b0       0x38 memory.o
- .bss           0x00000000000009e8        0xc printer.o
- .bss           0x00000000000009f4        0x0 proc.o
- .bss           0x00000000000009f4       0x20 system.o
- .bss           0x0000000000000a14        0x0 table.o
- .bss           0x0000000000000a14      0x4d6 tty.o
- .bss           0x0000000000000eea      0x580 wini.o
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(divmodsi3.o)
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(ldivmod.o)
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(memcpy.o)
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(getutils.o)
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x000000000000146a        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x00000000000008d6       0x34 clock.o
+ .bss           0x000000000000090a        0x0 dmp.o
+ .bss           0x000000000000090a       0x5a floppy.o
+ .bss           0x0000000000000964        0x0 main.o
+ .bss           0x0000000000000964       0x38 memory.o
+ .bss           0x000000000000099c        0xc printer.o
+ .bss           0x00000000000009a8        0x0 proc.o
+ .bss           0x00000000000009a8       0x20 system.o
+ .bss           0x00000000000009c8        0x0 table.o
+ .bss           0x00000000000009c8      0x4d6 tty.o
+ .bss           0x0000000000000e9e      0x56c wini.o
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(memcpy.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(getutils.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x000000000000140a        0x0 ../lib/libsys.a(printk.o)
  *(COMMON)
- COMMON         0x000000000000146a       0x57 dmp.o
-                0x000000000000146a                aout
-                0x00000000000014aa                vargv
-                0x00000000000014ac                nbuff
- *fill*         0x00000000000014c1        0x1 
- COMMON         0x00000000000014c2        0x8 printer.o
-                0x00000000000014c2                prev_ct
-                0x00000000000014c4                cum_count
-                0x00000000000014c6                pr_busy
-                0x00000000000014c8                pcount
- COMMON         0x00000000000014ca     0x105c table.o
-                0x00000000000014ca                proc
-                0x0000000000001cda                sig_procs
-                0x0000000000001cdc                rdy_tail
-                0x0000000000001ce2                bill_ptr
-                0x0000000000001ce4                pc_at
-                0x0000000000001ce6                realtime
-                0x0000000000001cea                lost_ticks
-                0x0000000000001cec                cur_proc
-                0x0000000000001cee                proc_ptr
-                0x0000000000001cf0                prev_proc
-                0x0000000000001cf2                olivetti
-                0x0000000000001cf4                t_stack
-                0x00000000000023f4                int_mess
-                0x000000000000240c                rdy_head
-                0x0000000000002412                busy_map
-                0x0000000000002414                k_stack
-                0x0000000000002514                task_mess
- COMMON         0x0000000000002526       0x1e tty.o
-                0x0000000000002526                vid_mask
-                0x0000000000002528                scan_code
-                0x000000000000252a                color
-                0x000000000000252c                keybd_mess
-                0x0000000000002544                _endbss = .
+ COMMON         0x000000000000140a       0x57 dmp.o
+                0x000000000000140a                aout
+                0x000000000000144a                vargv
+                0x000000000000144c                nbuff
+ *fill*         0x0000000000001461        0x1 
+ COMMON         0x0000000000001462        0x8 printer.o
+                0x0000000000001462                prev_ct
+                0x0000000000001464                cum_count
+                0x0000000000001466                pr_busy
+                0x0000000000001468                pcount
+ COMMON         0x000000000000146a     0x105c table.o
+                0x000000000000146a                proc
+                0x0000000000001c7a                sig_procs
+                0x0000000000001c7c                rdy_tail
+                0x0000000000001c82                bill_ptr
+                0x0000000000001c84                pc_at
+                0x0000000000001c86                realtime
+                0x0000000000001c8a                lost_ticks
+                0x0000000000001c8c                cur_proc
+                0x0000000000001c8e                proc_ptr
+                0x0000000000001c90                prev_proc
+                0x0000000000001c92                olivetti
+                0x0000000000001c94                t_stack
+                0x0000000000002394                int_mess
+                0x00000000000023ac                rdy_head
+                0x00000000000023b2                busy_map
+                0x00000000000023b4                k_stack
+                0x00000000000024b4                task_mess
+ COMMON         0x00000000000024c6       0x1e tty.o
+                0x00000000000024c6                vid_mask
+                0x00000000000024c8                scan_code
+                0x00000000000024ca                color
+                0x00000000000024cc                keybd_mess
+                0x00000000000024e4                _endbss = .
 
 /DISCARD/
  *(.comment)
