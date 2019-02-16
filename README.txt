@@ -13,6 +13,7 @@ Toolchain:
 bug:  2019-02-16
     ./lib/memcpy.s   
     ./lib/catchsig.s "call %bx" 
-    ./test/test5  ./test/test8 ./test/test11   
+    ./test/test5  ./test/test8  /* The ramdisk is too small */  
+    ./test/test11   
   
   
