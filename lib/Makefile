@@ -23,10 +23,6 @@ all : $(OBJS) $(CRTS)
 memset.o : memset.s
 	$(CPP) memset.s -o memset.tmp 
 	$(AS) -o memset.o memset.tmp
-	
-memcpy.o : memcpy.s
-	$(CPP) memcpy.s -o memcpy.tmp 
-	$(AS) -o memcpy.o memcpy.tmp
 
 divmodsi3.o : divmodsi3.s
 	$(CPP) divmodsi3.s -o divmodsi3.tmp 
