@@ -17,7 +17,10 @@ OBJS	= divmodsi3.o ldivmod.o memset.o memcpy.o \
 		brk.o chroot.o dup.o fstat.o ioctl.o mknod.o pipe.o signal.o time.o \
 		unlink.o message.o printk.o call.o syslib.o 
 		
-OBJS1	= abort.o strlen.o strcmp.o strncpy.o isatty.o geteuid.o
+OBJS1	= abort.o strlen.o strcmp.o strncpy.o isatty.o geteuid.o stderr.o \
+		perror.o fprintf.o fflush.o printdat.o setbuf.o doprintf.o putc.o \
+		malloc.o bcopy.o prints.o strcat.o sleep.o crypt.o getpwent.o atoi.o \
+		strcpy.o index.o rindex.o
 		
 CRTS	= head.o crtso.o
 
