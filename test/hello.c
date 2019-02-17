@@ -13,14 +13,14 @@ typedef __gnuc_va_list                                                va_list;
 extern int write(int, void*, int);
 static void myprintk(char *format, ...);
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv, char **envp)
 {
     myprintk("argc = %d\n", argc);
     for (; *argv != NULL; argv++) {
         myprintk("%s\n", *argv);
     }
-    for (; *env != NULL; env++) {
-        myprintk("%s\n", *env);
+    for (; *envp != NULL; envp++) {
+        myprintk("%s\n", *envp);
     }
     return 0;
 }

@@ -9,19 +9,22 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mcmodel=small
 	
 OBJS	= divmodsi3.o ldivmod.o memset.o memcpy.o \
-		catchsig.o getutils.o sendrec.o \
+		catchsig.o getutils.o sendrec.o setjmp.o \
 		access.o chdir.o close.o exec.o getgid.o kill.o mount.o read.o \
 		stat.o times.o utime.o alarm.o chmod.o creat.o exit.o getpid.o \
 		link.o open.o setgid.o stime.o umask.o wait.o brk2.o chown.o dup2.o \
 		fork.o getuid.o lseek.o pause.o setuid.o sync.o umount.o write.o \
 		brk.o chroot.o dup.o fstat.o ioctl.o mknod.o pipe.o signal.o time.o \
 		unlink.o message.o printk.o call.o syslib.o 
+		
+OBJS1	= abort.o strlen.o strcmp.o strncpy.o isatty.o geteuid.o
+		
 CRTS	= head.o crtso.o
 
 all : libsys.a
 
-libsys.a : $(OBJS) $(CRTS)
-	$(AR) rcs libsys.a $(OBJS)
+libsys.a : $(OBJS) $(CRTS) $(OBJS1)
+	$(AR) rcs libsys.a $(OBJS) $(OBJS1)
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

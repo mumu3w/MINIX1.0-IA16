@@ -9,7 +9,7 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mtune=i8086 -mcmodel=small \
 #		-DDEBUG
 
-all : hello.out hello.sep
+all : hello.out hello.sep setjmp.out setjmp.sep
 	
 %.out : %.o
 	$(LD) -T cmds_tiny.ld -e start -o $@ \
