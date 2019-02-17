@@ -1,0 +1,185 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(close.o)      more.o (close)
+../lib/libsys.a(read.o)       more.o (read)
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(open.o)       more.o (open)
+../lib/libsys.a(lseek.o)      more.o (lseek)
+../lib/libsys.a(write.o)      more.o (write)
+../lib/libsys.a(ioctl.o)      more.o (ioctl)
+../lib/libsys.a(signal.o)     more.o (signal)
+../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(strlen.o)     more.o (strlen)
+../lib/libsys.a(index.o)      more.o (index)
+
+Allocating common symbols
+Common symbol       size              file
+
+ibuf                0x400             more.o
+vectab              0x20              ../lib/libsys.a(signal.o)
+errno               0x2               ../lib/libsys.a(call.o)
+ttymode             0x6               more.o
+obuf                0x400             more.o
+M                   0x18              ../lib/libsys.a(message.o)
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 more.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(lseek.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(ioctl.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(signal.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strlen.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(index.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x950 SIZEOF (.text)
+                0x000000000000000c        0x4 LONG 0xa7 SIZEOF (.data)
+                0x0000000000000010        0x4 LONG 0x84e SIZEOF (.bss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x2645 (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000      0x950 load address 0x0000000000000020
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e      0x588 more.o
+                0x000000000000001e                input
+                0x000000000000009c                wtch
+                0x00000000000000ce                cbreak
+                0x0000000000000134                nocbreak
+                0x0000000000000166                byebye
+                0x0000000000000174                lwrite
+                0x000000000000037f                output
+                0x00000000000003c9                oflush
+                0x00000000000003eb                main
+ .text          0x00000000000005a6       0x20 ../lib/libsys.a(close.o)
+                0x00000000000005a6                close
+ .text          0x00000000000005c6       0x24 ../lib/libsys.a(read.o)
+                0x00000000000005c6                read
+ .text          0x00000000000005ea       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000005ea                exit
+ .text          0x0000000000000607       0x1b ../lib/libsys.a(open.o)
+                0x0000000000000607                open
+ .text          0x0000000000000622       0x3e ../lib/libsys.a(lseek.o)
+                0x0000000000000622                lseek
+ .text          0x0000000000000660       0x24 ../lib/libsys.a(write.o)
+                0x0000000000000660                write
+ .text          0x0000000000000684      0x139 ../lib/libsys.a(ioctl.o)
+                0x0000000000000684                ioctl
+ .text          0x00000000000007bd       0x42 ../lib/libsys.a(signal.o)
+                0x00000000000007bd                signal
+ .text          0x00000000000007ff        0x0 ../lib/libsys.a(message.o)
+ .text          0x00000000000007ff       0xc8 ../lib/libsys.a(call.o)
+                0x00000000000007ff                callx
+                0x000000000000082e                callm1
+                0x0000000000000865                len
+                0x000000000000087e                callm3
+ .text          0x00000000000008c7       0x2f ../lib/libsys.a(catchsig.o)
+                0x00000000000008c7                begsig
+ .text          0x00000000000008f6       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000008f6                send
+                0x00000000000008fb                receive
+                0x0000000000000900                send_rec
+                0x0000000000000900                sendrec
+ .text          0x0000000000000912       0x19 ../lib/libsys.a(strlen.o)
+                0x0000000000000912                strlen
+ .text          0x000000000000092b       0x1b ../lib/libsys.a(index.o)
+                0x000000000000092b                index
+                0x0000000000000950                . = ALIGN (0x10)
+ *fill*         0x0000000000000946        0xa 
+                0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
+                0x0000000000000970                _begindata = (_begintext + .)
+
+.data           0x0000000000000000       0xa7 load address 0x0000000000000970
+ *(.data)
+ .data          0x0000000000000000        0x4 ../lib/crtso.o
+                0x0000000000000000                brksize
+                0x0000000000000002                environ
+ .data          0x0000000000000004        0x2 more.o
+                0x0000000000000004                fd
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(close.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(read.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(exit.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(open.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(lseek.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(write.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(ioctl.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(signal.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(message.o)
+ .data          0x0000000000000006        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000006        0x2 ../lib/libsys.a(catchsig.o)
+ .data          0x0000000000000008        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000000008        0x0 ../lib/libsys.a(strlen.o)
+ .data          0x0000000000000008        0x0 ../lib/libsys.a(index.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000000008       0x9f more.o
+                0x00000000000000a7                _begbss = .
+
+.bss            0x00000000000000a8      0x84e load address 0x0000000000000a18
+ *(.bss)
+ .bss           0x00000000000000a8        0x0 ../lib/crtso.o
+ .bss           0x00000000000000a8        0xe more.o
+                0x00000000000000a8                isdone
+                0x00000000000000aa                isrewind
+                0x00000000000000ac                obc
+                0x00000000000000ae                ibc
+                0x00000000000000b0                ibl
+                0x00000000000000b2                col
+                0x00000000000000b4                line
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(close.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(read.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(open.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(lseek.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(write.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(ioctl.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(signal.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(message.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(call.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(strlen.o)
+ .bss           0x00000000000000b6        0x0 ../lib/libsys.a(index.o)
+ *(COMMON)
+ COMMON         0x00000000000000b6      0x806 more.o
+                0x00000000000000b6                ibuf
+                0x00000000000004b6                ttymode
+                0x00000000000004bc                obuf
+ COMMON         0x00000000000008bc       0x20 ../lib/libsys.a(signal.o)
+                0x00000000000008bc                vectab
+ COMMON         0x00000000000008dc       0x18 ../lib/libsys.a(message.o)
+                0x00000000000008dc                M
+ COMMON         0x00000000000008f4        0x2 ../lib/libsys.a(call.o)
+                0x00000000000008f4                errno
+                0x00000000000008f6                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: data too large for a .sep file.)
+LOAD ../lib/crtso.o
+LOAD more.o
+LOAD ../lib/libsys.a
+OUTPUT(more.sep binary)

@@ -12,7 +12,10 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 all : sh.out sh.sep \
 		cat.out getlf.out ls.out mknod.out mount.out pwd.out \
 		touch.out update.out cp.out login.out mkdir.out more.out \
-		mv.out rm.out umount.out
+		mv.out rm.out umount.out \
+		cat.sep getlf.sep ls.sep mknod.sep mount.sep pwd.sep \
+		touch.sep update.sep cp.sep login.sep mkdir.sep more.sep \
+		mv.sep rm.sep umount.sep 
 
 sh.out : sh1.o sh2.o sh3.o sh4.o sh5.o sh6.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \
