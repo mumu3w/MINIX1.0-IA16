@@ -6,7 +6,7 @@ AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
 CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
-		-march=i8086 -mcmodel=small
+		-march=i8086 -mcmodel=tiny
 	
 OBJS	= divmodsi3.o ldivmod.o memset.o memcpy.o \
 		catchsig.o getutils.o sendrec.o \

@@ -6,37 +6,46 @@ AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
 CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
-		-march=i8086 -mtune=i8086 -mcmodel=small \
+		-march=i8086 -mtune=i8086 -mcmodel=tiny \
 #		-DDEBUG
 
-all : fsck.sep init.sep bootblok.bin build
+all : fsck.out init.out bootblok.bin build minixfsutils mkfs
 
-Image : ../kernel/kernel.sep ../mm/mm.sep ../fs/fs.sep fsck.sep init.sep bootblok.bin build
-	./build bootblok.bin ../kernel/kernel.sep ../mm/mm.sep \
-			../fs/fs.sep init.sep fsck.sep Image
+Image : ../kernel/kernel.out ../mm/mm.out ../fs/fs.out fsck.out init.out bootblok.bin build
+	./build bootblok.bin ../kernel/kernel.out ../mm/mm.out \
+			../fs/fs.out init.out fsck.out Image
+			
+ram.img : mkfs minixfsutils
+	dd if=/dev/zero of=ram.img bs=1024 count=360
+	./mkfs ram.img
 	
 bootblok.bin : bootblok.asm
 	nasm -f bin -o $@ $<
+	
+minixfsutils : minixfsutils.c
+	gcc -DFLOPPY_IMAGE -o $@ $<
+	
+mkfs : mkfs.c
+	gcc -DFLOPPY_IMAGE -o $@ $<
 
 build : build.c
 	gcc -o $@ $<
 
-fsck.sep : fsck1.o fsck.o fsck_small.ld
-	$(LD) -T fsck_small.ld -e start -o fsck.sep fsck1.o fsck.o -L../lib -lsys -M > fsck.map
+fsck.out : fsck1.o fsck.o kernel_tiny.ld
+	$(LD) -T kernel_tiny.ld -e start -o fsck.out \
+		fsck1.o fsck.o -L../lib -lsys -M > fsck.map
+	
+init.out : init.o kernel_tiny.ld
+	$(LD) -T kernel_tiny.ld -e start -o init.out \
+		../lib/head.o init.o -L../lib -lsys -M > init.map
 
-fsck1.o : fsck1.s
-	$(CPP) $(CFLAGS) -E fsck1.s -o fsck1.tmp
-	$(AS) fsck1.tmp -o fsck1.o
+%.o : %.c
+	$(CC) $(CFLAGS) -c $<
 	
-fsck.o : fsck.c
-	$(CC) $(CFLAGS) -c fsck.c
-	
-init.sep : init.o init_small.ld
-	$(LD) -T init_small.ld -e start -o init.sep ../lib/head.o init.o -L../lib -lsys -M > init.map
-	
-init.o : init.c
-	$(CC) $(CFLAGS) -c init.c
+%.o : %.s
+	$(CPP) $(CFLAGS) -E $< -o $<.tmp
+	$(AS) $<.tmp -o $@
 	
 clean :
-	rm -fr *.tmp *.o *.sep *.map build bootblok.bin Image
+	rm -fr *.tmp *.o *.out *.map build bootblok.bin Image minixfsutils mkfs ram.img
 	

@@ -1,5 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
+../lib/libsys.a(getutils.o)   main.o (get_tot_mem)
+../lib/libsys.a(sendrec.o)    main.o (send)
 ../lib/libsys.a(close.o)      exec.o (close)
 ../lib/libsys.a(read.o)       exec.o (read)
 ../lib/libsys.a(creat.o)      signal.o (creat)
@@ -9,8 +11,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(printk.o)     main.o (printk)
 ../lib/libsys.a(call.o)       utility.o (errno)
 ../lib/libsys.a(syslib.o)     forkexit.o (sys_xit)
-../lib/libsys.a(getutils.o)   main.o (get_tot_mem)
-../lib/libsys.a(sendrec.o)    main.o (send)
 ../lib/libsys.a(divmodsi3.o)  ../lib/libsys.a(printk.o) (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
@@ -65,17 +65,18 @@ Linker script and memory map
 
 
 .hdr            0x0000000000000000       0x20
-                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000000        0x4 LONG 0x4100301
                 0x0000000000000004        0x4 LONG 0x20
-                0x0000000000000008        0x4 LONG 0x21c0 SIZEOF (.text)
-                0x000000000000000c        0x4 LONG 0x2b6 SIZEOF (.data)
-                0x0000000000000010        0x4 LONG 0x100e SIZEOF (.bss)
+                0x0000000000000008        0x4 LONG 0x21b7 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x2b7 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0x100e (_endbss - _begbss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x3484 ((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss))
+                0x0000000000000018        0x4 LONG 0x347c (_endbss - _begtext)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
-.text           0x0000000000000000     0x21c0 load address 0x0000000000000020
+.text           0x0000000000000000     0x246e load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
  *(.text)
  .text          0x0000000000000000       0x19 ../lib/head.o
                 0x0000000000000000                start
@@ -119,45 +120,45 @@ Linker script and memory map
                 0x0000000000001888                no_sys
                 0x000000000000188c                panic
                 0x00000000000018ce                allowed
- .text          0x00000000000019b7       0x20 ../lib/libsys.a(close.o)
-                0x00000000000019b7                close
- .text          0x00000000000019d7       0x24 ../lib/libsys.a(read.o)
-                0x00000000000019d7                read
- .text          0x00000000000019fb       0x1b ../lib/libsys.a(creat.o)
-                0x00000000000019fb                creat
- .text          0x0000000000001a16       0x1b ../lib/libsys.a(open.o)
-                0x0000000000001a16                open
- .text          0x0000000000001a31       0x24 ../lib/libsys.a(write.o)
-                0x0000000000001a31                write
- .text          0x0000000000001a55       0x22 ../lib/libsys.a(fstat.o)
-                0x0000000000001a55                fstat
- .text          0x0000000000001a77      0x347 ../lib/libsys.a(printk.o)
-                0x0000000000001a77                printk
- .text          0x0000000000001dbe       0xc8 ../lib/libsys.a(call.o)
-                0x0000000000001dbe                callx
-                0x0000000000001ded                callm1
-                0x0000000000001e24                len
-                0x0000000000001e3d                callm3
- .text          0x0000000000001e86      0x19a ../lib/libsys.a(syslib.o)
-                0x0000000000001e86                sys_xit
-                0x0000000000001ea8                sys_getsp
-                0x0000000000001ed0                sys_sig
-                0x0000000000001ef7                sys_fork
-                0x0000000000001f1b                sys_exec
-                0x0000000000001f3d                sys_newmap
-                0x0000000000001f5f                sys_copy
-                0x0000000000001f8d                sys_times
-                0x0000000000001fe5                sys_abort
-                0x0000000000001ffd                tell_fs
- .text          0x0000000000002020       0x2d ../lib/libsys.a(getutils.o)
-                0x0000000000002020                get_base
-                0x0000000000002023                get_size
-                0x0000000000002027                get_tot_mem
- .text          0x000000000000204d       0x1c ../lib/libsys.a(sendrec.o)
-                0x000000000000204d                send
-                0x0000000000002052                receive
-                0x0000000000002057                send_rec
-                0x0000000000002057                sendrec
+ .text          0x00000000000019b7       0x2d ../lib/libsys.a(getutils.o)
+                0x00000000000019b7                get_base
+                0x00000000000019ba                get_size
+                0x00000000000019be                get_tot_mem
+ .text          0x00000000000019e4       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000019e4                send
+                0x00000000000019e9                receive
+                0x00000000000019ee                send_rec
+                0x00000000000019ee                sendrec
+ .text          0x0000000000001a00       0x20 ../lib/libsys.a(close.o)
+                0x0000000000001a00                close
+ .text          0x0000000000001a20       0x24 ../lib/libsys.a(read.o)
+                0x0000000000001a20                read
+ .text          0x0000000000001a44       0x1b ../lib/libsys.a(creat.o)
+                0x0000000000001a44                creat
+ .text          0x0000000000001a5f       0x1b ../lib/libsys.a(open.o)
+                0x0000000000001a5f                open
+ .text          0x0000000000001a7a       0x24 ../lib/libsys.a(write.o)
+                0x0000000000001a7a                write
+ .text          0x0000000000001a9e       0x22 ../lib/libsys.a(fstat.o)
+                0x0000000000001a9e                fstat
+ .text          0x0000000000001ac0      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000001ac0                printk
+ .text          0x0000000000001e07       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000001e07                callx
+                0x0000000000001e36                callm1
+                0x0000000000001e6d                len
+                0x0000000000001e86                callm3
+ .text          0x0000000000001ecf      0x19a ../lib/libsys.a(syslib.o)
+                0x0000000000001ecf                sys_xit
+                0x0000000000001ef1                sys_getsp
+                0x0000000000001f19                sys_sig
+                0x0000000000001f40                sys_fork
+                0x0000000000001f64                sys_exec
+                0x0000000000001f86                sys_newmap
+                0x0000000000001fa8                sys_copy
+                0x0000000000001fd6                sys_times
+                0x000000000000202e                sys_abort
+                0x0000000000002046                tell_fs
  .text          0x0000000000002069       0x74 ../lib/libsys.a(divmodsi3.o)
                 0x0000000000002069                __divsi3
                 0x0000000000002087                __modsi3
@@ -167,113 +168,110 @@ Linker script and memory map
                 0x00000000000020dd                ldivmod
                 0x00000000000020f9                ludivmod
  .text          0x00000000000021b7        0x0 ../lib/libsys.a(message.o)
-                0x00000000000021c0                . = ALIGN (0x10)
- *fill*         0x00000000000021b7        0x9 
-                0x00000000000021e0                _begindata = (_begintext + .)
-
-.data           0x0000000000000000      0x2b6 load address 0x00000000000021e0
+                0x00000000000021b7                _begdata = .
  *(.begdata)
- .begdata       0x0000000000000000       0x10 ../lib/head.o
-                0x0000000000000000                data_org
+ .begdata       0x00000000000021b7       0x10 ../lib/head.o
+                0x00000000000021b7                data_org
  *(.data)
- .data          0x0000000000000010        0x4 ../lib/head.o
-                0x0000000000000010                brksize
-                0x0000000000000012                sp_limit
- .data          0x0000000000000014        0x0 alloc.o
- .data          0x0000000000000014        0x0 break.o
- .data          0x0000000000000014        0x0 exec.o
- .data          0x0000000000000014        0x4 forkexit.o
- .data          0x0000000000000018        0x0 getset.o
- .data          0x0000000000000018        0x0 main.o
- .data          0x0000000000000018        0x0 putc.o
- .data          0x0000000000000018        0x0 signal.o
- .data          0x0000000000000018       0x93 table.o
-                0x0000000000000018                call_vec
-                0x00000000000000a2                stackpt
-                0x00000000000000a4                core_bits
-                0x00000000000000a6                core_name
- .data          0x00000000000000ab        0x0 utility.o
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(close.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(read.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(creat.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(open.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(write.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(fstat.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(printk.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(call.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(syslib.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(getutils.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(divmodsi3.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(ldivmod.o)
- .data          0x00000000000000ab        0x0 ../lib/libsys.a(message.o)
+ .data          0x00000000000021c7        0x4 ../lib/head.o
+                0x00000000000021c7                brksize
+                0x00000000000021c9                sp_limit
+ .data          0x00000000000021cb        0x0 alloc.o
+ .data          0x00000000000021cb        0x0 break.o
+ .data          0x00000000000021cb        0x0 exec.o
+ *fill*         0x00000000000021cb        0x1 
+ .data          0x00000000000021cc        0x4 forkexit.o
+ .data          0x00000000000021d0        0x0 getset.o
+ .data          0x00000000000021d0        0x0 main.o
+ .data          0x00000000000021d0        0x0 putc.o
+ .data          0x00000000000021d0        0x0 signal.o
+ .data          0x00000000000021d0       0x93 table.o
+                0x00000000000021d0                call_vec
+                0x000000000000225a                stackpt
+                0x000000000000225c                core_bits
+                0x000000000000225e                core_name
+ .data          0x0000000000002263        0x0 utility.o
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(getutils.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(close.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(read.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(creat.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(open.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(write.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(fstat.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(printk.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(syslib.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
  .rodata.str1.1
-                0x00000000000000ab       0x10 alloc.o
+                0x0000000000002263       0x10 alloc.o
  .rodata.str1.1
-                0x00000000000000bb       0x47 exec.o
+                0x0000000000002273       0x47 exec.o
  .rodata.str1.1
-                0x0000000000000102       0x13 forkexit.o
- *fill*         0x0000000000000115        0x3 
- .rodata        0x0000000000000118       0x38 getset.o
+                0x00000000000022ba       0x13 forkexit.o
+ *fill*         0x00000000000022cd        0x3 
+ .rodata        0x00000000000022d0       0x38 getset.o
  .rodata.str1.1
-                0x0000000000000150       0xa6 main.o
+                0x0000000000002308       0xa6 main.o
  .rodata.str1.1
-                0x00000000000001f6        0xb signal.o
+                0x00000000000023ae        0xb signal.o
  .rodata.str1.1
-                0x0000000000000201       0x35 utility.o
- *fill*         0x0000000000000236        0x2 
- .rodata        0x0000000000000238       0x6a ../lib/libsys.a(printk.o)
+                0x00000000000023b9       0x35 utility.o
+ *fill*         0x00000000000023ee        0x2 
+ .rodata        0x00000000000023f0       0x6a ../lib/libsys.a(printk.o)
  .rodata.str1.1
-                0x00000000000002a2       0x14 ../lib/libsys.a(syslib.o)
-                0x00000000000002b6                _begbss = .
+                0x000000000000245a       0x14 ../lib/libsys.a(syslib.o)
+                0x000000000000246e                _begbss = .
 
-.bss            0x00000000000002b6     0x100e load address 0x0000000000002496
+.bss            0x000000000000246e     0x100e load address 0x000000000000248e
  *(.bss)
- .bss           0x00000000000002b6        0x0 ../lib/head.o
- .bss           0x00000000000002b6      0x304 alloc.o
- .bss           0x00000000000005ba        0x0 break.o
- .bss           0x00000000000005ba        0x0 exec.o
- .bss           0x00000000000005ba        0x0 forkexit.o
- .bss           0x00000000000005ba        0x0 getset.o
- .bss           0x00000000000005ba        0x2 main.o
- .bss           0x00000000000005bc       0x7e putc.o
- .bss           0x000000000000063a       0x18 signal.o
- .bss           0x0000000000000652        0x0 table.o
- .bss           0x0000000000000652       0x18 utility.o
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(close.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(read.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(creat.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(open.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(write.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(fstat.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(printk.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(call.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(syslib.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(getutils.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(divmodsi3.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(ldivmod.o)
- .bss           0x000000000000066a        0x0 ../lib/libsys.a(message.o)
+ .bss           0x000000000000246e        0x0 ../lib/head.o
+ .bss           0x000000000000246e      0x304 alloc.o
+ .bss           0x0000000000002772        0x0 break.o
+ .bss           0x0000000000002772        0x0 exec.o
+ .bss           0x0000000000002772        0x0 forkexit.o
+ .bss           0x0000000000002772        0x0 getset.o
+ .bss           0x0000000000002772        0x2 main.o
+ .bss           0x0000000000002774       0x7e putc.o
+ .bss           0x00000000000027f2       0x18 signal.o
+ .bss           0x000000000000280a        0x0 table.o
+ .bss           0x000000000000280a       0x18 utility.o
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(getutils.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(close.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(read.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(creat.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(open.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(write.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(fstat.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(syslib.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(message.o)
  *(COMMON)
- COMMON         0x000000000000066a      0xc40 table.o
-                0x000000000000066a                who
-                0x000000000000066c                procs_in_use
-                0x000000000000066e                mm_out
-                0x0000000000000686                dont_reply
-                0x0000000000000688                res_ptr
-                0x000000000000068a                mm_call
-                0x000000000000068c                result2
-                0x000000000000068e                err_code
-                0x0000000000000690                mproc
-                0x0000000000000910                mm_in
-                0x0000000000000928                mm_stack
-                0x00000000000012a8                mp
- COMMON         0x00000000000012aa        0x2 ../lib/libsys.a(call.o)
-                0x00000000000012aa                errno
- COMMON         0x00000000000012ac       0x18 ../lib/libsys.a(message.o)
-                0x00000000000012ac                M
-                0x00000000000012c4                _endbss = .
+ COMMON         0x0000000000002822      0xc40 table.o
+                0x0000000000002822                who
+                0x0000000000002824                procs_in_use
+                0x0000000000002826                mm_out
+                0x000000000000283e                dont_reply
+                0x0000000000002840                res_ptr
+                0x0000000000002842                mm_call
+                0x0000000000002844                result2
+                0x0000000000002846                err_code
+                0x0000000000002848                mproc
+                0x0000000000002ac8                mm_in
+                0x0000000000002ae0                mm_stack
+                0x0000000000003460                mp
+ COMMON         0x0000000000003462        0x2 ../lib/libsys.a(call.o)
+                0x0000000000003462                errno
+ COMMON         0x0000000000003464       0x18 ../lib/libsys.a(message.o)
+                0x0000000000003464                M
+                0x000000000000347c                _endbss = .
 
 /DISCARD/
  *(.comment)
@@ -289,4 +287,4 @@ LOAD signal.o
 LOAD table.o
 LOAD utility.o
 LOAD ../lib/libsys.a
-OUTPUT(mm.sep binary)
+OUTPUT(mm.out binary)

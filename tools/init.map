@@ -51,17 +51,18 @@ Linker script and memory map
 
 
 .hdr            0x0000000000000000       0x20
-                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000000        0x4 LONG 0x4100301
                 0x0000000000000004        0x4 LONG 0x20
-                0x0000000000000008        0x4 LONG 0x640 SIZEOF (.text)
-                0x000000000000000c        0x4 LONG 0x87 SIZEOF (.data)
-                0x0000000000000010        0x4 LONG 0x152 SIZEOF (.bss)
+                0x0000000000000008        0x4 LONG 0x63c (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x87 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0x153 (_endbss - _begbss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x819 ((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss))
+                0x0000000000000018        0x4 LONG 0x816 (_endbss - _begtext)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
-.text           0x0000000000000000      0x640 load address 0x0000000000000020
+.text           0x0000000000000000      0x6c3 load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
  *(.text)
  .text          0x0000000000000000       0x19 ../lib/head.o
                 0x0000000000000000                start
@@ -106,76 +107,72 @@ Linker script and memory map
                 0x0000000000000625                receive
                 0x000000000000062a                send_rec
                 0x000000000000062a                sendrec
-                0x0000000000000640                . = ALIGN (0x10)
- *fill*         0x000000000000063c        0x4 
-                0x0000000000000660                _begindata = (_begintext + .)
-
-.data           0x0000000000000000       0x87 load address 0x0000000000000660
+                0x000000000000063c                _begdata = .
  *(.begdata)
- .begdata       0x0000000000000000       0x10 ../lib/head.o
-                0x0000000000000000                data_org
+ .begdata       0x000000000000063c       0x10 ../lib/head.o
+                0x000000000000063c                data_org
  *(.data)
- .data          0x0000000000000010        0x4 ../lib/head.o
-                0x0000000000000010                brksize
-                0x0000000000000012                sp_limit
- .data          0x0000000000000014        0xc init.o
-                0x0000000000000014                stackpt
-                0x0000000000000016                name
- .data          0x0000000000000020        0x0 ../lib/libsys.a(close.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(exec.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(read.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(exit.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(open.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(wait.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(fork.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(sync.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(write.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(signal.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(message.o)
- .data          0x0000000000000020        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000020        0x2 ../lib/libsys.a(catchsig.o)
- .data          0x0000000000000022        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x000000000000064c        0x4 ../lib/head.o
+                0x000000000000064c                brksize
+                0x000000000000064e                sp_limit
+ .data          0x0000000000000650        0xc init.o
+                0x0000000000000650                stackpt
+                0x0000000000000652                name
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(close.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(exec.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(read.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(exit.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(open.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(wait.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(fork.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(sync.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(write.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(signal.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(message.o)
+ .data          0x000000000000065c        0x0 ../lib/libsys.a(call.o)
+ .data          0x000000000000065c        0x2 ../lib/libsys.a(catchsig.o)
+ .data          0x000000000000065e        0x0 ../lib/libsys.a(sendrec.o)
  *(.rodata*)
  .rodata.str1.1
-                0x0000000000000022       0x65 init.o
-                0x0000000000000087                _begbss = .
+                0x000000000000065e       0x65 init.o
+                0x00000000000006c3                _begbss = .
 
-.bss            0x0000000000000088      0x152 load address 0x00000000000006e8
+.bss            0x00000000000006c4      0x152 load address 0x00000000000006e4
  *(.bss)
- .bss           0x0000000000000088        0x0 ../lib/head.o
- .bss           0x0000000000000088        0x0 init.o
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(close.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(exec.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(read.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(exit.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(open.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(wait.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(fork.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(sync.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(write.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(signal.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(message.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(catchsig.o)
- .bss           0x0000000000000088        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x00000000000006c4        0x0 ../lib/head.o
+ .bss           0x00000000000006c4        0x0 init.o
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(close.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(exec.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(read.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(open.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(wait.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(fork.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(sync.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(write.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(signal.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(message.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(call.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x00000000000006c4        0x0 ../lib/libsys.a(sendrec.o)
  *(COMMON)
- COMMON         0x0000000000000088      0x116 init.o
-                0x0000000000000088                pid
-                0x000000000000009c                stack
-                0x000000000000019c                pidct
- COMMON         0x000000000000019e        0x2 ../lib/libsys.a(exec.o)
-                0x000000000000019e                nullptr
- COMMON         0x00000000000001a0       0x20 ../lib/libsys.a(signal.o)
-                0x00000000000001a0                vectab
- COMMON         0x00000000000001c0       0x18 ../lib/libsys.a(message.o)
-                0x00000000000001c0                M
- COMMON         0x00000000000001d8        0x2 ../lib/libsys.a(call.o)
-                0x00000000000001d8                errno
-                0x00000000000001da                _endbss = .
+ COMMON         0x00000000000006c4      0x116 init.o
+                0x00000000000006c4                pid
+                0x00000000000006d8                stack
+                0x00000000000007d8                pidct
+ COMMON         0x00000000000007da        0x2 ../lib/libsys.a(exec.o)
+                0x00000000000007da                nullptr
+ COMMON         0x00000000000007dc       0x20 ../lib/libsys.a(signal.o)
+                0x00000000000007dc                vectab
+ COMMON         0x00000000000007fc       0x18 ../lib/libsys.a(message.o)
+                0x00000000000007fc                M
+ COMMON         0x0000000000000814        0x2 ../lib/libsys.a(call.o)
+                0x0000000000000814                errno
+                0x0000000000000816                _endbss = .
 
 /DISCARD/
  *(.comment)
 LOAD ../lib/head.o
 LOAD init.o
 LOAD ../lib/libsys.a
-OUTPUT(init.sep binary)
+OUTPUT(init.out binary)
