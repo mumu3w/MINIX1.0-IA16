@@ -1,0 +1,390 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(divmodsi3.o)  write.o (__divsi3)
+../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(printk.o)     cache.o (printk)
+../lib/libsys.a(syslib.o)     read.o (sys_copy)
+../lib/libsys.a(getutils.o)   main.o (get_base)
+../lib/libsys.a(sendrec.o)    pipe.o (send)
+../lib/libsys.a(message.o)    ../lib/libsys.a(syslib.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(syslib.o) (callx)
+
+Allocating common symbols
+Common symbol       size              file
+
+rear                0x2               table.o
+who                 0x2               table.o
+fp                  0x2               table.o
+reviving            0x2               table.o
+super_user          0x2               table.o
+errno               0x2               ../lib/libsys.a(call.o)
+rdahed_inode        0x2               table.o
+dont_reply          0x2               table.o
+fproc               0x400             table.o
+front               0x2               table.o
+fs_call             0x2               table.o
+buf_hash            0x40              table.o
+err_code            0x2               table.o
+rdwt_err            0x2               read.o
+bufs_in_use         0x2               table.o
+user_path           0x80              table.o
+super_block         0xfa              table.o
+rdahedpos           0x4               table.o
+buf                 0x50f0            table.o
+m1                  0x18              table.o
+fstack              0x200             table.o
+M                   0x18              ../lib/libsys.a(message.o)
+inode               0x540             table.o
+m                   0x18              table.o
+susp_count          0x2               table.o
+filp                0x280             table.o
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 cache.o
+ .comment       0x0000000000000000       0x12 filedes.o
+ .comment       0x0000000000000000       0x12 link.o
+ .comment       0x0000000000000000       0x12 misc.o
+ .comment       0x0000000000000000       0x12 open.o
+ .comment       0x0000000000000000       0x12 pipe.o
+ .comment       0x0000000000000000       0x12 putc.o
+ .comment       0x0000000000000000       0x12 stadir.o
+ .comment       0x0000000000000000       0x12 table.o
+ .comment       0x0000000000000000       0x12 utility.o
+ .comment       0x0000000000000000       0x12 device.o
+ .comment       0x0000000000000000       0x12 inode.o
+ .comment       0x0000000000000000       0x12 main.o
+ .comment       0x0000000000000000       0x12 mount.o
+ .comment       0x0000000000000000       0x12 path.o
+ .comment       0x0000000000000000       0x12 protect.o
+ .comment       0x0000000000000000       0x12 read.o
+ .comment       0x0000000000000000       0x12 super.o
+ .comment       0x0000000000000000       0x12 time.o
+ .comment       0x0000000000000000       0x12 write.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(printk.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(syslib.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4100301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x4378 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x4d6 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0x61d0 (_endbss - _begbss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0xaa1e (_endbss - _begtext)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000     0x484e load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
+ *(.text)
+ .text          0x0000000000000000       0x19 ../lib/head.o
+                0x0000000000000000                start
+ .text          0x0000000000000019      0x326 cache.o
+                0x0000000000000019                alloc_zone
+                0x000000000000008a                free_zone
+                0x00000000000000b3                rw_block
+                0x0000000000000127                get_block
+                0x000000000000025b                put_block
+                0x000000000000031b                invalidate
+ .text          0x000000000000033f       0xcc filedes.o
+                0x000000000000033f                get_fd
+                0x00000000000003bc                get_filp
+                0x00000000000003de                find_filp
+ .text          0x000000000000040b      0x2ee link.o
+                0x000000000000040b                do_link
+                0x000000000000051a                do_unlink
+                0x00000000000005c4                truncate
+ .text          0x00000000000006f9      0x2f8 misc.o
+                0x00000000000006f9                do_dup
+                0x000000000000077a                do_sync
+                0x000000000000084f                do_fork
+                0x00000000000008ed                do_exit
+                0x000000000000096d                do_set
+                0x00000000000009ce                do_revive
+ .text          0x00000000000009f1      0x45a open.o
+                0x0000000000000ab3                do_creat
+                0x0000000000000bc8                do_mknod
+                0x0000000000000c1a                do_open
+                0x0000000000000d19                do_close
+                0x0000000000000dba                do_lseek
+ .text          0x0000000000000e4b      0x449 pipe.o
+                0x0000000000000e4b                do_pipe
+                0x0000000000000f42                suspend
+                0x0000000000000f80                revive
+                0x0000000000001008                release
+                0x0000000000001074                pipe_check
+                0x0000000000001173                do_unpause
+ .text          0x0000000000001294       0x78 putc.o
+                0x00000000000012cd                putc
+ .text          0x000000000000130c      0x25f stadir.o
+                0x000000000000144d                do_chdir
+                0x00000000000014d9                do_chroot
+                0x00000000000014fa                do_stat
+                0x0000000000001547                do_fstat
+ .text          0x000000000000156b        0x0 table.o
+ .text          0x000000000000156b      0x16a utility.o
+                0x000000000000156b                cmp_string
+                0x000000000000158c                copy
+                0x00000000000015d9                fetch_name
+                0x0000000000001642                no_sys
+                0x0000000000001646                panic
+                0x000000000000168c                clock_time
+ .text          0x00000000000016d5      0x23f device.o
+                0x000000000000171a                dev_open
+                0x0000000000001743                dev_close
+                0x0000000000001769                dev_io
+                0x00000000000017e1                do_ioctl
+                0x000000000000188a                rw_dev
+                0x00000000000018d9                rw_dev2
+                0x0000000000001909                no_call
+ .text          0x0000000000001914      0x245 inode.o
+                0x0000000000001914                wipe_inode
+                0x0000000000001944                free_inode
+                0x000000000000195e                rw_inode
+                0x00000000000019dc                get_inode
+                0x0000000000001a51                alloc_inode
+                0x0000000000001b02                put_inode
+                0x0000000000001b50                dup_inode
+ .text          0x0000000000001b59      0x4ed main.o
+                0x0000000000001b59                reply
+                0x0000000000001b73                main
+ .text          0x0000000000002046      0x376 mount.o
+                0x000000000000208a                do_mount
+                0x00000000000022b2                do_umount
+ .text          0x00000000000023bc      0x468 path.o
+                0x00000000000023bc                search_dir
+                0x00000000000025bc                advance
+                0x00000000000026bb                last_dir
+                0x00000000000027e6                eat_path
+ .text          0x0000000000002824      0x1f1 protect.o
+                0x0000000000002847                do_chmod
+                0x00000000000028c6                do_chown
+                0x000000000000292c                do_umask
+                0x0000000000002940                forbidden
+                0x00000000000029c8                do_access
+ .text          0x0000000000002a15      0x868 read.o
+                0x0000000000002a15                read_map
+                0x0000000000002ba9                rw_user
+                0x0000000000002c29                read_write
+                0x000000000000323a                do_read
+                0x0000000000003245                read_ahead
+ .text          0x000000000000327d      0x407 super.o
+                0x000000000000327d                alloc_bit
+                0x00000000000033cc                free_bit
+                0x000000000000344f                get_super
+                0x0000000000003482                load_bit_maps
+                0x0000000000003550                unload_bit_maps
+                0x00000000000035d0                mounted
+                0x0000000000003607                scale_factor
+                0x000000000000361f                rw_super
+ .text          0x0000000000003684      0x108 time.o
+                0x0000000000003684                do_utime
+                0x00000000000036f4                do_time
+                0x0000000000003702                do_stime
+                0x0000000000003741                do_tims
+ .text          0x000000000000378c      0x4ac write.o
+                0x000000000000378c                do_write
+                0x0000000000003797                zero_block
+                0x00000000000037b5                clear_zone
+                0x00000000000038c8                new_block
+ .text          0x0000000000003c38       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000003c38                __divsi3
+                0x0000000000003c56                __modsi3
+                0x0000000000003c72                __udivsi3
+                0x0000000000003c90                __umodsi3
+ .text          0x0000000000003cac       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000003cac                ldivmod
+                0x0000000000003cc8                ludivmod
+ .text          0x0000000000003d86      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000003d86                printk
+ .text          0x00000000000040cd      0x19a ../lib/libsys.a(syslib.o)
+                0x00000000000040cd                sys_xit
+                0x00000000000040ef                sys_getsp
+                0x0000000000004117                sys_sig
+                0x000000000000413e                sys_fork
+                0x0000000000004162                sys_exec
+                0x0000000000004184                sys_newmap
+                0x00000000000041a6                sys_copy
+                0x00000000000041d4                sys_times
+                0x000000000000422c                sys_abort
+                0x0000000000004244                tell_fs
+ .text          0x0000000000004267       0x2d ../lib/libsys.a(getutils.o)
+                0x0000000000004267                get_base
+                0x000000000000426a                get_size
+                0x000000000000426e                get_tot_mem
+ .text          0x0000000000004294       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000004294                send
+                0x0000000000004299                receive
+                0x000000000000429e                send_rec
+                0x000000000000429e                sendrec
+ .text          0x00000000000042b0        0x0 ../lib/libsys.a(message.o)
+ .text          0x00000000000042b0       0xc8 ../lib/libsys.a(call.o)
+                0x00000000000042b0                callx
+                0x00000000000042df                callm1
+                0x0000000000004316                len
+                0x000000000000432f                callm3
+                0x0000000000004378                _begdata = .
+ *(.begdata)
+ .begdata       0x0000000000004378       0x10 ../lib/head.o
+                0x0000000000004378                data_org
+ *(.data)
+ .data          0x0000000000004388        0x4 ../lib/head.o
+                0x0000000000004388                brksize
+                0x000000000000438a                sp_limit
+ .data          0x000000000000438c        0x0 cache.o
+ .data          0x000000000000438c        0x0 filedes.o
+ .data          0x000000000000438c        0x0 link.o
+ .data          0x000000000000438c        0x0 misc.o
+ .data          0x000000000000438c        0x0 open.o
+ .data          0x000000000000438c        0x0 pipe.o
+ .data          0x000000000000438c        0x0 putc.o
+ .data          0x000000000000438c        0x0 stadir.o
+ .data          0x000000000000438c       0xc6 table.o
+                0x000000000000438c                max_major
+                0x000000000000438e                dmap
+                0x00000000000043c6                call_vector
+                0x0000000000004450                stackpt
+ .data          0x0000000000004452        0x0 utility.o
+ .data          0x0000000000004452        0x0 device.o
+ .data          0x0000000000004452        0x0 inode.o
+ .data          0x0000000000004452        0x0 main.o
+ .data          0x0000000000004452        0x0 mount.o
+ .data          0x0000000000004452        0x0 path.o
+ .data          0x0000000000004452        0x0 protect.o
+ .data          0x0000000000004452        0x0 read.o
+ .data          0x0000000000004452        0x0 super.o
+ .data          0x0000000000004452        0x0 time.o
+ .data          0x0000000000004452        0x0 write.o
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(printk.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(syslib.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(getutils.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(message.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(call.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000004452       0x94 cache.o
+ .rodata        0x00000000000044e6        0x4 open.o
+ .rodata.str1.1
+                0x00000000000044ea       0x43 pipe.o
+ .rodata.str1.1
+                0x000000000000452d       0x2b utility.o
+ .rodata.str1.1
+                0x0000000000004558       0x21 device.o
+ .rodata.str1.1
+                0x0000000000004579       0x4a inode.o
+ .rodata.str1.1
+                0x00000000000045c3      0x184 main.o
+ .rodata.str1.1
+                0x0000000000004747        0xa mount.o
+ .rodata.str1.1
+                0x0000000000004751       0x70 super.o
+ .rodata.str1.1
+                0x00000000000047c1        0xf time.o
+ .rodata        0x00000000000047d0       0x6a ../lib/libsys.a(printk.o)
+ .rodata.str1.1
+                0x000000000000483a       0x14 ../lib/libsys.a(syslib.o)
+                0x000000000000484e                _begbss = .
+
+.bss            0x000000000000484e     0x61d0 load address 0x000000000000486e
+ *(.bss)
+ .bss           0x000000000000484e        0x0 ../lib/head.o
+ .bss           0x000000000000484e        0x0 cache.o
+ .bss           0x000000000000484e        0x0 filedes.o
+ .bss           0x000000000000484e        0x0 link.o
+ .bss           0x000000000000484e        0x0 misc.o
+ .bss           0x000000000000484e        0x0 open.o
+ .bss           0x000000000000484e       0x18 pipe.o
+ .bss           0x0000000000004866       0x7e putc.o
+ .bss           0x00000000000048e4        0x0 stadir.o
+ .bss           0x00000000000048e4        0x0 table.o
+ .bss           0x00000000000048e4       0x1a utility.o
+ .bss           0x00000000000048fe       0x1e device.o
+ .bss           0x000000000000491c        0x0 inode.o
+ .bss           0x000000000000491c        0x0 main.o
+ .bss           0x000000000000491c        0x0 mount.o
+ .bss           0x000000000000491c        0x0 path.o
+ .bss           0x000000000000491c        0x0 protect.o
+ .bss           0x000000000000491c       0x18 read.o
+ .bss           0x0000000000004934        0x0 super.o
+ .bss           0x0000000000004934       0x18 time.o
+ .bss           0x000000000000494c        0x0 write.o
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(syslib.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(getutils.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(message.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(call.o)
+ *(COMMON)
+ COMMON         0x000000000000494c     0x60b6 table.o
+                0x000000000000494c                rear
+                0x000000000000494e                who
+                0x0000000000004950                fp
+                0x0000000000004952                reviving
+                0x0000000000004954                super_user
+                0x0000000000004956                rdahed_inode
+                0x0000000000004958                dont_reply
+                0x000000000000495a                fproc
+                0x0000000000004d5a                front
+                0x0000000000004d5c                fs_call
+                0x0000000000004d5e                buf_hash
+                0x0000000000004d9e                err_code
+                0x0000000000004da0                bufs_in_use
+                0x0000000000004da2                user_path
+                0x0000000000004e22                super_block
+                0x0000000000004f1c                rdahedpos
+                0x0000000000004f20                buf
+                0x000000000000a010                m1
+                0x000000000000a028                fstack
+                0x000000000000a228                inode
+                0x000000000000a768                m
+                0x000000000000a780                susp_count
+                0x000000000000a782                filp
+ COMMON         0x000000000000aa02        0x2 read.o
+                0x000000000000aa02                rdwt_err
+ COMMON         0x000000000000aa04       0x18 ../lib/libsys.a(message.o)
+                0x000000000000aa04                M
+ COMMON         0x000000000000aa1c        0x2 ../lib/libsys.a(call.o)
+                0x000000000000aa1c                errno
+                0x000000000000aa1e                _endbss = .
+
+/DISCARD/
+ *(.comment)
+LOAD ../lib/head.o
+LOAD cache.o
+LOAD filedes.o
+LOAD link.o
+LOAD misc.o
+LOAD open.o
+LOAD pipe.o
+LOAD putc.o
+LOAD stadir.o
+LOAD table.o
+LOAD utility.o
+LOAD device.o
+LOAD inode.o
+LOAD main.o
+LOAD mount.o
+LOAD path.o
+LOAD protect.o
+LOAD read.o
+LOAD super.o
+LOAD time.o
+LOAD write.o
+LOAD ../lib/libsys.a
+OUTPUT(fs.out binary)

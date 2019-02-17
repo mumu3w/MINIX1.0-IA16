@@ -11,11 +11,17 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 OBJS	= mpx88.o klib88.o clock.o dmp.o floppy.o main.o memory.o printer.o proc.o system.o \
 		table.o tty.o wini.o
 
-all : kernel.sep
+all : kernel.out kernel.sep 
 
-kernel.sep : $(OBJS) kernel_small.ld
-	$(OBJCOPY) --redefine-sym _lock=lock klib88.o
-	$(LD) -T kernel_small.ld -e start -o kernel.sep $(OBJS) -L../lib -lsys -M > kernel.map
+kernel.out : $(OBJS) ../tools/kernel_tiny.ld
+	-$(OBJCOPY) --redefine-sym _lock=lock klib88.o
+	$(LD) -T ../tools/kernel_tiny.ld -e start -o kernel.out \
+				$(OBJS) -L../lib -lsys -M > kernel.out.map
+				
+kernel.sep : $(OBJS) ../tools/kernel_small.ld
+	-$(OBJCOPY) --redefine-sym _lock=lock klib88.o
+	$(LD) -T ../tools/kernel_small.ld -e start -o kernel.sep \
+				$(OBJS) -L../lib -lsys -M > kernel.sep.map
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
@@ -24,5 +30,5 @@ kernel.sep : $(OBJS) kernel_small.ld
 	nasm -f elf $<
 	
 clean :
-	rm -fr *.tmp *.o *.sep *.map
+	rm -fr *.tmp *.o *.out *.map
 

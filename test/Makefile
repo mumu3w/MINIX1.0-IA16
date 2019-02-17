@@ -9,14 +9,19 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mtune=i8086 -mcmodel=small \
 #		-DDEBUG
 
-all : hello.sep
+all : hello.out hello.sep
 	
+%.out : %.o
+	$(LD) -T cmds_tiny.ld -e start -o $@ \
+		../lib/crtso.o $< -L../lib -lsys -M > $@.map
+		
 %.sep : %.o
-	$(LD) -T cmds_small.ld -e start -o $@ ../lib/crtso.o $< -L../lib -lsys
+	$(LD) -T cmds_small.ld -e start -o $@ \
+		../lib/crtso.o $< -L../lib -lsys -M > $@.map
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
 	
 clean :
-	rm -fr *.tmp *.o *.sep *.map
+	rm -fr *.tmp *.o *.out *.map *.sep
 	

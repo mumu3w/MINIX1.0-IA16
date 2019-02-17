@@ -44,7 +44,7 @@ Linker script and memory map
                 0x00000000000003e0                _begindata = (_begintext + .)
 
 .data           0x0000000000000000      0x17a load address 0x00000000000003e0
- fsck1.o(.begdata)
+ *(.begdata)
  .begdata       0x0000000000000000       0x10 fsck1.o
                 0x0000000000000000                data_org
  *(.data)

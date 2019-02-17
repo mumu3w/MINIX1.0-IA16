@@ -1,0 +1,300 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(divmodsi3.o)  clock.o (__divsi3)
+../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(memcpy.o)     wini.o (memcpy)
+../lib/libsys.a(printk.o)     dmp.o (printk)
+../lib/libsys.a(getutils.o)   memory.o (get_base)
+../lib/libsys.a(sendrec.o)    clock.o (send)
+
+Allocating common symbols
+Common symbol       size              file
+
+proc                0x810             table.o
+sig_procs           0x2               table.o
+vid_mask            0x2               tty.o
+prev_ct             0x2               printer.o
+rdy_tail            0x6               table.o
+bill_ptr            0x2               table.o
+aout                0x40              dmp.o
+pc_at               0x2               table.o
+realtime            0x4               table.o
+lost_ticks          0x2               table.o
+cum_count           0x2               printer.o
+cur_proc            0x2               table.o
+scan_code           0x2               tty.o
+proc_ptr            0x2               table.o
+prev_proc           0x2               table.o
+olivetti            0x2               table.o
+vargv               0x2               dmp.o
+nbuff               0x15              dmp.o
+t_stack             0x700             table.o
+int_mess            0x18              table.o
+pr_busy             0x2               printer.o
+color               0x2               tty.o
+rdy_head            0x6               table.o
+busy_map            0x2               table.o
+k_stack             0x100             table.o
+pcount              0x2               printer.o
+task_mess           0x12              table.o
+keybd_mess          0x18              tty.o
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 clock.o
+ .comment       0x0000000000000000       0x12 dmp.o
+ .comment       0x0000000000000000       0x12 floppy.o
+ .comment       0x0000000000000000       0x12 main.o
+ .comment       0x0000000000000000       0x12 memory.o
+ .comment       0x0000000000000000       0x12 printer.o
+ .comment       0x0000000000000000       0x12 proc.o
+ .comment       0x0000000000000000       0x12 system.o
+ .comment       0x0000000000000000       0x12 table.o
+ .comment       0x0000000000000000       0x12 tty.o
+ .comment       0x0000000000000000       0x12 wini.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(memcpy.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(printk.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4100301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x54b3 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x8d7 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0x1c0e (_endbss - _begbss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x7998 (_endbss - _begtext)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000     0x5d8a load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
+ *(.text)
+ .text          0x0000000000000000      0x146 mpx88.o
+                0x0000000000000000                start
+                0x0000000000000023                s_call
+                0x000000000000003d                tty_int
+                0x0000000000000046                lpr_int
+                0x000000000000004f                disk_int
+                0x0000000000000066                wini_int
+                0x000000000000007d                clock_int
+                0x0000000000000093                surprise
+                0x000000000000009b                trp
+                0x00000000000000a3                divide
+                0x0000000000000102                restart
+ *fill*         0x0000000000000146        0xa 
+ .text          0x0000000000000150      0x293 klib88.o
+                0x0000000000000150                phys_copy
+                0x00000000000001e6                cp_mess
+                0x0000000000000215                port_out
+                0x0000000000000225                port_in
+                0x0000000000000239                portw_out
+                0x0000000000000249                portw_in
+                0x000000000000025b                port_read
+                0x000000000000028c                port_write
+                0x00000000000002bd                lock
+                0x00000000000002c4                unlock
+                0x00000000000002c6                restore
+                0x00000000000002cc                build_sig
+                0x0000000000000325                get_chrome
+                0x0000000000000334                vid_copy
+                0x00000000000003ab                get_byte
+                0x00000000000003bd                reboot
+                0x00000000000003c7                wreboot
+ .text          0x00000000000003e3      0x3a6 clock.o
+                0x00000000000003e3                clock_task
+ .text          0x0000000000000789      0x3db dmp.o
+                0x0000000000000789                prname
+                0x00000000000007ce                p_dmp
+                0x00000000000009ac                map_dmp
+                0x0000000000000ab0                set_name
+ .text          0x0000000000000b64      0xa27 floppy.o
+                0x000000000000152b                floppy_task
+ .text          0x000000000000158b      0x3ed main.o
+                0x00000000000015f3                main
+                0x00000000000018b4                unexpected_int
+                0x00000000000018d9                trap
+                0x000000000000190c                div_trap
+                0x0000000000001931                panic
+ .text          0x0000000000001978      0x21d memory.o
+                0x0000000000001a94                mem_task
+ .text          0x0000000000001b95      0x30b printer.o
+                0x0000000000001bd2                pr_char
+                0x0000000000001c90                printer_task
+ .text          0x0000000000001ea0      0x7e2 proc.o
+                0x0000000000001ea0                pick_proc
+                0x0000000000001f2c                ready
+                0x0000000000001fa9                unready
+                0x000000000000203f                mini_send
+                0x0000000000002254                interrupt
+                0x000000000000235c                sys_call
+                0x0000000000002653                sched
+ .text          0x0000000000002682      0x93d system.o
+                0x0000000000002682                inform
+                0x000000000000275c                cause_sig
+                0x00000000000027b7                umap
+                0x000000000000284d                sys_task
+ .text          0x0000000000002fbf        0x0 table.o
+ .text          0x0000000000002fbf     0x163c tty.o
+                0x00000000000036cf                tty_task
+                0x00000000000044b2                keyboard
+                0x00000000000045e7                putc
+ .text          0x00000000000045fb      0x9b6 wini.o
+                0x0000000000004cd1                sort
+                0x0000000000004d57                winchester_task
+                0x0000000000004fa4                delay
+ .text          0x0000000000004fb1       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000004fb1                __divsi3
+                0x0000000000004fcf                __modsi3
+                0x0000000000004feb                __udivsi3
+                0x0000000000005009                __umodsi3
+ .text          0x0000000000005025       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000005025                ldivmod
+                0x0000000000005041                ludivmod
+ .text          0x00000000000050ff       0x24 ../lib/libsys.a(memcpy.o)
+                0x00000000000050ff                memcpy
+ .text          0x0000000000005123      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000005123                printk
+ .text          0x000000000000546a       0x2d ../lib/libsys.a(getutils.o)
+                0x000000000000546a                get_base
+                0x000000000000546d                get_size
+                0x0000000000005471                get_tot_mem
+ .text          0x0000000000005497       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000005497                send
+                0x000000000000549c                receive
+                0x00000000000054a1                send_rec
+                0x00000000000054a1                sendrec
+                0x00000000000054b3                _begdata = .
+ *(.begdata)
+ .begdata       0x00000000000054b3       0x10 mpx88.o
+                0x00000000000054b3                sizes
+ *(.data)
+ *fill*         0x00000000000054c3        0x1 
+ .data          0x00000000000054c4       0x1e mpx88.o
+                0x00000000000054c4                splimit
+                0x00000000000054d0                brksize
+ *fill*         0x00000000000054e2        0x2 
+ .data          0x00000000000054e4      0x13e klib88.o
+                0x00000000000054e8                vec_table
+ .data          0x0000000000005622        0x2 clock.o
+ .data          0x0000000000005624       0x16 dmp.o
+                0x0000000000005624                nayme
+ .data          0x000000000000563a        0x0 floppy.o
+ .data          0x000000000000563a        0x0 main.o
+ .data          0x000000000000563a        0x0 memory.o
+ .data          0x000000000000563a        0x0 printer.o
+ .data          0x000000000000563a        0x0 proc.o
+ .data          0x000000000000563a        0x0 system.o
+ .data          0x000000000000563a       0x16 table.o
+                0x000000000000563a                task
+ .data          0x0000000000005650        0x0 tty.o
+ .data          0x0000000000005650        0x0 wini.o
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(memcpy.o)
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(printk.o)
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(getutils.o)
+ .data          0x0000000000005650        0x0 ../lib/libsys.a(sendrec.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000005650       0x1b clock.o
+ .rodata.str1.1
+                0x000000000000566b      0x151 dmp.o
+ .rodata.str1.1
+                0x00000000000057bc       0x8c floppy.o
+ .rodata        0x0000000000005848       0x57 floppy.o
+ .rodata.str1.1
+                0x000000000000589f      0x123 main.o
+ .rodata.str1.1
+                0x00000000000059c2       0x1b memory.o
+ .rodata.str1.1
+                0x00000000000059dd       0x40 printer.o
+ .rodata.str1.1
+                0x0000000000005a1d       0x67 system.o
+ .rodata        0x0000000000005a84       0x14 system.o
+ .rodata        0x0000000000005a98      0x1bc tty.o
+ .rodata.str1.1
+                0x0000000000005c54       0xcb wini.o
+ *fill*         0x0000000000005d1f        0x1 
+ .rodata        0x0000000000005d20       0x6a ../lib/libsys.a(printk.o)
+                0x0000000000005d8a                _begbss = .
+
+.bss            0x0000000000005d8a     0x1c0e load address 0x0000000000005daa
+ *(.bss)
+ .bss           0x0000000000005d8a       0x34 clock.o
+ .bss           0x0000000000005dbe        0x0 dmp.o
+ .bss           0x0000000000005dbe       0x5a floppy.o
+ .bss           0x0000000000005e18        0x0 main.o
+ .bss           0x0000000000005e18       0x38 memory.o
+ .bss           0x0000000000005e50        0xc printer.o
+ .bss           0x0000000000005e5c        0x0 proc.o
+ .bss           0x0000000000005e5c       0x20 system.o
+ .bss           0x0000000000005e7c        0x0 table.o
+ .bss           0x0000000000005e7c      0x4d6 tty.o
+ .bss           0x0000000000006352      0x56c wini.o
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(memcpy.o)
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(getutils.o)
+ .bss           0x00000000000068be        0x0 ../lib/libsys.a(sendrec.o)
+ *(COMMON)
+ COMMON         0x00000000000068be       0x57 dmp.o
+                0x00000000000068be                aout
+                0x00000000000068fe                vargv
+                0x0000000000006900                nbuff
+ *fill*         0x0000000000006915        0x1 
+ COMMON         0x0000000000006916        0x8 printer.o
+                0x0000000000006916                prev_ct
+                0x0000000000006918                cum_count
+                0x000000000000691a                pr_busy
+                0x000000000000691c                pcount
+ COMMON         0x000000000000691e     0x105c table.o
+                0x000000000000691e                proc
+                0x000000000000712e                sig_procs
+                0x0000000000007130                rdy_tail
+                0x0000000000007136                bill_ptr
+                0x0000000000007138                pc_at
+                0x000000000000713a                realtime
+                0x000000000000713e                lost_ticks
+                0x0000000000007140                cur_proc
+                0x0000000000007142                proc_ptr
+                0x0000000000007144                prev_proc
+                0x0000000000007146                olivetti
+                0x0000000000007148                t_stack
+                0x0000000000007848                int_mess
+                0x0000000000007860                rdy_head
+                0x0000000000007866                busy_map
+                0x0000000000007868                k_stack
+                0x0000000000007968                task_mess
+ COMMON         0x000000000000797a       0x1e tty.o
+                0x000000000000797a                vid_mask
+                0x000000000000797c                scan_code
+                0x000000000000797e                color
+                0x0000000000007980                keybd_mess
+                0x0000000000007998                _endbss = .
+
+/DISCARD/
+ *(.comment)
+LOAD mpx88.o
+LOAD klib88.o
+LOAD clock.o
+LOAD dmp.o
+LOAD floppy.o
+LOAD main.o
+LOAD memory.o
+LOAD printer.o
+LOAD proc.o
+LOAD system.o
+LOAD table.o
+LOAD tty.o
+LOAD wini.o
+LOAD ../lib/libsys.a
+OUTPUT(kernel.out binary)
