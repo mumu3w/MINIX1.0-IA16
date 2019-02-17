@@ -7,6 +7,9 @@ typedef __gnuc_va_list                                                va_list;
 #define va_arg(v, l)                                    __builtin_va_arg(v, l)
 #define MAXWIDTH                                                            32
 
+// char array[32767];
+// char array1[32458];
+
 extern int write(int, void*, int);
 static void myprintk(char *format, ...);
 

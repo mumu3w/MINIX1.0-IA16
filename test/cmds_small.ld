@@ -22,11 +22,12 @@ SECTIONS {
     
 	_begintext = ALIGN(0x20);
 	.text 0 : AT(_begintext) { *(.text); . = ALIGN(0x10); }
+  ASSERT(. <= 0xfff8, "Error: text too large for a .sep file.")
 	_begindata = _begintext + .;
 	.data 0 : AT(_begindata) { *(.data) *(.rodata*) }
   _begbss = .;
 	.bss : { *(.bss) *(COMMON) }
   _endbss = .;
 	/DISCARD/ : { *(.comment) }
-  
+  ASSERT(. <= 0xfff8 - 5120, "Error: data too large for a .sep file.")
 }

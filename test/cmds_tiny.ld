@@ -27,5 +27,5 @@ SECTIONS {
     .bss : { *(.bss) *(COMMON) } 
     _endbss = .;
     /DISCARD/ : { *(.comment) }
-  
+    ASSERT(. <= (0xfff8 - 5120), "Error: too large for a .out file.")
 }

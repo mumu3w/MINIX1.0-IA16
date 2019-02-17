@@ -97,6 +97,7 @@ Linker script and memory map
 
 /DISCARD/
  *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: too large for a .out file.)
 LOAD ../lib/crtso.o
 LOAD hello.o
 LOAD ../lib/libsys.a
