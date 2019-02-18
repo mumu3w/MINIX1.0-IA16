@@ -1,0 +1,2 @@
+/bin/cat /etc/message
+/bin/update  &

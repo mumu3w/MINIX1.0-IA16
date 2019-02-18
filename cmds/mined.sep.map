@@ -1,0 +1,407 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(divmodsi3.o)  mined1.o (__divsi3)
+../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(access.o)     mined1.o (access)
+../lib/libsys.a(close.o)      mined1.o (close)
+../lib/libsys.a(exec.o)       mined1.o (execl)
+../lib/libsys.a(read.o)       mined1.o (read)
+../lib/libsys.a(creat.o)      mined1.o (creat)
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(getpid.o)     mined2.o (getpid)
+../lib/libsys.a(open.o)       mined1.o (open)
+../lib/libsys.a(wait.o)       mined1.o (wait)
+../lib/libsys.a(fork.o)       mined1.o (fork)
+../lib/libsys.a(write.o)      mined1.o (write)
+../lib/libsys.a(brk.o)        mined1.o (sbrk)
+../lib/libsys.a(ioctl.o)      mined1.o (ioctl)
+../lib/libsys.a(signal.o)     mined1.o (signal)
+../lib/libsys.a(unlink.o)     mined1.o (unlink)
+../lib/libsys.a(message.o)    ../lib/libsys.a(wait.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(ioctl.o) (callx)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(isatty.o)     mined1.o (isatty)
+../lib/libsys.a(fstat.o)      ../lib/libsys.a(isatty.o) (fstat)
+
+Allocating common symbols
+Common symbol       size              file
+
+lines_saved         0x2               mined2.o
+writable            0x1               mined1.o
+nullptr             0x2               ../lib/libsys.a(exec.o)
+x                   0x2               mined1.o
+vectab              0x20              ../lib/libsys.a(signal.o)
+typed_expression    0x50              mined2.o
+mark_text           0x2               mined2.o
+errno               0x2               ../lib/libsys.a(call.o)
+stat_visible        0x1               mined1.o
+screen              0x768             mined1.o
+last_y              0x2               mined1.o
+cur_text            0x2               mined1.o
+text_buffer         0x400             mined1.o
+top_line            0x2               mined1.o
+file_name           0x50              mined1.o
+cur_line            0x2               mined1.o
+mark_line           0x2               mined2.o
+tail                0x2               mined1.o
+bot_line            0x2               mined1.o
+y                   0x2               mined1.o
+nlines              0x2               mined1.o
+blank_line          0x50              mined1.o
+header              0x2               mined1.o
+M                   0x18              ../lib/libsys.a(message.o)
+exp_buffer          0x800             mined2.o
+out_count           0x2               mined1.o
+loading             0x1               mined1.o
+free_list           0x2               mined1.o
+chars_saved         0x4               mined1.o
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 mined1.o
+ .comment       0x0000000000000000       0x12 mined2.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(access.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exec.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(creat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(getpid.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(wait.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fork.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(brk.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(ioctl.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(signal.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(unlink.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(isatty.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fstat.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x3ee0 SIZEOF (.text)
+                0x000000000000000c        0x4 LONG 0x796 SIZEOF (.data)
+                0x0000000000000010        0x4 LONG 0x14f2 SIZEOF (.bss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x6f68 (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000     0x3ee0 load address 0x0000000000000020
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e     0x183d mined1.o
+                0x000000000000001e                I
+                0x000000000000001f                catch
+                0x0000000000000033                proceed
+                0x0000000000000080                count_chars
+                0x00000000000000df                find_x
+                0x000000000000012a                find_address
+                0x0000000000000196                length_of
+                0x00000000000001b2                copy_string
+                0x00000000000001c7                reset
+                0x000000000000025a                raw_mode
+                0x00000000000002ed                init_alloc
+                0x000000000000031a                free_space
+                0x0000000000000334                initialize
+                0x000000000000037b                basename
+                0x00000000000003c3                line_number
+                0x00000000000003dc                num_out
+                0x000000000000049e                build_string
+                0x0000000000000535                get_file
+                0x000000000000057c                WT
+                0x0000000000000727                ask_save
+                0x00000000000007be                XT
+                0x0000000000000803                panic
+                0x000000000000085c                open_device
+                0x000000000000087e                getchar
+                0x00000000000008bd                input
+                0x00000000000009ea                bottom_line
+                0x0000000000000b14                bad_write
+                0x0000000000000b7a                flush_buffer
+                0x0000000000000bb8                write_char
+                0x0000000000000be5                writeline
+                0x0000000000000c10                set_cursor
+                0x0000000000000c3d                put_line
+                0x0000000000000d8b                move
+                0x0000000000000e9d                display
+                0x0000000000000f46                RD
+                0x0000000000000f85                SH
+                0x00000000000010a8                file_status
+                0x000000000000120f                FS
+                0x000000000000123f                abort_mined
+                0x000000000000129e                get_number
+                0x0000000000001331                ESC
+                0x00000000000013f7                alloc
+                0x0000000000001478                install_line
+                0x00000000000014a5                get_line
+                0x0000000000001555                load_file
+                0x000000000000170f                VI
+                0x0000000000001761                main
+ .text          0x000000000000185b     0x1ece mined2.o
+                0x000000000000185b                HIGH
+                0x0000000000001868                LOW
+                0x0000000000001878                BL
+                0x000000000000188b                EL
+                0x000000000000189e                forward_scroll
+                0x00000000000018e4                PD
+                0x000000000000191c                SD
+                0x000000000000194f                reverse_scroll
+                0x00000000000019b1                UP
+                0x00000000000019e0                LF
+                0x0000000000001a22                PU
+                0x0000000000001a75                HO
+                0x0000000000001aaf                SU
+                0x0000000000001af1                line_insert
+                0x0000000000001b1d                insert
+                0x0000000000001bf8                S
+                0x0000000000001cc9                CTRL
+                0x0000000000001d16                LIB
+                0x0000000000001d33                line_delete
+                0x0000000000001d63                delete
+                0x0000000000001f88                move_previous_word
+                0x00000000000020b3                MP
+                0x00000000000020be                DCC
+                0x00000000000020f0                DPC
+                0x000000000000210b                DPW
+                0x0000000000002128                DLN
+                0x0000000000002153                MA
+                0x0000000000002174                legal
+                0x0000000000002196                checkmark
+                0x000000000000222a                scratch_file
+                0x0000000000002344                WB
+                0x000000000000240c                substitute
+                0x000000000000253f                find_y
+                0x00000000000025ba                GOTO
+                0x0000000000002624                file_insert
+                0x00000000000027e6                PT
+                0x000000000000281f                IF
+                0x000000000000287b                yank
+                0x0000000000002994                set_up
+                0x0000000000002a30                YA
+                0x0000000000002a3b                DT
+                0x0000000000002a46                bcopy
+                0x0000000000002a68                finished
+                0x0000000000002a8d                compile
+                0x0000000000002cf0                get_expression
+                0x0000000000002d7b                in_list
+                0x0000000000002de1                check_string
+                0x0000000000002fdc                line_check
+                0x0000000000003090                change
+                0x00000000000032b8                GR
+                0x00000000000032c7                LR
+                0x00000000000032d6                match
+                0x00000000000033a7                search
+                0x000000000000343f                SF
+                0x000000000000344e                SR
+                0x000000000000345d                star
+                0x000000000000348b                dummy_line
+                0x00000000000034c1                DN
+                0x000000000000350e                RT
+                0x000000000000354e                move_next_word
+                0x00000000000036ad                MN
+                0x00000000000036b8                DNW
+                0x00000000000036d1                EF
+ .text          0x0000000000003729       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000003729                __divsi3
+                0x0000000000003747                __modsi3
+                0x0000000000003763                __udivsi3
+                0x0000000000003781                __umodsi3
+ .text          0x000000000000379d       0xda ../lib/libsys.a(ldivmod.o)
+                0x000000000000379d                ldivmod
+                0x00000000000037b9                ludivmod
+ .text          0x0000000000003877       0x1b ../lib/libsys.a(access.o)
+                0x0000000000003877                access
+ .text          0x0000000000003892       0x20 ../lib/libsys.a(close.o)
+                0x0000000000003892                close
+ .text          0x00000000000038b2      0x1f9 ../lib/libsys.a(exec.o)
+                0x00000000000038b2                execve
+                0x0000000000003a18                execl
+                0x0000000000003a30                execle
+                0x0000000000003a57                execv
+                0x0000000000003a6e                execn
+ .text          0x0000000000003aab       0x24 ../lib/libsys.a(read.o)
+                0x0000000000003aab                read
+ .text          0x0000000000003acf       0x1b ../lib/libsys.a(creat.o)
+                0x0000000000003acf                creat
+ .text          0x0000000000003aea       0x1d ../lib/libsys.a(exit.o)
+                0x0000000000003aea                exit
+ .text          0x0000000000003b07       0x15 ../lib/libsys.a(getpid.o)
+                0x0000000000003b07                getpid
+ .text          0x0000000000003b1c       0x1b ../lib/libsys.a(open.o)
+                0x0000000000003b1c                open
+ .text          0x0000000000003b37       0x24 ../lib/libsys.a(wait.o)
+                0x0000000000003b37                wait
+ .text          0x0000000000003b5b       0x15 ../lib/libsys.a(fork.o)
+                0x0000000000003b5b                fork
+ .text          0x0000000000003b70       0x24 ../lib/libsys.a(write.o)
+                0x0000000000003b70                write
+ .text          0x0000000000003b94       0x53 ../lib/libsys.a(brk.o)
+                0x0000000000003b94                brk
+                0x0000000000003bc5                sbrk
+ .text          0x0000000000003be7      0x139 ../lib/libsys.a(ioctl.o)
+                0x0000000000003be7                ioctl
+ .text          0x0000000000003d20       0x42 ../lib/libsys.a(signal.o)
+                0x0000000000003d20                signal
+ .text          0x0000000000003d62       0x1c ../lib/libsys.a(unlink.o)
+                0x0000000000003d62                unlink
+ .text          0x0000000000003d7e        0x0 ../lib/libsys.a(message.o)
+ .text          0x0000000000003d7e       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000003d7e                callx
+                0x0000000000003dad                callm1
+                0x0000000000003de4                len
+                0x0000000000003dfd                callm3
+ .text          0x0000000000003e46       0x2f ../lib/libsys.a(catchsig.o)
+                0x0000000000003e46                begsig
+ .text          0x0000000000003e75       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000003e75                send
+                0x0000000000003e7a                receive
+                0x0000000000003e7f                send_rec
+                0x0000000000003e7f                sendrec
+ .text          0x0000000000003e91       0x28 ../lib/libsys.a(isatty.o)
+                0x0000000000003e91                isatty
+ .text          0x0000000000003eb9       0x22 ../lib/libsys.a(fstat.o)
+                0x0000000000003eb9                fstat
+                0x0000000000003ee0                . = ALIGN (0x10)
+ *fill*         0x0000000000003edb        0x5 
+                0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
+                0x0000000000003f00                _begindata = (_begintext + .)
+
+.data           0x0000000000000000      0x796 load address 0x0000000000003f00
+ *(.data)
+ .data          0x0000000000000000        0x4 ../lib/crtso.o
+                0x0000000000000000                brksize
+                0x0000000000000002                environ
+ .data          0x0000000000000004      0x224 mined1.o
+                0x000000000000000a                yank_file
+                0x000000000000001c                yank_status
+                0x000000000000001e                normal_video
+                0x0000000000000020                rev_video
+                0x0000000000000022                rev_scroll
+                0x0000000000000024                pos_string
+                0x0000000000000026                enter_string
+                0x0000000000000028                key_map
+ .data          0x0000000000000228        0x2 mined2.o
+                0x0000000000000228                too_long
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(access.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(close.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(exec.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(read.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(creat.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(exit.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(getpid.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(open.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(wait.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(fork.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(write.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(brk.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(ioctl.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(signal.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(unlink.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(message.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(call.o)
+ .data          0x000000000000022a        0x2 ../lib/libsys.a(catchsig.o)
+ .data          0x000000000000022c        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x000000000000022c        0x0 ../lib/libsys.a(isatty.o)
+ .data          0x000000000000022c        0x0 ../lib/libsys.a(fstat.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x000000000000022c      0x2cc mined1.o
+ .rodata.str1.1
+                0x00000000000004f8      0x29e mined2.o
+                0x0000000000000796                _begbss = .
+
+.bss            0x0000000000000796     0x14f2 load address 0x0000000000004696
+ *(.bss)
+ .bss           0x0000000000000796        0x0 ../lib/crtso.o
+ .bss           0x0000000000000796       0x2a mined1.o
+                0x0000000000000796                input_fd
+                0x0000000000000798                rpipe
+                0x0000000000000799                quit
+                0x000000000000079a                modified
+ .bss           0x00000000000007c0        0xc mined2.o
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(access.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(close.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(exec.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(read.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(creat.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(getpid.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(open.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(wait.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(fork.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(write.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(brk.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(ioctl.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(signal.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(unlink.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(message.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(call.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(isatty.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(fstat.o)
+ *(COMMON)
+ COMMON         0x00000000000007cc      0xc2a mined1.o
+                0x00000000000007cc                writable
+                0x00000000000007ce                x
+                0x00000000000007d0                stat_visible
+                0x00000000000007d1                screen
+                0x0000000000000f3a                last_y
+                0x0000000000000f3c                cur_text
+                0x0000000000000f3e                text_buffer
+                0x000000000000133e                top_line
+                0x0000000000001340                file_name
+                0x0000000000001390                cur_line
+                0x0000000000001392                tail
+                0x0000000000001394                bot_line
+                0x0000000000001396                y
+                0x0000000000001398                nlines
+                0x000000000000139a                blank_line
+                0x00000000000013ea                header
+                0x00000000000013ec                out_count
+                0x00000000000013ee                loading
+                0x00000000000013f0                free_list
+                0x00000000000013f2                chars_saved
+ COMMON         0x00000000000013f6      0x856 mined2.o
+                0x00000000000013f6                lines_saved
+                0x00000000000013f8                typed_expression
+                0x0000000000001448                mark_text
+                0x000000000000144a                mark_line
+                0x000000000000144c                exp_buffer
+ COMMON         0x0000000000001c4c        0x2 ../lib/libsys.a(exec.o)
+                0x0000000000001c4c                nullptr
+ COMMON         0x0000000000001c4e       0x20 ../lib/libsys.a(signal.o)
+                0x0000000000001c4e                vectab
+ COMMON         0x0000000000001c6e       0x18 ../lib/libsys.a(message.o)
+                0x0000000000001c6e                M
+ COMMON         0x0000000000001c86        0x2 ../lib/libsys.a(call.o)
+                0x0000000000001c86                errno
+                0x0000000000001c88                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: data too large for a .sep file.)
+LOAD ../lib/crtso.o
+LOAD mined1.o
+LOAD mined2.o
+LOAD ../lib/libsys.a
+OUTPUT(mined.sep binary)

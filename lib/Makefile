@@ -6,7 +6,7 @@ AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
 CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
-		-march=i8086 -mcmodel=small
+		-march=i8086 -mcmodel=small -I../include 
 	
 OBJS	= divmodsi3.o ldivmod.o memset.o memcpy.o \
 		catchsig.o getutils.o sendrec.o setjmp.o \
@@ -22,12 +22,18 @@ OBJS1	= abort.o strlen.o strcmp.o strncpy.o isatty.o geteuid.o stderr.o \
 		malloc.o bcopy.o prints.o strcat.o sleep.o crypt.o getpwent.o atoi.o \
 		strcpy.o index.o rindex.o
 		
+OBJS2	= ftell.o mktemp.o qsort.o sprintf.o abs.o fclose.o fwrite.o rand.o \
+		cleanup.o getc.o stb.o system.o fgets.o getegid.o regexp.o time.o \
+		fopen.o getenv.o itoa.o regsub.o atol.o kill.o ctype.o fputs.o getgrent.o \
+		ungetc.o fread.o getpass.o freopen.o strncat.o fseek.o strncmp.o \
+		gets.o puts.o scanf.o
+		
 CRTS	= head.o crtso.o
 
 all : libsys.a
 
-libsys.a : $(OBJS) $(CRTS) $(OBJS1)
-	$(AR) rcs libsys.a $(OBJS) $(OBJS1)
+libsys.a : $(OBJS) $(CRTS) $(OBJS1) $(OBJS2)
+	$(AR) rcs libsys.a $(OBJS) $(OBJS1) $(OBJS2)
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

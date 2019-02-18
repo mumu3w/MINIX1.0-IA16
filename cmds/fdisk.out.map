@@ -1,0 +1,253 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(divmodsi3.o)  fdisk.o (__divsi3)
+../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(close.o)      fdisk.o (close)
+../lib/libsys.a(read.o)       fdisk.o (read)
+../lib/libsys.a(creat.o)      fdisk.o (creat)
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(open.o)       fdisk.o (open)
+../lib/libsys.a(lseek.o)      fdisk.o (lseek)
+../lib/libsys.a(sync.o)       fdisk.o (sync)
+../lib/libsys.a(write.o)      fdisk.o (write)
+../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(fprintf.o)    fdisk.o (fprintf)
+../lib/libsys.a(fflush.o)     ../lib/libsys.a(fprintf.o) (fflush)
+../lib/libsys.a(printdat.o)   fdisk.o (_io_table)
+../lib/libsys.a(doprintf.o)   ../lib/libsys.a(fprintf.o) (_doprintf)
+../lib/libsys.a(putc.o)       fdisk.o (putc)
+../lib/libsys.a(getc.o)       fdisk.o (getc)
+../lib/libsys.a(gets.o)       fdisk.o (gets)
+../lib/libsys.a(scanf.o)      fdisk.o (sscanf)
+../lib/libsys.a(strlen.o)     ../lib/libsys.a(doprintf.o) (strlen)
+../lib/libsys.a(ungetc.o)     ../lib/libsys.a(scanf.o) (ungetc)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x2               ../lib/libsys.a(call.o)
+secbuf              0x200             fdisk.o
+devname             0x2               fdisk.o
+__stdin             0x400             ../lib/libsys.a(printdat.o)
+devfd               0x2               fdisk.o
+M                   0x18              ../lib/libsys.a(message.o)
+__stdout            0x400             ../lib/libsys.a(printdat.o)
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 fdisk.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(creat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(lseek.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(sync.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fprintf.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fflush.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(printdat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(doprintf.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(putc.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(getc.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(gets.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(scanf.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strlen.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(ungetc.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4100301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x1948 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x4c4 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0xa24 (_endbss - _begbss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x3c30 ((_endbss - _begtext) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000     0x1e0c load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e      0x7b0 fdisk.o
+                0x000000000000001e                getboot
+                0x0000000000000078                putboot
+                0x00000000000000d0                load_from_file
+                0x0000000000000146                save_to_file
+                0x00000000000001bc                dump_table
+                0x0000000000000264                dpl_entry
+                0x00000000000002c6                dpl_partitions
+                0x00000000000002fd                chk_table
+                0x00000000000003b6                sec_to_hst
+                0x000000000000042b                chk_entry
+                0x00000000000004b7                get_a_char
+                0x00000000000004e8                get_partition
+                0x000000000000067b                change_table
+                0x00000000000006f0                print_menu
+                0x0000000000000725                main
+ .text          0x00000000000007ce       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x00000000000007ce                __divsi3
+                0x00000000000007ec                __modsi3
+                0x0000000000000808                __udivsi3
+                0x0000000000000826                __umodsi3
+ .text          0x0000000000000842       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000000842                ldivmod
+                0x000000000000085e                ludivmod
+ .text          0x000000000000091c       0x20 ../lib/libsys.a(close.o)
+                0x000000000000091c                close
+ .text          0x000000000000093c       0x24 ../lib/libsys.a(read.o)
+                0x000000000000093c                read
+ .text          0x0000000000000960       0x1b ../lib/libsys.a(creat.o)
+                0x0000000000000960                creat
+ .text          0x000000000000097b       0x1d ../lib/libsys.a(exit.o)
+                0x000000000000097b                exit
+ .text          0x0000000000000998       0x1b ../lib/libsys.a(open.o)
+                0x0000000000000998                open
+ .text          0x00000000000009b3       0x3e ../lib/libsys.a(lseek.o)
+                0x00000000000009b3                lseek
+ .text          0x00000000000009f1       0x18 ../lib/libsys.a(sync.o)
+                0x00000000000009f1                sync
+ .text          0x0000000000000a09       0x24 ../lib/libsys.a(write.o)
+                0x0000000000000a09                write
+ .text          0x0000000000000a2d        0x0 ../lib/libsys.a(message.o)
+ .text          0x0000000000000a2d       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000000a2d                callx
+                0x0000000000000a5c                callm1
+                0x0000000000000a93                len
+                0x0000000000000aac                callm3
+ .text          0x0000000000000af5       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000af5                send
+                0x0000000000000afa                receive
+                0x0000000000000aff                send_rec
+                0x0000000000000aff                sendrec
+ .text          0x0000000000000b11       0x54 ../lib/libsys.a(fprintf.o)
+                0x0000000000000b11                fprintf
+                0x0000000000000b3a                printf
+ .text          0x0000000000000b65       0x4d ../lib/libsys.a(fflush.o)
+                0x0000000000000b65                fflush
+ .text          0x0000000000000bb2        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x0000000000000bb2      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x0000000000000c80                _doprintf
+ .text          0x0000000000001079       0xb8 ../lib/libsys.a(putc.o)
+                0x0000000000001079                putc
+ .text          0x0000000000001131       0xae ../lib/libsys.a(getc.o)
+                0x0000000000001131                getc
+ .text          0x00000000000011df       0x58 ../lib/libsys.a(gets.o)
+                0x00000000000011df                gets
+ .text          0x0000000000001237      0x6a9 ../lib/libsys.a(scanf.o)
+                0x00000000000012c7                _doscanf
+                0x000000000000188e                scanf
+                0x00000000000018aa                fscanf
+                0x00000000000018c5                sscanf
+ .text          0x00000000000018e0       0x19 ../lib/libsys.a(strlen.o)
+                0x00000000000018e0                strlen
+ .text          0x00000000000018f9       0x4f ../lib/libsys.a(ungetc.o)
+                0x00000000000018f9                ungetc
+                0x0000000000001948                _begdata = .
+ *(.data)
+ .data          0x0000000000001948        0x4 ../lib/crtso.o
+                0x0000000000001948                brksize
+                0x000000000000194a                environ
+ .data          0x000000000000194c        0x4 fdisk.o
+                0x000000000000194c                ndosstr
+                0x000000000000194e                dosstr
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(close.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(read.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(creat.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(exit.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(open.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(lseek.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(sync.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(write.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(message.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(fprintf.o)
+ .data          0x0000000000001950        0x0 ../lib/libsys.a(fflush.o)
+ .data          0x0000000000001950       0x46 ../lib/libsys.a(printdat.o)
+                0x0000000000001950                _io_table
+                0x0000000000001978                _stderr
+                0x0000000000001982                _stdout
+                0x000000000000198c                _stdin
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(doprintf.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(putc.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(getc.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(gets.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(scanf.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(strlen.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(ungetc.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000001996      0x3a1 fdisk.o
+ *fill*         0x0000000000001d37        0x1 
+ .rodata        0x0000000000001d38       0x2a fdisk.o
+ *fill*         0x0000000000001d62        0x2 
+ .rodata        0x0000000000001d64       0x6a ../lib/libsys.a(doprintf.o)
+ *fill*         0x0000000000001dce        0x2 
+ .rodata        0x0000000000001dd0       0x3c ../lib/libsys.a(scanf.o)
+                0x0000000000001e0c                _begbss = .
+
+.bss            0x0000000000001e0c      0xa24 load address 0x0000000000001e2c
+ *(.bss)
+ .bss           0x0000000000001e0c        0x0 ../lib/crtso.o
+ .bss           0x0000000000001e0c        0x0 fdisk.o
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(close.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(read.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(creat.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(open.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(lseek.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(sync.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(write.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(message.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(fprintf.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(fflush.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(printdat.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(doprintf.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(putc.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(getc.o)
+ .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(gets.o)
+ .bss           0x0000000000001e0c        0x6 ../lib/libsys.a(scanf.o)
+ .bss           0x0000000000001e12        0x0 ../lib/libsys.a(strlen.o)
+ .bss           0x0000000000001e12        0x0 ../lib/libsys.a(ungetc.o)
+ *(COMMON)
+ COMMON         0x0000000000001e12      0x204 fdisk.o
+                0x0000000000001e12                secbuf
+                0x0000000000002012                devname
+                0x0000000000002014                devfd
+ COMMON         0x0000000000002016       0x18 ../lib/libsys.a(message.o)
+                0x0000000000002016                M
+ COMMON         0x000000000000202e        0x2 ../lib/libsys.a(call.o)
+                0x000000000000202e                errno
+ COMMON         0x0000000000002030      0x800 ../lib/libsys.a(printdat.o)
+                0x0000000000002030                __stdin
+                0x0000000000002430                __stdout
+                0x0000000000002830                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: too large for a .out file.)
+LOAD ../lib/crtso.o
+LOAD fdisk.o
+LOAD ../lib/libsys.a
+OUTPUT(fdisk.out binary)

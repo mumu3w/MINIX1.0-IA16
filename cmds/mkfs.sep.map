@@ -1,0 +1,325 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(close.o)      mkfs.o (close)
+../lib/libsys.a(read.o)       mkfs.o (read)
+../lib/libsys.a(stat.o)       mkfs.o (stat)
+../lib/libsys.a(creat.o)      mkfs.o (creat)
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(open.o)       mkfs.o (open)
+../lib/libsys.a(lseek.o)      mkfs.o (lseek)
+../lib/libsys.a(write.o)      mkfs.o (write)
+../lib/libsys.a(fstat.o)      mkfs.o (fstat)
+../lib/libsys.a(time.o)       mkfs.o (time)
+../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(strlen.o)     mkfs.o (strlen)
+../lib/libsys.a(fprintf.o)    mkfs.o (printf)
+../lib/libsys.a(fflush.o)     ../lib/libsys.a(fprintf.o) (fflush)
+../lib/libsys.a(printdat.o)   ../lib/libsys.a(fprintf.o) (_io_table)
+../lib/libsys.a(doprintf.o)   ../lib/libsys.a(fprintf.o) (_doprintf)
+../lib/libsys.a(putc.o)       ../lib/libsys.a(doprintf.o) (putc)
+../lib/libsys.a(atoi.o)       mkfs.o (atoi)
+../lib/libsys.a(getc.o)       mkfs.o (getc)
+../lib/libsys.a(fopen.o)      mkfs.o (fopen)
+../lib/libsys.a(divmodsi3.o)  ../lib/libsys.a(doprintf.o) (__divsi3)
+../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(malloc.o)     ../lib/libsys.a(fopen.o) (malloc)
+../lib/libsys.a(bcopy.o)      ../lib/libsys.a(malloc.o) (bcopy)
+../lib/libsys.a(brk.o)        ../lib/libsys.a(malloc.o) (brk)
+
+Allocating common symbols
+Common symbol       size              file
+
+nrinodes            0x2               mkfs.o
+lastp               0x2               mkfs.o
+errno               0x2               ../lib/libsys.a(call.o)
+proto               0x2               mkfs.o
+next_inode          0x2               mkfs.o
+current_time        0x4               mkfs.o
+fd                  0x2               mkfs.o
+dflag               0x2               mkfs.o
+zone_size           0x2               mkfs.o
+bin_time            0x4               mkfs.o
+__stdin             0x400             ../lib/libsys.a(printdat.o)
+inode_offset        0x2               mkfs.o
+nrblocks            0x2               mkfs.o
+super_block         0xfa              mkfs.o
+next_zone           0x2               mkfs.o
+zero                0x400             mkfs.o
+umap                0xfa1             mkfs.o
+M                   0x18              ../lib/libsys.a(message.o)
+__stdout            0x400             ../lib/libsys.a(printdat.o)
+zoff                0x2               mkfs.o
+disk                0x2               mkfs.o
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 mkfs.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(stat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(creat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(lseek.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fstat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(time.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strlen.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fprintf.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fflush.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(printdat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(doprintf.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(putc.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(atoi.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(getc.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(fopen.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(malloc.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(bcopy.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(brk.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x1f30 SIZEOF (.text)
+                0x000000000000000c        0x4 LONG 0x3de SIZEOF (.data)
+                0x0000000000000010        0x4 LONG 0x1ce4 SIZEOF (.bss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x53f2 (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000     0x1f30 load address 0x0000000000000020
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e     0x10ba mkfs.o
+                0x000000000000001e                mode_con
+                0x000000000000008f                file_time
+                0x00000000000000ac                pexit
+                0x00000000000000fd                getline
+                0x00000000000001dc                copy
+                0x00000000000001fe                read_and_set
+                0x0000000000000238                special
+                0x0000000000000271                get_block
+                0x00000000000002d7                print_fs
+                0x000000000000048e                put_block
+                0x00000000000004eb                incr_link
+                0x0000000000000533                incr_size
+                0x0000000000000599                insert_bit
+                0x00000000000005f6                super
+                0x0000000000000764                alloc_inode
+                0x00000000000007ec                alloc_zone
+                0x0000000000000862                enter_dir
+                0x00000000000009a8                add_zone
+                0x0000000000000b53                rootdir
+                0x0000000000000b94                eat_file
+                0x0000000000000c55                eat_dir
+                0x0000000000000dc7                main
+                0x00000000000010d6                flush
+                0x00000000000010d7                cache_init
+ .text          0x00000000000010d8       0x20 ../lib/libsys.a(close.o)
+                0x00000000000010d8                close
+ .text          0x00000000000010f8       0x24 ../lib/libsys.a(read.o)
+                0x00000000000010f8                read
+ .text          0x000000000000111c       0x29 ../lib/libsys.a(stat.o)
+                0x000000000000111c                stat
+ .text          0x0000000000001145       0x1b ../lib/libsys.a(creat.o)
+                0x0000000000001145                creat
+ .text          0x0000000000001160       0x1d ../lib/libsys.a(exit.o)
+                0x0000000000001160                exit
+ .text          0x000000000000117d       0x1b ../lib/libsys.a(open.o)
+                0x000000000000117d                open
+ .text          0x0000000000001198       0x3e ../lib/libsys.a(lseek.o)
+                0x0000000000001198                lseek
+ .text          0x00000000000011d6       0x24 ../lib/libsys.a(write.o)
+                0x00000000000011d6                write
+ .text          0x00000000000011fa       0x22 ../lib/libsys.a(fstat.o)
+                0x00000000000011fa                fstat
+ .text          0x000000000000121c       0x55 ../lib/libsys.a(time.o)
+                0x000000000000121c                time
+ .text          0x0000000000001271        0x0 ../lib/libsys.a(message.o)
+ .text          0x0000000000001271       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000001271                callx
+                0x00000000000012a0                callm1
+                0x00000000000012d7                len
+                0x00000000000012f0                callm3
+ .text          0x0000000000001339       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000001339                send
+                0x000000000000133e                receive
+                0x0000000000001343                send_rec
+                0x0000000000001343                sendrec
+ .text          0x0000000000001355       0x19 ../lib/libsys.a(strlen.o)
+                0x0000000000001355                strlen
+ .text          0x000000000000136e       0x54 ../lib/libsys.a(fprintf.o)
+                0x000000000000136e                fprintf
+                0x0000000000001397                printf
+ .text          0x00000000000013c2       0x4d ../lib/libsys.a(fflush.o)
+                0x00000000000013c2                fflush
+ .text          0x000000000000140f        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x000000000000140f      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x00000000000014dd                _doprintf
+ .text          0x00000000000018d6       0xb8 ../lib/libsys.a(putc.o)
+                0x00000000000018d6                putc
+ .text          0x000000000000198e       0xb5 ../lib/libsys.a(atoi.o)
+                0x000000000000198e                atoi
+ .text          0x0000000000001a43       0xae ../lib/libsys.a(getc.o)
+                0x0000000000001a43                getc
+ .text          0x0000000000001af1       0xf8 ../lib/libsys.a(fopen.o)
+                0x0000000000001af1                fopen
+ .text          0x0000000000001be9       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000001be9                __divsi3
+                0x0000000000001c07                __modsi3
+                0x0000000000001c23                __udivsi3
+                0x0000000000001c41                __umodsi3
+ .text          0x0000000000001c5d       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000001c5d                ldivmod
+                0x0000000000001c79                ludivmod
+ .text          0x0000000000001d37      0x17b ../lib/libsys.a(malloc.o)
+                0x0000000000001d37                malloc
+                0x0000000000001df3                realloc
+                0x0000000000001e77                calloc
+                0x0000000000001ea3                free
+ .text          0x0000000000001eb2       0x22 ../lib/libsys.a(bcopy.o)
+                0x0000000000001eb2                bcopy
+ .text          0x0000000000001ed4       0x53 ../lib/libsys.a(brk.o)
+                0x0000000000001ed4                brk
+                0x0000000000001f05                sbrk
+                0x0000000000001f30                . = ALIGN (0x10)
+ *fill*         0x0000000000001f27        0x9 
+                0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
+                0x0000000000001f50                _begindata = (_begintext + .)
+
+.data           0x0000000000000000      0x3de load address 0x0000000000001f50
+ *(.data)
+ .data          0x0000000000000000        0x4 ../lib/crtso.o
+                0x0000000000000000                brksize
+                0x0000000000000002                environ
+ .data          0x0000000000000004       0x1a mkfs.o
+                0x0000000000000004                gwarning
+                0x0000000000000012                ldmode
+                0x0000000000000014                mode_fmt
+                0x0000000000000016                ldfmt
+                0x0000000000000018                size_fmt
+                0x000000000000001a                zone_map
+                0x000000000000001c                lct
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(close.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(read.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(stat.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(creat.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(exit.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(open.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(lseek.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(write.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(fstat.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(time.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(message.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(call.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(strlen.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(fprintf.o)
+ .data          0x000000000000001e        0x0 ../lib/libsys.a(fflush.o)
+ .data          0x000000000000001e       0x46 ../lib/libsys.a(printdat.o)
+                0x000000000000001e                _io_table
+                0x0000000000000046                _stderr
+                0x0000000000000050                _stdout
+                0x000000000000005a                _stdin
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(doprintf.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(putc.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(atoi.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(getc.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(fopen.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(divmodsi3.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(malloc.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(bcopy.o)
+ .data          0x0000000000000064        0x0 ../lib/libsys.a(brk.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000000064      0x2c8 mkfs.o
+ .rodata        0x000000000000032c       0x48 mkfs.o
+ .rodata        0x0000000000000374       0x6a ../lib/libsys.a(doprintf.o)
+                0x00000000000003de                _begbss = .
+
+.bss            0x00000000000003de     0x1ce4 load address 0x000000000000232e
+ *(.bss)
+ .bss           0x00000000000003de        0x0 ../lib/crtso.o
+ .bss           0x00000000000003de        0xa mkfs.o
+                0x00000000000003de                simple
+                0x00000000000003e0                override
+                0x00000000000003e2                file
+                0x00000000000003e4                print
+                0x00000000000003e6                zone_shift
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(close.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(read.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(stat.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(creat.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(open.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(lseek.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(write.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(fstat.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(time.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(message.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(call.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(strlen.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(fprintf.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(fflush.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(printdat.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(doprintf.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(putc.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(atoi.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(getc.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(fopen.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(divmodsi3.o)
+ .bss           0x00000000000003e8        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x00000000000003e8        0x4 ../lib/libsys.a(malloc.o)
+ .bss           0x00000000000003ec        0x0 ../lib/libsys.a(bcopy.o)
+ .bss           0x00000000000003ec        0x0 ../lib/libsys.a(brk.o)
+ *(COMMON)
+ COMMON         0x00000000000003ec     0x14bc mkfs.o
+                0x00000000000003ec                nrinodes
+                0x00000000000003ee                lastp
+                0x00000000000003f0                proto
+                0x00000000000003f2                next_inode
+                0x00000000000003f4                current_time
+                0x00000000000003f8                fd
+                0x00000000000003fa                dflag
+                0x00000000000003fc                zone_size
+                0x00000000000003fe                bin_time
+                0x0000000000000402                inode_offset
+                0x0000000000000404                nrblocks
+                0x0000000000000406                super_block
+                0x0000000000000500                next_zone
+                0x0000000000000502                zero
+                0x0000000000000902                umap
+                0x00000000000018a4                zoff
+                0x00000000000018a6                disk
+ COMMON         0x00000000000018a8       0x18 ../lib/libsys.a(message.o)
+                0x00000000000018a8                M
+ COMMON         0x00000000000018c0        0x2 ../lib/libsys.a(call.o)
+                0x00000000000018c0                errno
+ COMMON         0x00000000000018c2      0x800 ../lib/libsys.a(printdat.o)
+                0x00000000000018c2                __stdin
+                0x0000000000001cc2                __stdout
+                0x00000000000020c2                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: data too large for a .sep file.)
+LOAD ../lib/crtso.o
+LOAD mkfs.o
+LOAD ../lib/libsys.a
+OUTPUT(mkfs.sep binary)

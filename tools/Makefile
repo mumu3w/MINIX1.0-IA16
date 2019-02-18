@@ -20,10 +20,35 @@ Image.sep : ../kernel/kernel.sep ../mm/mm.sep ../fs/fs.sep fsck.sep init.sep boo
 	./build bootblok.bin ../kernel/kernel.sep ../mm/mm.sep \
 			../fs/fs.sep init.sep fsck.sep Image.sep
 			
-ram.img : mkfs minixfsutils
-	dd if=/dev/zero of=ram.img bs=1024 count=360
+ram.out : mkfs minixfsutils
+	dd if=/dev/zero of=ram.out bs=1024 count=360
 	sync
-	./mkfs ram.img
+	./mkfs ram.out
+	./minixfsutils ram.out put /bin/sh ../cmds/sh.out
+	./minixfsutils ram.out put /bin/ls ../cmds/ls.out
+	./minixfsutils ram.out put /bin/login ../cmds/login.out
+	./minixfsutils ram.out put /bin/echo ../cmds/echo.out
+	./minixfsutils ram.out put /bin/cat ../cmds/cat.out
+	./minixfsutils ram.out put /bin/update ../cmds/update.out
+	./minixfsutils ram.out put /etc/passwd ./passwd
+	./minixfsutils ram.out put /etc/rc ./rc
+	./minixfsutils ram.out put /etc/message ./message
+	./minixfsutils ram.out put /etc/ttys ./ttys
+	
+ram.sep : mkfs minixfsutils
+	dd if=/dev/zero of=ram.sep bs=1024 count=360
+	sync
+	./mkfs ram.sep
+	./minixfsutils ram.sep put /bin/sh ../cmds/sh.sep
+	./minixfsutils ram.sep put /bin/ls ../cmds/ls.sep
+	./minixfsutils ram.sep put /bin/login ../cmds/login.sep
+	./minixfsutils ram.sep put /bin/echo ../cmds/echo.sep
+	./minixfsutils ram.sep put /bin/cat ../cmds/cat.sep
+	./minixfsutils ram.sep put /bin/update ../cmds/update.sep
+	./minixfsutils ram.sep put /etc/passwd ./passwd
+	./minixfsutils ram.sep put /etc/rc ./rc
+	./minixfsutils ram.sep put /etc/message ./message
+	./minixfsutils ram.sep put /etc/ttys ./ttys
 			
 fsck.out : fsck1.o fsck.o kernel_tiny.ld
 	$(LD) -T kernel_tiny.ld -e start -o fsck.out \

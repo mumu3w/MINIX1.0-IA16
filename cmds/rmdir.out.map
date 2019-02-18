@@ -1,0 +1,197 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(access.o)     rmdir.o (access)
+../lib/libsys.a(close.o)      rmdir.o (close)
+../lib/libsys.a(read.o)       rmdir.o (read)
+../lib/libsys.a(stat.o)       rmdir.o (stat)
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(open.o)       rmdir.o (open)
+../lib/libsys.a(signal.o)     rmdir.o (signal)
+../lib/libsys.a(unlink.o)     rmdir.o (unlink)
+../lib/libsys.a(message.o)    ../lib/libsys.a(signal.o) (M)
+../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(strcmp.o)     rmdir.o (strcmp)
+../lib/libsys.a(stderr.o)     rmdir.o (std_err)
+../lib/libsys.a(prints.o)     rmdir.o (prints)
+../lib/libsys.a(strcat.o)     rmdir.o (strcat)
+../lib/libsys.a(strcpy.o)     rmdir.o (strcpy)
+../lib/libsys.a(rindex.o)     rmdir.o (rindex)
+../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
+
+Allocating common symbols
+Common symbol       size              file
+
+vectab              0x20              ../lib/libsys.a(signal.o)
+errno               0x2               ../lib/libsys.a(call.o)
+Bufp                0x2               ../lib/libsys.a(prints.o)
+Buf                 0x80              ../lib/libsys.a(prints.o)
+M                   0x18              ../lib/libsys.a(message.o)
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 rmdir.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(access.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(close.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(read.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(stat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(open.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(signal.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(unlink.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strcmp.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(stderr.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(prints.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strcat.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(strcpy.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(rindex.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(write.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4100301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x7c0 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0xcd (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0xbf (_endbss - _begbss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x1d4c ((_endbss - _begtext) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000      0x88d load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e      0x334 rmdir.o
+                0x000000000000001e                stderr2
+                0x000000000000003b                patch_path
+                0x00000000000000ee                remove
+                0x00000000000002e1                main
+ .text          0x0000000000000352       0x1b ../lib/libsys.a(access.o)
+                0x0000000000000352                access
+ .text          0x000000000000036d       0x20 ../lib/libsys.a(close.o)
+                0x000000000000036d                close
+ .text          0x000000000000038d       0x24 ../lib/libsys.a(read.o)
+                0x000000000000038d                read
+ .text          0x00000000000003b1       0x29 ../lib/libsys.a(stat.o)
+                0x00000000000003b1                stat
+ .text          0x00000000000003da       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000003da                exit
+ .text          0x00000000000003f7       0x1b ../lib/libsys.a(open.o)
+                0x00000000000003f7                open
+ .text          0x0000000000000412       0x42 ../lib/libsys.a(signal.o)
+                0x0000000000000412                signal
+ .text          0x0000000000000454       0x1c ../lib/libsys.a(unlink.o)
+                0x0000000000000454                unlink
+ .text          0x0000000000000470        0x0 ../lib/libsys.a(message.o)
+ .text          0x0000000000000470       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000000470                callx
+                0x000000000000049f                callm1
+                0x00000000000004d6                len
+                0x00000000000004ef                callm3
+ .text          0x0000000000000538       0x2f ../lib/libsys.a(catchsig.o)
+                0x0000000000000538                begsig
+ .text          0x0000000000000567       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000567                send
+                0x000000000000056c                receive
+                0x0000000000000571                send_rec
+                0x0000000000000571                sendrec
+ .text          0x0000000000000583       0x3b ../lib/libsys.a(strcmp.o)
+                0x0000000000000583                strcmp
+ .text          0x00000000000005be       0x27 ../lib/libsys.a(stderr.o)
+                0x00000000000005be                std_err
+ .text          0x00000000000005e5      0x139 ../lib/libsys.a(prints.o)
+                0x00000000000005fe                prints
+ .text          0x000000000000071e       0x35 ../lib/libsys.a(strcat.o)
+                0x000000000000071e                strcat
+ .text          0x0000000000000753       0x2a ../lib/libsys.a(strcpy.o)
+                0x0000000000000753                strcpy
+ .text          0x000000000000077d       0x1f ../lib/libsys.a(rindex.o)
+                0x000000000000077d                rindex
+ .text          0x000000000000079c       0x24 ../lib/libsys.a(write.o)
+                0x000000000000079c                write
+                0x00000000000007c0                _begdata = .
+ *(.data)
+ .data          0x00000000000007c0        0x4 ../lib/crtso.o
+                0x00000000000007c0                brksize
+                0x00000000000007c2                environ
+ .data          0x00000000000007c4        0x0 rmdir.o
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(access.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(close.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(read.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(stat.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(exit.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(open.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(signal.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(unlink.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(message.o)
+ .data          0x00000000000007c4        0x0 ../lib/libsys.a(call.o)
+ .data          0x00000000000007c4        0x2 ../lib/libsys.a(catchsig.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(strcmp.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(stderr.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(prints.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(strcat.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(strcpy.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(rindex.o)
+ .data          0x00000000000007c6        0x0 ../lib/libsys.a(write.o)
+ *(.rodata*)
+ .rodata.str1.1
+                0x00000000000007c6       0xc7 rmdir.o
+                0x000000000000088d                _begbss = .
+
+.bss            0x000000000000088e       0xbe load address 0x00000000000008ae
+ *(.bss)
+ .bss           0x000000000000088e        0x0 ../lib/crtso.o
+ .bss           0x000000000000088e        0x2 rmdir.o
+                0x000000000000088e                error
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(access.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(close.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(read.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(stat.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(open.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(signal.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(unlink.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(message.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(strcmp.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(stderr.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(prints.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(strcat.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(strcpy.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(rindex.o)
+ .bss           0x0000000000000890        0x0 ../lib/libsys.a(write.o)
+ *(COMMON)
+ COMMON         0x0000000000000890       0x20 ../lib/libsys.a(signal.o)
+                0x0000000000000890                vectab
+ COMMON         0x00000000000008b0       0x18 ../lib/libsys.a(message.o)
+                0x00000000000008b0                M
+ COMMON         0x00000000000008c8        0x2 ../lib/libsys.a(call.o)
+                0x00000000000008c8                errno
+ COMMON         0x00000000000008ca       0x82 ../lib/libsys.a(prints.o)
+                0x00000000000008ca                Bufp
+                0x00000000000008cc                Buf
+                0x000000000000094c                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: too large for a .out file.)
+LOAD ../lib/crtso.o
+LOAD rmdir.o
+LOAD ../lib/libsys.a
+OUTPUT(rmdir.out binary)

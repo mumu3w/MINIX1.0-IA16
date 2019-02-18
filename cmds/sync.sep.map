@@ -1,0 +1,104 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(sync.o)       sync.o (sync)
+../lib/libsys.a(call.o)       ../lib/libsys.a(exit.o) (callm1)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x2               ../lib/libsys.a(call.o)
+M                   0x18              ../lib/libsys.a(message.o)
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 sync.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(sync.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4200301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x140 SIZEOF (.text)
+                0x000000000000000c        0x4 LONG 0x4 SIZEOF (.data)
+                0x0000000000000010        0x4 LONG 0x1a SIZEOF (.bss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x155e (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000      0x140 load address 0x0000000000000020
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e        0x4 sync.o
+                0x000000000000001e                main
+ .text          0x0000000000000022       0x1d ../lib/libsys.a(exit.o)
+                0x0000000000000022                exit
+ .text          0x000000000000003f       0x18 ../lib/libsys.a(sync.o)
+                0x000000000000003f                sync
+ .text          0x0000000000000057       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000000057                callx
+                0x0000000000000086                callm1
+                0x00000000000000bd                len
+                0x00000000000000d6                callm3
+ .text          0x000000000000011f       0x1c ../lib/libsys.a(sendrec.o)
+                0x000000000000011f                send
+                0x0000000000000124                receive
+                0x0000000000000129                send_rec
+                0x0000000000000129                sendrec
+ .text          0x000000000000013b        0x0 ../lib/libsys.a(message.o)
+                0x0000000000000140                . = ALIGN (0x10)
+ *fill*         0x000000000000013b        0x5 
+                0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
+                0x0000000000000160                _begindata = (_begintext + .)
+
+.data           0x0000000000000000        0x4 load address 0x0000000000000160
+ *(.data)
+ .data          0x0000000000000000        0x4 ../lib/crtso.o
+                0x0000000000000000                brksize
+                0x0000000000000002                environ
+ .data          0x0000000000000004        0x0 sync.o
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(exit.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sync.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
+ *(.rodata*)
+                0x0000000000000004                _begbss = .
+
+.bss            0x0000000000000004       0x1a load address 0x0000000000000164
+ *(.bss)
+ .bss           0x0000000000000004        0x0 ../lib/crtso.o
+ .bss           0x0000000000000004        0x0 sync.o
+ .bss           0x0000000000000004        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x0000000000000004        0x0 ../lib/libsys.a(sync.o)
+ .bss           0x0000000000000004        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x0000000000000004        0x0 ../lib/libsys.a(message.o)
+ *(COMMON)
+ COMMON         0x0000000000000004        0x2 ../lib/libsys.a(call.o)
+                0x0000000000000004                errno
+ COMMON         0x0000000000000006       0x18 ../lib/libsys.a(message.o)
+                0x0000000000000006                M
+                0x000000000000001e                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: data too large for a .sep file.)
+LOAD ../lib/crtso.o
+LOAD sync.o
+LOAD ../lib/libsys.a
+OUTPUT(sync.sep binary)
