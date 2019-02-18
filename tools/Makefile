@@ -36,6 +36,27 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /etc/rc ./rc
 	./minixfsutils ram.out put /etc/message ./message
 	./minixfsutils ram.out put /etc/ttys ./ttys
+	./minixfsutils ram.out put /run ../test/run
+	./minixfsutils ram.out put /hello ../test/hello.out
+	./minixfsutils ram.out put /setjmp ../test/setjmp.out
+	./minixfsutils ram.out put /t10a ../test/t10a.out
+	./minixfsutils ram.out put /t11a ../test/t11a.out
+	./minixfsutils ram.out put /t11b ../test/t11b.out
+	./minixfsutils ram.out put /test0 ../test/test0.out
+	./minixfsutils ram.out put /test10 ../test/test10.out
+	./minixfsutils ram.out put /test11 ../test/test11.out
+	./minixfsutils ram.out put /test1 ../test/test1.out
+	./minixfsutils ram.out put /test2 ../test/test2.out
+	./minixfsutils ram.out put /test3 ../test/test3.out
+	./minixfsutils ram.out put /test4 ../test/test4.out
+	./minixfsutils ram.out put /test5 ../test/test5.out
+	./minixfsutils ram.out put /test6 ../test/test6.out
+	./minixfsutils ram.out put /test7 ../test/test7.out
+	./minixfsutils ram.out put /test8 ../test/test8.out
+	./minixfsutils ram.out put /test9 ../test/test9.out
+	./minixfsutils ram.out put /t10a ../test/t10a.out
+	./minixfsutils ram.out put /t11a ../test/t11a.out
+	./minixfsutils ram.out put /t11b ../test/t11b.out
 	
 ram.sep : mkfs minixfsutils
 	dd if=/dev/zero of=ram.sep bs=1024 count=360

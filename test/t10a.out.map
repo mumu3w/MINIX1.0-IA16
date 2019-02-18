@@ -1,0 +1,94 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
+../lib/libsys.a(call.o)       ../lib/libsys.a(exit.o) (callm1)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
+../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x2               ../lib/libsys.a(call.o)
+M                   0x18              ../lib/libsys.a(message.o)
+
+Discarded input sections
+
+ .comment       0x0000000000000000       0x12 t10a.o
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(exit.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(call.o)
+ .comment       0x0000000000000000       0x12 ../lib/libsys.a(message.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.hdr            0x0000000000000000       0x20
+                0x0000000000000000        0x4 LONG 0x4100301
+                0x0000000000000004        0x4 LONG 0x20
+                0x0000000000000008        0x4 LONG 0x12a (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x4 (_begbss - _begdata)
+                0x0000000000000010        0x4 LONG 0x1a (_endbss - _begbss)
+                0x0000000000000014        0x4 LONG 0x0 start
+                0x0000000000000018        0x4 LONG 0x1548 ((_endbss - _begtext) + 0x1400)
+                0x000000000000001c        0x4 LONG 0x0
+                0x0000000000000020                _begintext = ALIGN (0x20)
+
+.text           0x0000000000000000      0x12e load address 0x0000000000000020
+                0x0000000000000000                _begtext = .
+ *(.text)
+ .text          0x0000000000000000       0x1e ../lib/crtso.o
+                0x0000000000000000                start
+ .text          0x000000000000001e        0xb t10a.o
+                0x000000000000001e                main
+ .text          0x0000000000000029       0x1d ../lib/libsys.a(exit.o)
+                0x0000000000000029                exit
+ .text          0x0000000000000046       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000000046                callx
+                0x0000000000000075                callm1
+                0x00000000000000ac                len
+                0x00000000000000c5                callm3
+ .text          0x000000000000010e       0x1c ../lib/libsys.a(sendrec.o)
+                0x000000000000010e                send
+                0x0000000000000113                receive
+                0x0000000000000118                send_rec
+                0x0000000000000118                sendrec
+ .text          0x000000000000012a        0x0 ../lib/libsys.a(message.o)
+                0x000000000000012a                _begdata = .
+ *(.data)
+ .data          0x000000000000012a        0x4 ../lib/crtso.o
+                0x000000000000012a                brksize
+                0x000000000000012c                environ
+ .data          0x000000000000012e        0x0 t10a.o
+ .data          0x000000000000012e        0x0 ../lib/libsys.a(exit.o)
+ .data          0x000000000000012e        0x0 ../lib/libsys.a(call.o)
+ .data          0x000000000000012e        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x000000000000012e        0x0 ../lib/libsys.a(message.o)
+ *(.rodata*)
+                0x000000000000012e                _begbss = .
+
+.bss            0x000000000000012e       0x1a load address 0x000000000000014e
+ *(.bss)
+ .bss           0x000000000000012e        0x0 ../lib/crtso.o
+ .bss           0x000000000000012e        0x0 t10a.o
+ .bss           0x000000000000012e        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x000000000000012e        0x0 ../lib/libsys.a(call.o)
+ .bss           0x000000000000012e        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x000000000000012e        0x0 ../lib/libsys.a(message.o)
+ *(COMMON)
+ COMMON         0x000000000000012e        0x2 ../lib/libsys.a(call.o)
+                0x000000000000012e                errno
+ COMMON         0x0000000000000130       0x18 ../lib/libsys.a(message.o)
+                0x0000000000000130                M
+                0x0000000000000148                _endbss = .
+
+/DISCARD/
+ *(.comment)
+                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: too large for a .out file.)
+LOAD ../lib/crtso.o
+LOAD t10a.o
+LOAD ../lib/libsys.a
+OUTPUT(t10a.out binary)

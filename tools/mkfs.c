@@ -148,7 +148,7 @@ main(int argc, char *argv[])
 	make_sb(18000);
 #else
 	start_sec = 0;
-	make_sb(360);
+	make_sb(480);
 #endif
 
 	rootino = creat_dir(0, NULL);
