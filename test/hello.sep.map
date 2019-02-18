@@ -35,7 +35,7 @@ Linker script and memory map
                 0x000000000000000c        0x4 LONG 0x116 SIZEOF (.data)
                 0x0000000000000010        0x4 LONG 0x1a SIZEOF (.bss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x1940 (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x0000000000000018        0x4 LONG 0x1530 ((SIZEOF (.data) + SIZEOF (.bss)) + 0x1400)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
@@ -43,25 +43,25 @@ Linker script and memory map
  *(.text)
  .text          0x0000000000000000       0x1e ../lib/crtso.o
                 0x0000000000000000                start
- .text          0x000000000000001e      0x2c7 hello.o
+ .text          0x000000000000001e      0x2c0 hello.o
                 0x000000000000028c                main
- .text          0x00000000000002e5       0x1d ../lib/libsys.a(exit.o)
-                0x00000000000002e5                exit
- .text          0x0000000000000302       0x24 ../lib/libsys.a(write.o)
-                0x0000000000000302                write
- .text          0x0000000000000326       0xc8 ../lib/libsys.a(call.o)
-                0x0000000000000326                callx
-                0x0000000000000355                callm1
-                0x000000000000038c                len
-                0x00000000000003a5                callm3
- .text          0x00000000000003ee       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000003ee                send
-                0x00000000000003f3                receive
-                0x00000000000003f8                send_rec
-                0x00000000000003f8                sendrec
- .text          0x000000000000040a        0x0 ../lib/libsys.a(message.o)
+ .text          0x00000000000002de       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000002de                exit
+ .text          0x00000000000002fb       0x24 ../lib/libsys.a(write.o)
+                0x00000000000002fb                write
+ .text          0x000000000000031f       0xc8 ../lib/libsys.a(call.o)
+                0x000000000000031f                callx
+                0x000000000000034e                callm1
+                0x0000000000000385                len
+                0x000000000000039e                callm3
+ .text          0x00000000000003e7       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000003e7                send
+                0x00000000000003ec                receive
+                0x00000000000003f1                send_rec
+                0x00000000000003f1                sendrec
+ .text          0x0000000000000403        0x0 ../lib/libsys.a(message.o)
                 0x0000000000000410                . = ALIGN (0x10)
- *fill*         0x000000000000040a        0x6 
+ *fill*         0x0000000000000403        0xd 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x0000000000000430                _begindata = (_begintext + .)
 

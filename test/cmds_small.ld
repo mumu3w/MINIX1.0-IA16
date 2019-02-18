@@ -16,7 +16,7 @@ SECTIONS {
     LONG (SIZEOF(.data)); /* size of data-segment in bytes */
     LONG (SIZEOF(.bss));  /* size of bss (stack) segment   */
     LONG (start);         /* entry point */
-    LONG (SIZEOF(.text) + SIZEOF(.data) + SIZEOF(.bss) + 5120);/* total memory allocated */
+    LONG (SIZEOF(.data) + SIZEOF(.bss) + 5120);/* total memory allocated */
     /* total memory allocated to program (? data+bss+malloc+stack) */
     /* mm/exec.c   new_base = alloc_mem(text_clicks + tot_clicks); */
     LONG (0);             /* symbol table size */

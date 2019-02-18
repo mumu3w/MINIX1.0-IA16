@@ -31,69 +31,69 @@ Linker script and memory map
 .hdr            0x0000000000000000       0x20
                 0x0000000000000000        0x4 LONG 0x4100301
                 0x0000000000000004        0x4 LONG 0x20
-                0x0000000000000008        0x4 LONG 0x40a (_begdata - _begtext)
-                0x000000000000000c        0x4 LONG 0x118 (_begbss - _begdata)
+                0x0000000000000008        0x4 LONG 0x403 (_begdata - _begtext)
+                0x000000000000000c        0x4 LONG 0x117 (_begbss - _begdata)
                 0x0000000000000010        0x4 LONG 0x1a (_endbss - _begbss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x193c ((_endbss - _begtext) + 0x1400)
+                0x0000000000000018        0x4 LONG 0x1934 ((_endbss - _begtext) + 0x1400)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
-.text           0x0000000000000000      0x522 load address 0x0000000000000020
+.text           0x0000000000000000      0x51a load address 0x0000000000000020
                 0x0000000000000000                _begtext = .
  *(.text)
  .text          0x0000000000000000       0x1e ../lib/crtso.o
                 0x0000000000000000                start
- .text          0x000000000000001e      0x2c7 hello.o
+ .text          0x000000000000001e      0x2c0 hello.o
                 0x000000000000028c                main
- .text          0x00000000000002e5       0x1d ../lib/libsys.a(exit.o)
-                0x00000000000002e5                exit
- .text          0x0000000000000302       0x24 ../lib/libsys.a(write.o)
-                0x0000000000000302                write
- .text          0x0000000000000326       0xc8 ../lib/libsys.a(call.o)
-                0x0000000000000326                callx
-                0x0000000000000355                callm1
-                0x000000000000038c                len
-                0x00000000000003a5                callm3
- .text          0x00000000000003ee       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000003ee                send
-                0x00000000000003f3                receive
-                0x00000000000003f8                send_rec
-                0x00000000000003f8                sendrec
- .text          0x000000000000040a        0x0 ../lib/libsys.a(message.o)
-                0x000000000000040a                _begdata = .
+ .text          0x00000000000002de       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000002de                exit
+ .text          0x00000000000002fb       0x24 ../lib/libsys.a(write.o)
+                0x00000000000002fb                write
+ .text          0x000000000000031f       0xc8 ../lib/libsys.a(call.o)
+                0x000000000000031f                callx
+                0x000000000000034e                callm1
+                0x0000000000000385                len
+                0x000000000000039e                callm3
+ .text          0x00000000000003e7       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000003e7                send
+                0x00000000000003ec                receive
+                0x00000000000003f1                send_rec
+                0x00000000000003f1                sendrec
+ .text          0x0000000000000403        0x0 ../lib/libsys.a(message.o)
+                0x0000000000000403                _begdata = .
  *(.data)
- .data          0x000000000000040a        0x4 ../lib/crtso.o
-                0x000000000000040a                brksize
-                0x000000000000040c                environ
- .data          0x000000000000040e        0x0 hello.o
- .data          0x000000000000040e        0x0 ../lib/libsys.a(exit.o)
- .data          0x000000000000040e        0x0 ../lib/libsys.a(write.o)
- .data          0x000000000000040e        0x0 ../lib/libsys.a(call.o)
- .data          0x000000000000040e        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x000000000000040e        0x0 ../lib/libsys.a(message.o)
+ .data          0x0000000000000403        0x4 ../lib/crtso.o
+                0x0000000000000403                brksize
+                0x0000000000000405                environ
+ .data          0x0000000000000407        0x0 hello.o
+ .data          0x0000000000000407        0x0 ../lib/libsys.a(exit.o)
+ .data          0x0000000000000407        0x0 ../lib/libsys.a(write.o)
+ .data          0x0000000000000407        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000407        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000000407        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
  .rodata.str1.1
-                0x000000000000040e       0x20 hello.o
- *fill*         0x000000000000042e        0x2 
- .rodata        0x0000000000000430       0xf2 hello.o
-                0x0000000000000522                _begbss = .
+                0x0000000000000407       0x20 hello.o
+ *fill*         0x0000000000000427        0x1 
+ .rodata        0x0000000000000428       0xf2 hello.o
+                0x000000000000051a                _begbss = .
 
-.bss            0x0000000000000522       0x1a load address 0x0000000000000542
+.bss            0x000000000000051a       0x1a load address 0x000000000000053a
  *(.bss)
- .bss           0x0000000000000522        0x0 ../lib/crtso.o
- .bss           0x0000000000000522        0x0 hello.o
- .bss           0x0000000000000522        0x0 ../lib/libsys.a(exit.o)
- .bss           0x0000000000000522        0x0 ../lib/libsys.a(write.o)
- .bss           0x0000000000000522        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000522        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x0000000000000522        0x0 ../lib/libsys.a(message.o)
+ .bss           0x000000000000051a        0x0 ../lib/crtso.o
+ .bss           0x000000000000051a        0x0 hello.o
+ .bss           0x000000000000051a        0x0 ../lib/libsys.a(exit.o)
+ .bss           0x000000000000051a        0x0 ../lib/libsys.a(write.o)
+ .bss           0x000000000000051a        0x0 ../lib/libsys.a(call.o)
+ .bss           0x000000000000051a        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x000000000000051a        0x0 ../lib/libsys.a(message.o)
  *(COMMON)
- COMMON         0x0000000000000522        0x2 ../lib/libsys.a(call.o)
-                0x0000000000000522                errno
- COMMON         0x0000000000000524       0x18 ../lib/libsys.a(message.o)
-                0x0000000000000524                M
-                0x000000000000053c                _endbss = .
+ COMMON         0x000000000000051a        0x2 ../lib/libsys.a(call.o)
+                0x000000000000051a                errno
+ COMMON         0x000000000000051c       0x18 ../lib/libsys.a(message.o)
+                0x000000000000051c                M
+                0x0000000000000534                _endbss = .
 
 /DISCARD/
  *(.comment)

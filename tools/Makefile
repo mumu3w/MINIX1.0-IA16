@@ -49,6 +49,8 @@ ram.sep : mkfs minixfsutils
 	./minixfsutils ram.sep put /bin/update ../cmds/update.sep
 	./minixfsutils ram.sep put /bin/mined ../cmds/mined.sep
 	./minixfsutils ram.sep put /bin/chmem ../cmds/chmem.sep
+	./minixfsutils ram.sep put /hello.sep ../test/hello.sep
+	./minixfsutils ram.sep put /hello.out ../test/hello.out
 	./minixfsutils ram.sep put /etc/passwd ./passwd
 	./minixfsutils ram.sep put /etc/rc ./rc
 	./minixfsutils ram.sep put /etc/message ./message

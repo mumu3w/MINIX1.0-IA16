@@ -37,7 +37,7 @@ Linker script and memory map
                 0x000000000000000c        0x4 LONG 0x8 SIZEOF (.data)
                 0x0000000000000010        0x4 LONG 0x81c SIZEOF (.bss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x1e84 (((SIZEOF (.text) + SIZEOF (.data)) + SIZEOF (.bss)) + 0x1400)
+                0x0000000000000018        0x4 LONG 0x1c24 ((SIZEOF (.data) + SIZEOF (.bss)) + 0x1400)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
