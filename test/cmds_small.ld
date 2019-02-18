@@ -17,6 +17,7 @@ SECTIONS {
 		LONG (SIZEOF(.bss));	/* size of bss (stack) segment   */
 		LONG (start);					/* entry point */
 		LONG (SIZEOF(.text) + SIZEOF(.data) + SIZEOF(.bss) + 5120);/* total memory allocated */
+    /* total memory allocated to program (? data+bss+malloc+stack) */
 		LONG (0);							/* symbol table size */
 		}
     

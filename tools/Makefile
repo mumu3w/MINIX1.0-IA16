@@ -30,6 +30,8 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /bin/echo ../cmds/echo.out
 	./minixfsutils ram.out put /bin/cat ../cmds/cat.out
 	./minixfsutils ram.out put /bin/update ../cmds/update.out
+	./minixfsutils ram.out put /bin/mined ../cmds/mined.out
+	./minixfsutils ram.out put /bin/chmem ../cmds/chmem.out
 	./minixfsutils ram.out put /etc/passwd ./passwd
 	./minixfsutils ram.out put /etc/rc ./rc
 	./minixfsutils ram.out put /etc/message ./message
@@ -45,6 +47,8 @@ ram.sep : mkfs minixfsutils
 	./minixfsutils ram.sep put /bin/echo ../cmds/echo.sep
 	./minixfsutils ram.sep put /bin/cat ../cmds/cat.sep
 	./minixfsutils ram.sep put /bin/update ../cmds/update.sep
+	./minixfsutils ram.sep put /bin/mined ../cmds/mined.sep
+	./minixfsutils ram.sep put /bin/chmem ../cmds/chmem.sep
 	./minixfsutils ram.sep put /etc/passwd ./passwd
 	./minixfsutils ram.sep put /etc/rc ./rc
 	./minixfsutils ram.sep put /etc/message ./message
