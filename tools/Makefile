@@ -23,7 +23,7 @@ Image.sep : ../kernel/kernel.sep ../mm/mm.sep ../fs/fs.sep fsck.sep init.sep boo
 ram.out : mkfs minixfsutils
 	dd if=/dev/zero of=ram.out bs=1024 count=360
 	sync
-	./mkfs ram.out
+	./mkfs 360 ram.out
 	./minixfsutils ram.out put /bin/sh ../cmds/sh.out
 	./minixfsutils ram.out put /bin/ls ../cmds/ls.out
 	./minixfsutils ram.out put /bin/login ../cmds/login.out
@@ -32,36 +32,43 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /bin/update ../cmds/update.out
 	./minixfsutils ram.out put /bin/mined ../cmds/mined.out
 	./minixfsutils ram.out put /bin/chmem ../cmds/chmem.out
+	./minixfsutils ram.out put /bin/mount ../cmds/mount.out
+	./minixfsutils ram.out put /bin/mkdir ../cmds/mkdir.out
 	./minixfsutils ram.out put /etc/passwd ./passwd
 	./minixfsutils ram.out put /etc/rc ./rc
 	./minixfsutils ram.out put /etc/message ./message
 	./minixfsutils ram.out put /etc/ttys ./ttys
-	./minixfsutils ram.out put /run ../test/run
-	./minixfsutils ram.out put /hello ../test/hello.out
-	./minixfsutils ram.out put /setjmp ../test/setjmp.out
-	./minixfsutils ram.out put /t10a ../test/t10a.out
-	./minixfsutils ram.out put /t11a ../test/t11a.out
-	./minixfsutils ram.out put /t11b ../test/t11b.out
-	./minixfsutils ram.out put /test0 ../test/test0.out
-	./minixfsutils ram.out put /test10 ../test/test10.out
-	./minixfsutils ram.out put /test11 ../test/test11.out
-	./minixfsutils ram.out put /test1 ../test/test1.out
-	./minixfsutils ram.out put /test2 ../test/test2.out
-	./minixfsutils ram.out put /test3 ../test/test3.out
-	./minixfsutils ram.out put /test4 ../test/test4.out
-	./minixfsutils ram.out put /test5 ../test/test5.out
-	./minixfsutils ram.out put /test6 ../test/test6.out
-	./minixfsutils ram.out put /test7 ../test/test7.out
-	./minixfsutils ram.out put /test8 ../test/test8.out
-	./minixfsutils ram.out put /test9 ../test/test9.out
-	./minixfsutils ram.out put /t10a ../test/t10a.out
-	./minixfsutils ram.out put /t11a ../test/t11a.out
-	./minixfsutils ram.out put /t11b ../test/t11b.out
+	
+test.out : mkfs minixfsutils
+	dd if=/dev/zero of=test.out bs=1024 count=360
+	sync
+	./mkfs 720 test.out
+	./minixfsutils test.out put /run ../test/run
+	./minixfsutils test.out put /hello ../test/hello.out
+	./minixfsutils test.out put /setjmp ../test/setjmp.out
+	./minixfsutils test.out put /t10a ../test/t10a.out
+	./minixfsutils test.out put /t11a ../test/t11a.out
+	./minixfsutils test.out put /t11b ../test/t11b.out
+	./minixfsutils test.out put /test0 ../test/test0.out
+	./minixfsutils test.out put /test10 ../test/test10.out
+	./minixfsutils test.out put /test11 ../test/test11.out
+	./minixfsutils test.out put /test1 ../test/test1.out
+	./minixfsutils test.out put /test2 ../test/test2.out
+	./minixfsutils test.out put /test3 ../test/test3.out
+	./minixfsutils test.out put /test4 ../test/test4.out
+	./minixfsutils test.out put /test5 ../test/test5.out
+	./minixfsutils test.out put /test6 ../test/test6.out
+	./minixfsutils test.out put /test7 ../test/test7.out
+	./minixfsutils test.out put /test8 ../test/test8.out
+	./minixfsutils test.out put /test9 ../test/test9.out
+	./minixfsutils test.out put /t10a ../test/t10a.out
+	./minixfsutils test.out put /t11a ../test/t11a.out
+	./minixfsutils test.out put /t11b ../test/t11b.out
 	
 ram.sep : mkfs minixfsutils
 	dd if=/dev/zero of=ram.sep bs=1024 count=360
 	sync
-	./mkfs ram.sep
+	./mkfs 360 ram.sep
 	./minixfsutils ram.sep put /bin/sh ../cmds/sh.sep
 	./minixfsutils ram.sep put /bin/ls ../cmds/ls.sep
 	./minixfsutils ram.sep put /bin/login ../cmds/login.sep
@@ -70,6 +77,8 @@ ram.sep : mkfs minixfsutils
 	./minixfsutils ram.sep put /bin/update ../cmds/update.sep
 	./minixfsutils ram.sep put /bin/mined ../cmds/mined.sep
 	./minixfsutils ram.sep put /bin/chmem ../cmds/chmem.sep
+	./minixfsutils ram.sep put /bin/mount ../cmds/mount.sep
+	./minixfsutils ram.out put /bin/mkdir ../cmds/mkdir.sep
 	./minixfsutils ram.sep put /etc/passwd ./passwd
 	./minixfsutils ram.sep put /etc/rc ./rc
 	./minixfsutils ram.sep put /etc/message ./message

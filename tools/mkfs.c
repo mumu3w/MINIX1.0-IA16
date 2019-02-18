@@ -136,9 +136,9 @@ main(int argc, char *argv[])
     exit(1);
   }
   
-	fsfd = fopen(argv[1], "rb+");
+	fsfd = fopen(argv[2], "rb+");
   if(fsfd == NULL) {
-    perror(argv[1]);
+    perror(argv[2]);
     exit(1);
   }
 	
@@ -148,7 +148,7 @@ main(int argc, char *argv[])
 	make_sb(18000);
 #else
 	start_sec = 0;
-	make_sb(480);
+	make_sb(atoi(argv[1]));
 #endif
 
 	rootino = creat_dir(0, NULL);
@@ -171,7 +171,7 @@ main(int argc, char *argv[])
 	creat_file(devino, "tty", 'c', 5, 0);
   creat_file(devino, "tty0", 'c', 4, 0);
 
-	for(i = 2; i < argc; i++) {
+	for(i = 3; i < argc; i++) {
     if(!strcmp(argv[i], "-")) {
       status = 1;
       continue;
