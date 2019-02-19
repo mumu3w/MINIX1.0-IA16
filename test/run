@@ -1,24 +1,9 @@
-chmem =8000 test0
-chmem =8000 test1
-chmem =8000 test2
-chmem =8000 test3
-chmem =8000 test4
-chmem =8000 test5
-chmem =8000 test6
-chmem =8000 test7
-chmem =8000 test8
-chmem =8000 test9
-chmem =8000 test10
-chmem =8000 test11
-chmem =8000 t10a
-chmem =8000 t11a
-chmem =8000 t11b
 test0
-#test1
+test1
 test2
 test3
 test4
-#test5
+test5
 test6
 test7
 test8
