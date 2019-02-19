@@ -1,5 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
+../lib/libsys.a(getutils.o)   main.o (get_tot_mem)
+../lib/libsys.a(sendrec.o)    main.o (send)
 ../lib/libsys.a(close.o)      exec.o (close)
 ../lib/libsys.a(read.o)       exec.o (read)
 ../lib/libsys.a(creat.o)      signal.o (creat)
@@ -9,8 +11,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(printk.o)     main.o (printk)
 ../lib/libsys.a(call.o)       utility.o (errno)
 ../lib/libsys.a(syslib.o)     forkexit.o (sys_xit)
-../lib/libsys.a(getutils.o)   main.o (get_tot_mem)
-../lib/libsys.a(sendrec.o)    main.o (send)
 ../lib/libsys.a(divmodsi3.o)  ../lib/libsys.a(printk.o) (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
@@ -120,45 +120,45 @@ Linker script and memory map
                 0x0000000000001888                no_sys
                 0x000000000000188c                panic
                 0x00000000000018ce                allowed
- .text          0x00000000000019b7       0x20 ../lib/libsys.a(close.o)
-                0x00000000000019b7                close
- .text          0x00000000000019d7       0x24 ../lib/libsys.a(read.o)
-                0x00000000000019d7                read
- .text          0x00000000000019fb       0x1b ../lib/libsys.a(creat.o)
-                0x00000000000019fb                creat
- .text          0x0000000000001a16       0x1b ../lib/libsys.a(open.o)
-                0x0000000000001a16                open
- .text          0x0000000000001a31       0x24 ../lib/libsys.a(write.o)
-                0x0000000000001a31                write
- .text          0x0000000000001a55       0x22 ../lib/libsys.a(fstat.o)
-                0x0000000000001a55                fstat
- .text          0x0000000000001a77      0x347 ../lib/libsys.a(printk.o)
-                0x0000000000001a77                printk
- .text          0x0000000000001dbe       0xc8 ../lib/libsys.a(call.o)
-                0x0000000000001dbe                callx
-                0x0000000000001ded                callm1
-                0x0000000000001e24                len
-                0x0000000000001e3d                callm3
- .text          0x0000000000001e86      0x19a ../lib/libsys.a(syslib.o)
-                0x0000000000001e86                sys_xit
-                0x0000000000001ea8                sys_getsp
-                0x0000000000001ed0                sys_sig
-                0x0000000000001ef7                sys_fork
-                0x0000000000001f1b                sys_exec
-                0x0000000000001f3d                sys_newmap
-                0x0000000000001f5f                sys_copy
-                0x0000000000001f8d                sys_times
-                0x0000000000001fe5                sys_abort
-                0x0000000000001ffd                tell_fs
- .text          0x0000000000002020       0x2d ../lib/libsys.a(getutils.o)
-                0x0000000000002020                get_base
-                0x0000000000002023                get_size
-                0x0000000000002027                get_tot_mem
- .text          0x000000000000204d       0x1c ../lib/libsys.a(sendrec.o)
-                0x000000000000204d                send
-                0x0000000000002052                receive
-                0x0000000000002057                send_rec
-                0x0000000000002057                sendrec
+ .text          0x00000000000019b7       0x2d ../lib/libsys.a(getutils.o)
+                0x00000000000019b7                get_base
+                0x00000000000019ba                get_size
+                0x00000000000019be                get_tot_mem
+ .text          0x00000000000019e4       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000019e4                send
+                0x00000000000019e9                receive
+                0x00000000000019ee                send_rec
+                0x00000000000019ee                sendrec
+ .text          0x0000000000001a00       0x20 ../lib/libsys.a(close.o)
+                0x0000000000001a00                close
+ .text          0x0000000000001a20       0x24 ../lib/libsys.a(read.o)
+                0x0000000000001a20                read
+ .text          0x0000000000001a44       0x1b ../lib/libsys.a(creat.o)
+                0x0000000000001a44                creat
+ .text          0x0000000000001a5f       0x1b ../lib/libsys.a(open.o)
+                0x0000000000001a5f                open
+ .text          0x0000000000001a7a       0x24 ../lib/libsys.a(write.o)
+                0x0000000000001a7a                write
+ .text          0x0000000000001a9e       0x22 ../lib/libsys.a(fstat.o)
+                0x0000000000001a9e                fstat
+ .text          0x0000000000001ac0      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000001ac0                printk
+ .text          0x0000000000001e07       0xc8 ../lib/libsys.a(call.o)
+                0x0000000000001e07                callx
+                0x0000000000001e36                callm1
+                0x0000000000001e6d                len
+                0x0000000000001e86                callm3
+ .text          0x0000000000001ecf      0x19a ../lib/libsys.a(syslib.o)
+                0x0000000000001ecf                sys_xit
+                0x0000000000001ef1                sys_getsp
+                0x0000000000001f19                sys_sig
+                0x0000000000001f40                sys_fork
+                0x0000000000001f64                sys_exec
+                0x0000000000001f86                sys_newmap
+                0x0000000000001fa8                sys_copy
+                0x0000000000001fd6                sys_times
+                0x000000000000202e                sys_abort
+                0x0000000000002046                tell_fs
  .text          0x0000000000002069       0x74 ../lib/libsys.a(divmodsi3.o)
                 0x0000000000002069                __divsi3
                 0x0000000000002087                __modsi3
@@ -191,6 +191,8 @@ Linker script and memory map
                 0x000000000000225c                core_bits
                 0x000000000000225e                core_name
  .data          0x0000000000002263        0x0 utility.o
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(getutils.o)
+ .data          0x0000000000002263        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(close.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(read.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(creat.o)
@@ -200,8 +202,6 @@ Linker script and memory map
  .data          0x0000000000002263        0x0 ../lib/libsys.a(printk.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(call.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(syslib.o)
- .data          0x0000000000002263        0x0 ../lib/libsys.a(getutils.o)
- .data          0x0000000000002263        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(divmodsi3.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(ldivmod.o)
  .data          0x0000000000002263        0x0 ../lib/libsys.a(message.o)
@@ -239,6 +239,8 @@ Linker script and memory map
  .bss           0x00000000000027f2       0x18 signal.o
  .bss           0x000000000000280a        0x0 table.o
  .bss           0x000000000000280a       0x18 utility.o
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(getutils.o)
+ .bss           0x0000000000002822        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(close.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(read.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(creat.o)
@@ -248,8 +250,6 @@ Linker script and memory map
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(printk.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(call.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(syslib.o)
- .bss           0x0000000000002822        0x0 ../lib/libsys.a(getutils.o)
- .bss           0x0000000000002822        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(divmodsi3.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(ldivmod.o)
  .bss           0x0000000000002822        0x0 ../lib/libsys.a(message.o)

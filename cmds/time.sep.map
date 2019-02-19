@@ -11,9 +11,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(time.o)       time.o (time)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(times.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
+../lib/libsys.a(stderr.o)     time.o (std_err)
 ../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
 ../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
-../lib/libsys.a(stderr.o)     time.o (std_err)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
 
 Allocating common symbols
@@ -104,19 +104,19 @@ Linker script and memory map
                 0x0000000000000908                callm1
                 0x000000000000093f                len
                 0x0000000000000958                callm3
- .text          0x00000000000009a1       0x2f ../lib/libsys.a(catchsig.o)
-                0x00000000000009a1                begsig
- .text          0x00000000000009d0       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000009d0                send
-                0x00000000000009d5                receive
-                0x00000000000009da                send_rec
-                0x00000000000009da                sendrec
- .text          0x00000000000009ec       0x27 ../lib/libsys.a(stderr.o)
-                0x00000000000009ec                std_err
- .text          0x0000000000000a13       0x24 ../lib/libsys.a(write.o)
-                0x0000000000000a13                write
+ .text          0x00000000000009a1       0x27 ../lib/libsys.a(stderr.o)
+                0x00000000000009a1                std_err
+ .text          0x00000000000009c8       0x31 ../lib/libsys.a(catchsig.o)
+                0x00000000000009c8                begsig
+ .text          0x00000000000009f9       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000009f9                send
+                0x00000000000009fe                receive
+                0x0000000000000a03                send_rec
+                0x0000000000000a03                sendrec
+ .text          0x0000000000000a15       0x24 ../lib/libsys.a(write.o)
+                0x0000000000000a15                write
                 0x0000000000000a40                . = ALIGN (0x10)
- *fill*         0x0000000000000a37        0x9 
+ *fill*         0x0000000000000a39        0x7 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x0000000000000a60                _begindata = (_begintext + .)
 
@@ -139,9 +139,9 @@ Linker script and memory map
  .data          0x0000000000000210        0x0 ../lib/libsys.a(time.o)
  .data          0x0000000000000210        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000210        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000210        0x0 ../lib/libsys.a(stderr.o)
  .data          0x0000000000000210        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x0000000000000212        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x0000000000000212        0x0 ../lib/libsys.a(stderr.o)
  .data          0x0000000000000212        0x0 ../lib/libsys.a(write.o)
  *(.rodata*)
  .rodata.str1.1
@@ -163,9 +163,9 @@ Linker script and memory map
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(time.o)
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(message.o)
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(call.o)
+ .bss           0x0000000000000282        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(catchsig.o)
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x0000000000000282        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x0000000000000282        0x0 ../lib/libsys.a(write.o)
  *(COMMON)
  COMMON         0x0000000000000282       0xce time.o

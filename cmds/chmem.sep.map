@@ -7,7 +7,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(write.o)      chmem.o (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(stderr.o)     chmem.o (std_err)
 ../lib/libsys.a(fprintf.o)    chmem.o (printf)
 ../lib/libsys.a(fflush.o)     ../lib/libsys.a(fprintf.o) (fflush)
@@ -17,6 +16,7 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(atoi.o)       chmem.o (atoi)
 ../lib/libsys.a(divmodsi3.o)  ../lib/libsys.a(doprintf.o) (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     ../lib/libsys.a(doprintf.o) (strlen)
 
 Allocating common symbols
@@ -89,33 +89,33 @@ Linker script and memory map
                 0x0000000000000372                callm1
                 0x00000000000003a9                len
                 0x00000000000003c2                callm3
- .text          0x000000000000040b       0x1c ../lib/libsys.a(sendrec.o)
-                0x000000000000040b                send
-                0x0000000000000410                receive
-                0x0000000000000415                send_rec
-                0x0000000000000415                sendrec
- .text          0x0000000000000427       0x27 ../lib/libsys.a(stderr.o)
-                0x0000000000000427                std_err
- .text          0x000000000000044e       0x54 ../lib/libsys.a(fprintf.o)
-                0x000000000000044e                fprintf
-                0x0000000000000477                printf
- .text          0x00000000000004a2       0x4d ../lib/libsys.a(fflush.o)
-                0x00000000000004a2                fflush
- .text          0x00000000000004ef        0x0 ../lib/libsys.a(printdat.o)
- .text          0x00000000000004ef      0x4c7 ../lib/libsys.a(doprintf.o)
-                0x00000000000005bd                _doprintf
- .text          0x00000000000009b6       0xb8 ../lib/libsys.a(putc.o)
-                0x00000000000009b6                putc
- .text          0x0000000000000a6e       0xb5 ../lib/libsys.a(atoi.o)
-                0x0000000000000a6e                atoi
- .text          0x0000000000000b23       0x74 ../lib/libsys.a(divmodsi3.o)
-                0x0000000000000b23                __divsi3
-                0x0000000000000b41                __modsi3
-                0x0000000000000b5d                __udivsi3
-                0x0000000000000b7b                __umodsi3
- .text          0x0000000000000b97       0xda ../lib/libsys.a(ldivmod.o)
-                0x0000000000000b97                ldivmod
-                0x0000000000000bb3                ludivmod
+ .text          0x000000000000040b       0x27 ../lib/libsys.a(stderr.o)
+                0x000000000000040b                std_err
+ .text          0x0000000000000432       0x54 ../lib/libsys.a(fprintf.o)
+                0x0000000000000432                fprintf
+                0x000000000000045b                printf
+ .text          0x0000000000000486       0x4d ../lib/libsys.a(fflush.o)
+                0x0000000000000486                fflush
+ .text          0x00000000000004d3        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x00000000000004d3      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x00000000000005a1                _doprintf
+ .text          0x000000000000099a       0xb8 ../lib/libsys.a(putc.o)
+                0x000000000000099a                putc
+ .text          0x0000000000000a52       0xb5 ../lib/libsys.a(atoi.o)
+                0x0000000000000a52                atoi
+ .text          0x0000000000000b07       0x74 ../lib/libsys.a(divmodsi3.o)
+                0x0000000000000b07                __divsi3
+                0x0000000000000b25                __modsi3
+                0x0000000000000b41                __udivsi3
+                0x0000000000000b5f                __umodsi3
+ .text          0x0000000000000b7b       0xda ../lib/libsys.a(ldivmod.o)
+                0x0000000000000b7b                ldivmod
+                0x0000000000000b97                ludivmod
+ .text          0x0000000000000c55       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000c55                send
+                0x0000000000000c5a                receive
+                0x0000000000000c5f                send_rec
+                0x0000000000000c5f                sendrec
  .text          0x0000000000000c71       0x19 ../lib/libsys.a(strlen.o)
                 0x0000000000000c71                strlen
                 0x0000000000000c90                . = ALIGN (0x10)
@@ -136,7 +136,6 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(stderr.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(fprintf.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(fflush.o)
@@ -150,6 +149,7 @@ Linker script and memory map
  .data          0x000000000000004a        0x0 ../lib/libsys.a(atoi.o)
  .data          0x000000000000004a        0x0 ../lib/libsys.a(divmodsi3.o)
  .data          0x000000000000004a        0x0 ../lib/libsys.a(ldivmod.o)
+ .data          0x000000000000004a        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x000000000000004a        0x0 ../lib/libsys.a(strlen.o)
  *(.rodata*)
  .rodata.str1.1
@@ -169,7 +169,6 @@ Linker script and memory map
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(write.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(message.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000166        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(fprintf.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(fflush.o)
@@ -179,6 +178,7 @@ Linker script and memory map
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(atoi.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(divmodsi3.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(ldivmod.o)
+ .bss           0x0000000000000166        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000166        0x0 ../lib/libsys.a(strlen.o)
  *(COMMON)
  COMMON         0x0000000000000166       0x18 ../lib/libsys.a(message.o)

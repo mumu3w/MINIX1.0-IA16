@@ -12,7 +12,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(write.o)      fdisk.o (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(fprintf.o)    fdisk.o (fprintf)
 ../lib/libsys.a(fflush.o)     ../lib/libsys.a(fprintf.o) (fflush)
 ../lib/libsys.a(printdat.o)   fdisk.o (_io_table)
@@ -21,6 +20,7 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(getc.o)       fdisk.o (getc)
 ../lib/libsys.a(gets.o)       fdisk.o (gets)
 ../lib/libsys.a(scanf.o)      fdisk.o (sscanf)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     ../lib/libsys.a(doprintf.o) (strlen)
 ../lib/libsys.a(ungetc.o)     ../lib/libsys.a(scanf.o) (ungetc)
 
@@ -129,30 +129,30 @@ Linker script and memory map
                 0x0000000000000a5c                callm1
                 0x0000000000000a93                len
                 0x0000000000000aac                callm3
- .text          0x0000000000000af5       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000af5                send
-                0x0000000000000afa                receive
-                0x0000000000000aff                send_rec
-                0x0000000000000aff                sendrec
- .text          0x0000000000000b11       0x54 ../lib/libsys.a(fprintf.o)
-                0x0000000000000b11                fprintf
-                0x0000000000000b3a                printf
- .text          0x0000000000000b65       0x4d ../lib/libsys.a(fflush.o)
-                0x0000000000000b65                fflush
- .text          0x0000000000000bb2        0x0 ../lib/libsys.a(printdat.o)
- .text          0x0000000000000bb2      0x4c7 ../lib/libsys.a(doprintf.o)
-                0x0000000000000c80                _doprintf
- .text          0x0000000000001079       0xb8 ../lib/libsys.a(putc.o)
-                0x0000000000001079                putc
- .text          0x0000000000001131       0xae ../lib/libsys.a(getc.o)
-                0x0000000000001131                getc
- .text          0x00000000000011df       0x58 ../lib/libsys.a(gets.o)
-                0x00000000000011df                gets
- .text          0x0000000000001237      0x6a9 ../lib/libsys.a(scanf.o)
-                0x00000000000012c7                _doscanf
-                0x000000000000188e                scanf
-                0x00000000000018aa                fscanf
-                0x00000000000018c5                sscanf
+ .text          0x0000000000000af5       0x54 ../lib/libsys.a(fprintf.o)
+                0x0000000000000af5                fprintf
+                0x0000000000000b1e                printf
+ .text          0x0000000000000b49       0x4d ../lib/libsys.a(fflush.o)
+                0x0000000000000b49                fflush
+ .text          0x0000000000000b96        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x0000000000000b96      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x0000000000000c64                _doprintf
+ .text          0x000000000000105d       0xb8 ../lib/libsys.a(putc.o)
+                0x000000000000105d                putc
+ .text          0x0000000000001115       0xae ../lib/libsys.a(getc.o)
+                0x0000000000001115                getc
+ .text          0x00000000000011c3       0x58 ../lib/libsys.a(gets.o)
+                0x00000000000011c3                gets
+ .text          0x000000000000121b      0x6a9 ../lib/libsys.a(scanf.o)
+                0x00000000000012ab                _doscanf
+                0x0000000000001872                scanf
+                0x000000000000188e                fscanf
+                0x00000000000018a9                sscanf
+ .text          0x00000000000018c4       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000018c4                send
+                0x00000000000018c9                receive
+                0x00000000000018ce                send_rec
+                0x00000000000018ce                sendrec
  .text          0x00000000000018e0       0x19 ../lib/libsys.a(strlen.o)
                 0x00000000000018e0                strlen
  .text          0x00000000000018f9       0x4f ../lib/libsys.a(ungetc.o)
@@ -177,7 +177,6 @@ Linker script and memory map
  .data          0x0000000000001950        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000001950        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000001950        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000001950        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000001950        0x0 ../lib/libsys.a(fprintf.o)
  .data          0x0000000000001950        0x0 ../lib/libsys.a(fflush.o)
  .data          0x0000000000001950       0x46 ../lib/libsys.a(printdat.o)
@@ -190,6 +189,7 @@ Linker script and memory map
  .data          0x0000000000001996        0x0 ../lib/libsys.a(getc.o)
  .data          0x0000000000001996        0x0 ../lib/libsys.a(gets.o)
  .data          0x0000000000001996        0x0 ../lib/libsys.a(scanf.o)
+ .data          0x0000000000001996        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000001996        0x0 ../lib/libsys.a(strlen.o)
  .data          0x0000000000001996        0x0 ../lib/libsys.a(ungetc.o)
  *(.rodata*)
@@ -219,7 +219,6 @@ Linker script and memory map
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(write.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(message.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(fprintf.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(fflush.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(printdat.o)
@@ -228,6 +227,7 @@ Linker script and memory map
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(getc.o)
  .bss           0x0000000000001e0c        0x0 ../lib/libsys.a(gets.o)
  .bss           0x0000000000001e0c        0x6 ../lib/libsys.a(scanf.o)
+ .bss           0x0000000000001e12        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000001e12        0x0 ../lib/libsys.a(strlen.o)
  .bss           0x0000000000001e12        0x0 ../lib/libsys.a(ungetc.o)
  *(COMMON)

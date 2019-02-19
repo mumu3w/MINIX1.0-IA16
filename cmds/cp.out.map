@@ -10,9 +10,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(write.o)      cp.o (write)
 ../lib/libsys.a(fstat.o)      cp.o (fstat)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(close.o) (callm1)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(stderr.o)     cp.o (std_err)
 ../lib/libsys.a(perror.o)     cp.o (perror)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
 Allocating common symbols
@@ -95,15 +95,15 @@ Linker script and memory map
                 0x000000000000052f                callm1
                 0x0000000000000566                len
                 0x000000000000057f                callm3
- .text          0x00000000000005c8       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000005c8                send
-                0x00000000000005cd                receive
-                0x00000000000005d2                send_rec
-                0x00000000000005d2                sendrec
- .text          0x00000000000005e4       0x27 ../lib/libsys.a(stderr.o)
-                0x00000000000005e4                std_err
- .text          0x000000000000060b       0x7c ../lib/libsys.a(perror.o)
-                0x000000000000060b                perror
+ .text          0x00000000000005c8       0x27 ../lib/libsys.a(stderr.o)
+                0x00000000000005c8                std_err
+ .text          0x00000000000005ef       0x7c ../lib/libsys.a(perror.o)
+                0x00000000000005ef                perror
+ .text          0x000000000000066b       0x1c ../lib/libsys.a(sendrec.o)
+                0x000000000000066b                send
+                0x0000000000000670                receive
+                0x0000000000000675                send_rec
+                0x0000000000000675                sendrec
  .text          0x0000000000000687        0x0 ../lib/libsys.a(message.o)
                 0x0000000000000687                _begdata = .
  *(.data)
@@ -121,11 +121,11 @@ Linker script and memory map
  .data          0x000000000000068b        0x0 ../lib/libsys.a(write.o)
  .data          0x000000000000068b        0x0 ../lib/libsys.a(fstat.o)
  .data          0x000000000000068b        0x0 ../lib/libsys.a(call.o)
- .data          0x000000000000068b        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x000000000000068b        0x0 ../lib/libsys.a(stderr.o)
  *fill*         0x000000000000068b        0x1 
  .data          0x000000000000068c       0x46 ../lib/libsys.a(perror.o)
                 0x000000000000068c                error_message
+ .data          0x00000000000006d2        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x00000000000006d2        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
  .rodata.str1.1
@@ -148,9 +148,9 @@ Linker script and memory map
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(write.o)
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(fstat.o)
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(call.o)
- .bss           0x00000000000009c0        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(perror.o)
+ .bss           0x00000000000009c0        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000009c0        0x0 ../lib/libsys.a(message.o)
  *(COMMON)
  COMMON         0x00000000000009c0     0x4002 cp.o

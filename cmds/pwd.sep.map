@@ -7,10 +7,10 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
 ../lib/libsys.a(open.o)       pwd.o (open)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(close.o) (callm1)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strcmp.o)     pwd.o (strcmp)
 ../lib/libsys.a(prints.o)     pwd.o (prints)
 ../lib/libsys.a(strcat.o)     pwd.o (strcat)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(prints.o) (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
@@ -81,17 +81,17 @@ Linker script and memory map
                 0x00000000000002c7                callm1
                 0x00000000000002fe                len
                 0x0000000000000317                callm3
- .text          0x0000000000000360       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000360                send
-                0x0000000000000365                receive
-                0x000000000000036a                send_rec
-                0x000000000000036a                sendrec
- .text          0x000000000000037c       0x3b ../lib/libsys.a(strcmp.o)
-                0x000000000000037c                strcmp
- .text          0x00000000000003b7      0x139 ../lib/libsys.a(prints.o)
-                0x00000000000003d0                prints
- .text          0x00000000000004f0       0x35 ../lib/libsys.a(strcat.o)
-                0x00000000000004f0                strcat
+ .text          0x0000000000000360       0x3b ../lib/libsys.a(strcmp.o)
+                0x0000000000000360                strcmp
+ .text          0x000000000000039b      0x139 ../lib/libsys.a(prints.o)
+                0x00000000000003b4                prints
+ .text          0x00000000000004d4       0x35 ../lib/libsys.a(strcat.o)
+                0x00000000000004d4                strcat
+ .text          0x0000000000000509       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000509                send
+                0x000000000000050e                receive
+                0x0000000000000513                send_rec
+                0x0000000000000513                sendrec
  .text          0x0000000000000525       0x24 ../lib/libsys.a(write.o)
                 0x0000000000000525                write
  .text          0x0000000000000549        0x0 ../lib/libsys.a(message.o)
@@ -113,10 +113,10 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(exit.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(open.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strcmp.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(prints.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strcat.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
@@ -135,10 +135,10 @@ Linker script and memory map
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(exit.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(open.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(call.o)
- .bss           0x000000000000002c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(strcmp.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(prints.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(strcat.o)
+ .bss           0x000000000000002c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(write.o)
  .bss           0x000000000000002c        0x0 ../lib/libsys.a(message.o)
  *(COMMON)

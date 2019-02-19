@@ -99,15 +99,15 @@ Linker script and memory map
                 0x0000000000000558                callm1
                 0x000000000000058f                len
                 0x00000000000005a8                callm3
- .text          0x00000000000005f1       0x2f ../lib/libsys.a(catchsig.o)
+ .text          0x00000000000005f1       0x31 ../lib/libsys.a(catchsig.o)
                 0x00000000000005f1                begsig
- .text          0x0000000000000620       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000620                send
-                0x0000000000000625                receive
-                0x000000000000062a                send_rec
-                0x000000000000062a                sendrec
+ .text          0x0000000000000622       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000622                send
+                0x0000000000000627                receive
+                0x000000000000062c                send_rec
+                0x000000000000062c                sendrec
                 0x0000000000000640                . = ALIGN (0x10)
- *fill*         0x000000000000063c        0x4 
+ *fill*         0x000000000000063e        0x2 
                 0x0000000000000660                _begindata = (_begintext + .)
 
 .data           0x0000000000000000       0x87 load address 0x0000000000000660

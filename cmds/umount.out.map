@@ -3,9 +3,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
 ../lib/libsys.a(umount.o)     umount.o (umount)
 ../lib/libsys.a(call.o)       umount.o (errno)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(stderr.o)     umount.o (std_err)
 ../lib/libsys.a(perror.o)     umount.o (perror)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
@@ -62,15 +62,15 @@ Linker script and memory map
                 0x00000000000000fa                callm1
                 0x0000000000000131                len
                 0x000000000000014a                callm3
- .text          0x0000000000000193       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000193                send
-                0x0000000000000198                receive
-                0x000000000000019d                send_rec
-                0x000000000000019d                sendrec
- .text          0x00000000000001af       0x27 ../lib/libsys.a(stderr.o)
-                0x00000000000001af                std_err
- .text          0x00000000000001d6       0x7c ../lib/libsys.a(perror.o)
-                0x00000000000001d6                perror
+ .text          0x0000000000000193       0x27 ../lib/libsys.a(stderr.o)
+                0x0000000000000193                std_err
+ .text          0x00000000000001ba       0x7c ../lib/libsys.a(perror.o)
+                0x00000000000001ba                perror
+ .text          0x0000000000000236       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000236                send
+                0x000000000000023b                receive
+                0x0000000000000240                send_rec
+                0x0000000000000240                sendrec
  .text          0x0000000000000252       0x24 ../lib/libsys.a(write.o)
                 0x0000000000000252                write
  .text          0x0000000000000276        0x0 ../lib/libsys.a(message.o)
@@ -83,10 +83,10 @@ Linker script and memory map
  .data          0x000000000000027a        0x0 ../lib/libsys.a(exit.o)
  .data          0x000000000000027a        0x0 ../lib/libsys.a(umount.o)
  .data          0x000000000000027a        0x0 ../lib/libsys.a(call.o)
- .data          0x000000000000027a        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x000000000000027a        0x0 ../lib/libsys.a(stderr.o)
  .data          0x000000000000027a       0x46 ../lib/libsys.a(perror.o)
                 0x000000000000027a                error_message
+ .data          0x00000000000002c0        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x00000000000002c0        0x0 ../lib/libsys.a(write.o)
  .data          0x00000000000002c0        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
@@ -103,9 +103,9 @@ Linker script and memory map
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(exit.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(umount.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(call.o)
- .bss           0x000000000000055c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(perror.o)
+ .bss           0x000000000000055c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(write.o)
  .bss           0x000000000000055c        0x0 ../lib/libsys.a(message.o)
  *(COMMON)

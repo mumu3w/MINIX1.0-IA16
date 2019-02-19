@@ -11,7 +11,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(time.o)       ls.o (time)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(lseek.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(fprintf.o)    ls.o (fprintf)
 ../lib/libsys.a(fflush.o)     ls.o (fflush)
 ../lib/libsys.a(printdat.o)   ls.o (_io_table)
@@ -20,6 +19,7 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(putc.o)       ../lib/libsys.a(doprintf.o) (putc)
 ../lib/libsys.a(malloc.o)     ../lib/libsys.a(setbuf.o) (free)
 ../lib/libsys.a(bcopy.o)      ../lib/libsys.a(malloc.o) (bcopy)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(fflush.o) (write)
 ../lib/libsys.a(brk.o)        ../lib/libsys.a(malloc.o) (brk)
 ../lib/libsys.a(strlen.o)     ../lib/libsys.a(doprintf.o) (strlen)
@@ -141,30 +141,30 @@ Linker script and memory map
                 0x00000000000013f4                callm1
                 0x000000000000142b                len
                 0x0000000000001444                callm3
- .text          0x000000000000148d       0x1c ../lib/libsys.a(sendrec.o)
-                0x000000000000148d                send
-                0x0000000000001492                receive
-                0x0000000000001497                send_rec
-                0x0000000000001497                sendrec
- .text          0x00000000000014a9       0x54 ../lib/libsys.a(fprintf.o)
-                0x00000000000014a9                fprintf
-                0x00000000000014d2                printf
- .text          0x00000000000014fd       0x4d ../lib/libsys.a(fflush.o)
-                0x00000000000014fd                fflush
- .text          0x000000000000154a        0x0 ../lib/libsys.a(printdat.o)
- .text          0x000000000000154a       0x47 ../lib/libsys.a(setbuf.o)
-                0x000000000000154a                setbuf
- .text          0x0000000000001591      0x4c7 ../lib/libsys.a(doprintf.o)
-                0x000000000000165f                _doprintf
- .text          0x0000000000001a58       0xb8 ../lib/libsys.a(putc.o)
-                0x0000000000001a58                putc
- .text          0x0000000000001b10      0x17b ../lib/libsys.a(malloc.o)
-                0x0000000000001b10                malloc
-                0x0000000000001bcc                realloc
-                0x0000000000001c50                calloc
-                0x0000000000001c7c                free
- .text          0x0000000000001c8b       0x22 ../lib/libsys.a(bcopy.o)
-                0x0000000000001c8b                bcopy
+ .text          0x000000000000148d       0x54 ../lib/libsys.a(fprintf.o)
+                0x000000000000148d                fprintf
+                0x00000000000014b6                printf
+ .text          0x00000000000014e1       0x4d ../lib/libsys.a(fflush.o)
+                0x00000000000014e1                fflush
+ .text          0x000000000000152e        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x000000000000152e       0x47 ../lib/libsys.a(setbuf.o)
+                0x000000000000152e                setbuf
+ .text          0x0000000000001575      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x0000000000001643                _doprintf
+ .text          0x0000000000001a3c       0xb8 ../lib/libsys.a(putc.o)
+                0x0000000000001a3c                putc
+ .text          0x0000000000001af4      0x17b ../lib/libsys.a(malloc.o)
+                0x0000000000001af4                malloc
+                0x0000000000001bb0                realloc
+                0x0000000000001c34                calloc
+                0x0000000000001c60                free
+ .text          0x0000000000001c6f       0x22 ../lib/libsys.a(bcopy.o)
+                0x0000000000001c6f                bcopy
+ .text          0x0000000000001c91       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000001c91                send
+                0x0000000000001c96                receive
+                0x0000000000001c9b                send_rec
+                0x0000000000001c9b                sendrec
  .text          0x0000000000001cad       0x24 ../lib/libsys.a(write.o)
                 0x0000000000001cad                write
  .text          0x0000000000001cd1       0x53 ../lib/libsys.a(brk.o)
@@ -195,7 +195,6 @@ Linker script and memory map
  .data          0x0000000000001d96        0x0 ../lib/libsys.a(time.o)
  .data          0x0000000000001d96        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000001d96        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000001d96        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000001d96        0x0 ../lib/libsys.a(fprintf.o)
  .data          0x0000000000001d96        0x0 ../lib/libsys.a(fflush.o)
  .data          0x0000000000001d96       0x46 ../lib/libsys.a(printdat.o)
@@ -208,6 +207,7 @@ Linker script and memory map
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(putc.o)
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(malloc.o)
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(bcopy.o)
+ .data          0x0000000000001ddc        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(brk.o)
  .data          0x0000000000001ddc        0x0 ../lib/libsys.a(strlen.o)
@@ -233,7 +233,6 @@ Linker script and memory map
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(time.o)
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(message.o)
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(fprintf.o)
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(fflush.o)
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(printdat.o)
@@ -242,6 +241,7 @@ Linker script and memory map
  .bss           0x0000000000001fc6        0x0 ../lib/libsys.a(putc.o)
  .bss           0x0000000000001fc6        0x4 ../lib/libsys.a(malloc.o)
  .bss           0x0000000000001fca        0x0 ../lib/libsys.a(bcopy.o)
+ .bss           0x0000000000001fca        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000001fca        0x0 ../lib/libsys.a(write.o)
  .bss           0x0000000000001fca        0x0 ../lib/libsys.a(brk.o)
  .bss           0x0000000000001fca        0x0 ../lib/libsys.a(strlen.o)

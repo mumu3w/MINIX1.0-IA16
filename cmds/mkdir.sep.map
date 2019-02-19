@@ -11,13 +11,13 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(unlink.o)     mkdir.o (unlink)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(signal.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
-../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     mkdir.o (strlen)
 ../lib/libsys.a(strncpy.o)    mkdir.o (strncpy)
 ../lib/libsys.a(stderr.o)     mkdir.o (std_err)
 ../lib/libsys.a(strcat.o)     mkdir.o (strcat)
 ../lib/libsys.a(strcpy.o)     mkdir.o (strcpy)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
 
 Allocating common symbols
@@ -99,27 +99,27 @@ Linker script and memory map
                 0x000000000000036b                callm1
                 0x00000000000003a2                len
                 0x00000000000003bb                callm3
- .text          0x0000000000000404       0x2f ../lib/libsys.a(catchsig.o)
-                0x0000000000000404                begsig
- .text          0x0000000000000433       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000433                send
-                0x0000000000000438                receive
-                0x000000000000043d                send_rec
-                0x000000000000043d                sendrec
- .text          0x000000000000044f       0x19 ../lib/libsys.a(strlen.o)
-                0x000000000000044f                strlen
- .text          0x0000000000000468       0x28 ../lib/libsys.a(strncpy.o)
-                0x0000000000000468                strncpy
- .text          0x0000000000000490       0x27 ../lib/libsys.a(stderr.o)
-                0x0000000000000490                std_err
- .text          0x00000000000004b7       0x35 ../lib/libsys.a(strcat.o)
-                0x00000000000004b7                strcat
- .text          0x00000000000004ec       0x2a ../lib/libsys.a(strcpy.o)
-                0x00000000000004ec                strcpy
- .text          0x0000000000000516       0x24 ../lib/libsys.a(write.o)
-                0x0000000000000516                write
+ .text          0x0000000000000404       0x19 ../lib/libsys.a(strlen.o)
+                0x0000000000000404                strlen
+ .text          0x000000000000041d       0x28 ../lib/libsys.a(strncpy.o)
+                0x000000000000041d                strncpy
+ .text          0x0000000000000445       0x27 ../lib/libsys.a(stderr.o)
+                0x0000000000000445                std_err
+ .text          0x000000000000046c       0x35 ../lib/libsys.a(strcat.o)
+                0x000000000000046c                strcat
+ .text          0x00000000000004a1       0x2a ../lib/libsys.a(strcpy.o)
+                0x00000000000004a1                strcpy
+ .text          0x00000000000004cb       0x31 ../lib/libsys.a(catchsig.o)
+                0x00000000000004cb                begsig
+ .text          0x00000000000004fc       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000004fc                send
+                0x0000000000000501                receive
+                0x0000000000000506                send_rec
+                0x0000000000000506                sendrec
+ .text          0x0000000000000518       0x24 ../lib/libsys.a(write.o)
+                0x0000000000000518                write
                 0x0000000000000540                . = ALIGN (0x10)
- *fill*         0x000000000000053a        0x6 
+ *fill*         0x000000000000053c        0x4 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x0000000000000560                _begindata = (_begintext + .)
 
@@ -140,13 +140,13 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(unlink.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strlen.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strncpy.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(stderr.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strcat.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strcpy.o)
  .data          0x0000000000000004        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strlen.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strncpy.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(stderr.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strcat.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strcpy.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(write.o)
  *(.rodata*)
  .rodata.str1.1
@@ -169,13 +169,13 @@ Linker script and memory map
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(unlink.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(message.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(call.o)
- .bss           0x000000000000006e        0x0 ../lib/libsys.a(catchsig.o)
- .bss           0x000000000000006e        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(strlen.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(strncpy.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(strcat.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(strcpy.o)
+ .bss           0x000000000000006e        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x000000000000006e        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000006e        0x0 ../lib/libsys.a(write.o)
  *(COMMON)
  COMMON         0x000000000000006e       0x20 ../lib/libsys.a(signal.o)

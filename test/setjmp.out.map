@@ -1,11 +1,11 @@
 Archive member included to satisfy reference by file (symbol)
 
+../lib/libsys.a(setjmp.o)     setjmp.o (setjmp)
 ../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
 ../lib/libsys.a(write.o)      setjmp.o (write)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(exit.o) (callm1)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     setjmp.o (strlen)
-../lib/libsys.a(setjmp.o)     setjmp.o (setjmp)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
 Allocating common symbols
@@ -51,25 +51,25 @@ Linker script and memory map
  .text          0x000000000000001e       0x50 setjmp.o
                 0x000000000000001e                test
                 0x000000000000003a                main
- .text          0x000000000000006e       0x1d ../lib/libsys.a(exit.o)
-                0x000000000000006e                exit
- .text          0x000000000000008b       0x24 ../lib/libsys.a(write.o)
-                0x000000000000008b                write
- .text          0x00000000000000af       0xc8 ../lib/libsys.a(call.o)
-                0x00000000000000af                callx
-                0x00000000000000de                callm1
-                0x0000000000000115                len
-                0x000000000000012e                callm3
- .text          0x0000000000000177       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000177                send
-                0x000000000000017c                receive
-                0x0000000000000181                send_rec
-                0x0000000000000181                sendrec
- .text          0x0000000000000193       0x19 ../lib/libsys.a(strlen.o)
-                0x0000000000000193                strlen
- .text          0x00000000000001ac       0x38 ../lib/libsys.a(setjmp.o)
-                0x00000000000001ac                setjmp
-                0x00000000000001be                longjmp
+ .text          0x000000000000006e       0x38 ../lib/libsys.a(setjmp.o)
+                0x000000000000006e                setjmp
+                0x0000000000000080                longjmp
+ .text          0x00000000000000a6       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000000a6                exit
+ .text          0x00000000000000c3       0x24 ../lib/libsys.a(write.o)
+                0x00000000000000c3                write
+ .text          0x00000000000000e7       0xc8 ../lib/libsys.a(call.o)
+                0x00000000000000e7                callx
+                0x0000000000000116                callm1
+                0x000000000000014d                len
+                0x0000000000000166                callm3
+ .text          0x00000000000001af       0x19 ../lib/libsys.a(strlen.o)
+                0x00000000000001af                strlen
+ .text          0x00000000000001c8       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000001c8                send
+                0x00000000000001cd                receive
+                0x00000000000001d2                send_rec
+                0x00000000000001d2                sendrec
  .text          0x00000000000001e4        0x0 ../lib/libsys.a(message.o)
                 0x00000000000001e4                _begdata = .
  *(.data)
@@ -80,12 +80,12 @@ Linker script and memory map
                 0x00000000000001e8                s3
                 0x00000000000001ea                s2
                 0x00000000000001ec                s1
+ .data          0x00000000000001ee        0x0 ../lib/libsys.a(setjmp.o)
  .data          0x00000000000001ee        0x0 ../lib/libsys.a(exit.o)
  .data          0x00000000000001ee        0x0 ../lib/libsys.a(write.o)
  .data          0x00000000000001ee        0x0 ../lib/libsys.a(call.o)
- .data          0x00000000000001ee        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x00000000000001ee        0x0 ../lib/libsys.a(strlen.o)
- .data          0x00000000000001ee        0x0 ../lib/libsys.a(setjmp.o)
+ .data          0x00000000000001ee        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x00000000000001ee        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
  .rodata.str1.1
@@ -96,12 +96,12 @@ Linker script and memory map
  *(.bss)
  .bss           0x0000000000000212        0x0 ../lib/crtso.o
  .bss           0x0000000000000212        0x0 setjmp.o
+ .bss           0x0000000000000212        0x0 ../lib/libsys.a(setjmp.o)
  .bss           0x0000000000000212        0x0 ../lib/libsys.a(exit.o)
  .bss           0x0000000000000212        0x0 ../lib/libsys.a(write.o)
  .bss           0x0000000000000212        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000212        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000212        0x0 ../lib/libsys.a(strlen.o)
- .bss           0x0000000000000212        0x0 ../lib/libsys.a(setjmp.o)
+ .bss           0x0000000000000212        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000212        0x0 ../lib/libsys.a(message.o)
  *(COMMON)
  COMMON         0x0000000000000212        0x6 setjmp.o

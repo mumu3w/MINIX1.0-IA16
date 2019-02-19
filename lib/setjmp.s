@@ -39,5 +39,5 @@ longjmp:
     .L1:
         mov 4(%bx), %bx
         pop %cx
-        jmp %bx
+        jmp *%bx
         

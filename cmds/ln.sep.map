@@ -5,11 +5,11 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
 ../lib/libsys.a(link.o)       ln.o (link)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(stat.o) (callm1)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     ln.o (strlen)
 ../lib/libsys.a(stderr.o)     ln.o (std_err)
 ../lib/libsys.a(strcat.o)     ln.o (strcat)
 ../lib/libsys.a(strcpy.o)     ln.o (strcpy)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
@@ -76,19 +76,19 @@ Linker script and memory map
                 0x0000000000000201                callm1
                 0x0000000000000238                len
                 0x0000000000000251                callm3
- .text          0x000000000000029a       0x1c ../lib/libsys.a(sendrec.o)
-                0x000000000000029a                send
-                0x000000000000029f                receive
-                0x00000000000002a4                send_rec
-                0x00000000000002a4                sendrec
- .text          0x00000000000002b6       0x19 ../lib/libsys.a(strlen.o)
-                0x00000000000002b6                strlen
- .text          0x00000000000002cf       0x27 ../lib/libsys.a(stderr.o)
-                0x00000000000002cf                std_err
- .text          0x00000000000002f6       0x35 ../lib/libsys.a(strcat.o)
-                0x00000000000002f6                strcat
- .text          0x000000000000032b       0x2a ../lib/libsys.a(strcpy.o)
-                0x000000000000032b                strcpy
+ .text          0x000000000000029a       0x19 ../lib/libsys.a(strlen.o)
+                0x000000000000029a                strlen
+ .text          0x00000000000002b3       0x27 ../lib/libsys.a(stderr.o)
+                0x00000000000002b3                std_err
+ .text          0x00000000000002da       0x35 ../lib/libsys.a(strcat.o)
+                0x00000000000002da                strcat
+ .text          0x000000000000030f       0x2a ../lib/libsys.a(strcpy.o)
+                0x000000000000030f                strcpy
+ .text          0x0000000000000339       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000339                send
+                0x000000000000033e                receive
+                0x0000000000000343                send_rec
+                0x0000000000000343                sendrec
  .text          0x0000000000000355       0x24 ../lib/libsys.a(write.o)
                 0x0000000000000355                write
  .text          0x0000000000000379        0x0 ../lib/libsys.a(message.o)
@@ -108,11 +108,11 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(exit.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(link.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strlen.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(stderr.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strcat.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strcpy.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
@@ -129,11 +129,11 @@ Linker script and memory map
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(exit.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(link.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000046        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(strlen.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(strcat.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(strcpy.o)
+ .bss           0x0000000000000046        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(write.o)
  .bss           0x0000000000000046        0x0 ../lib/libsys.a(message.o)
  *(COMMON)

@@ -7,7 +7,6 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(time.o)       date.o (time)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(stime.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(stime.o) (callx)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strlen.o)     date.o (strlen)
 ../lib/libsys.a(fprintf.o)    date.o (fprintf)
 ../lib/libsys.a(fflush.o)     ../lib/libsys.a(fprintf.o) (fflush)
@@ -17,6 +16,7 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(atoi.o)       date.o (atoi)
 ../lib/libsys.a(freopen.o)    date.o (freopen)
 ../lib/libsys.a(gets.o)       date.o (gets)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(fflush.o) (write)
 ../lib/libsys.a(fclose.o)     ../lib/libsys.a(freopen.o) (fclose)
 ../lib/libsys.a(getc.o)       ../lib/libsys.a(gets.o) (getc)
@@ -125,29 +125,29 @@ Linker script and memory map
                 0x000000000000088d                callm1
                 0x00000000000008c4                len
                 0x00000000000008dd                callm3
- .text          0x0000000000000926       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000926                send
-                0x000000000000092b                receive
-                0x0000000000000930                send_rec
-                0x0000000000000930                sendrec
- .text          0x0000000000000942       0x19 ../lib/libsys.a(strlen.o)
-                0x0000000000000942                strlen
- .text          0x000000000000095b       0x54 ../lib/libsys.a(fprintf.o)
-                0x000000000000095b                fprintf
-                0x0000000000000984                printf
- .text          0x00000000000009af       0x4d ../lib/libsys.a(fflush.o)
-                0x00000000000009af                fflush
- .text          0x00000000000009fc        0x0 ../lib/libsys.a(printdat.o)
- .text          0x00000000000009fc      0x4c7 ../lib/libsys.a(doprintf.o)
-                0x0000000000000aca                _doprintf
- .text          0x0000000000000ec3       0xb8 ../lib/libsys.a(putc.o)
-                0x0000000000000ec3                putc
- .text          0x0000000000000f7b       0xb5 ../lib/libsys.a(atoi.o)
-                0x0000000000000f7b                atoi
- .text          0x0000000000001030       0x25 ../lib/libsys.a(freopen.o)
-                0x0000000000001030                freopen
- .text          0x0000000000001055       0x58 ../lib/libsys.a(gets.o)
-                0x0000000000001055                gets
+ .text          0x0000000000000926       0x19 ../lib/libsys.a(strlen.o)
+                0x0000000000000926                strlen
+ .text          0x000000000000093f       0x54 ../lib/libsys.a(fprintf.o)
+                0x000000000000093f                fprintf
+                0x0000000000000968                printf
+ .text          0x0000000000000993       0x4d ../lib/libsys.a(fflush.o)
+                0x0000000000000993                fflush
+ .text          0x00000000000009e0        0x0 ../lib/libsys.a(printdat.o)
+ .text          0x00000000000009e0      0x4c7 ../lib/libsys.a(doprintf.o)
+                0x0000000000000aae                _doprintf
+ .text          0x0000000000000ea7       0xb8 ../lib/libsys.a(putc.o)
+                0x0000000000000ea7                putc
+ .text          0x0000000000000f5f       0xb5 ../lib/libsys.a(atoi.o)
+                0x0000000000000f5f                atoi
+ .text          0x0000000000001014       0x25 ../lib/libsys.a(freopen.o)
+                0x0000000000001014                freopen
+ .text          0x0000000000001039       0x58 ../lib/libsys.a(gets.o)
+                0x0000000000001039                gets
+ .text          0x0000000000001091       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000001091                send
+                0x0000000000001096                receive
+                0x000000000000109b                send_rec
+                0x000000000000109b                sendrec
  .text          0x00000000000010ad       0x24 ../lib/libsys.a(write.o)
                 0x00000000000010ad                write
  .text          0x00000000000010d1       0x6e ../lib/libsys.a(fclose.o)
@@ -197,7 +197,6 @@ Linker script and memory map
  .data          0x0000000000000042        0x0 ../lib/libsys.a(time.o)
  .data          0x0000000000000042        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000042        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000042        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000042        0x0 ../lib/libsys.a(strlen.o)
  .data          0x0000000000000042        0x0 ../lib/libsys.a(fprintf.o)
  .data          0x0000000000000042        0x0 ../lib/libsys.a(fflush.o)
@@ -211,6 +210,7 @@ Linker script and memory map
  .data          0x0000000000000088        0x0 ../lib/libsys.a(atoi.o)
  .data          0x0000000000000088        0x0 ../lib/libsys.a(freopen.o)
  .data          0x0000000000000088        0x0 ../lib/libsys.a(gets.o)
+ .data          0x0000000000000088        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000088        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000000088        0x0 ../lib/libsys.a(fclose.o)
  .data          0x0000000000000088        0x0 ../lib/libsys.a(getc.o)
@@ -241,7 +241,6 @@ Linker script and memory map
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(time.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(message.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(call.o)
- .bss           0x00000000000001ee        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(strlen.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(fprintf.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(fflush.o)
@@ -251,6 +250,7 @@ Linker script and memory map
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(atoi.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(freopen.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(gets.o)
+ .bss           0x00000000000001ee        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(write.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(fclose.o)
  .bss           0x00000000000001ee        0x0 ../lib/libsys.a(getc.o)

@@ -10,14 +10,14 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(unlink.o)     rmdir.o (unlink)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(signal.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
-../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strcmp.o)     rmdir.o (strcmp)
 ../lib/libsys.a(stderr.o)     rmdir.o (std_err)
 ../lib/libsys.a(prints.o)     rmdir.o (prints)
 ../lib/libsys.a(strcat.o)     rmdir.o (strcat)
 ../lib/libsys.a(strcpy.o)     rmdir.o (strcpy)
 ../lib/libsys.a(rindex.o)     rmdir.o (rindex)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(stderr.o) (write)
 
 Allocating common symbols
@@ -61,7 +61,7 @@ Linker script and memory map
 .hdr            0x0000000000000000       0x20
                 0x0000000000000000        0x4 LONG 0x4200301
                 0x0000000000000004        0x4 LONG 0x20
-                0x0000000000000008        0x4 LONG 0x7c0 SIZEOF (.text)
+                0x0000000000000008        0x4 LONG 0x7d0 SIZEOF (.text)
                 0x000000000000000c        0x4 LONG 0xcd SIZEOF (.data)
                 0x0000000000000010        0x4 LONG 0xbe SIZEOF (.bss)
                 0x0000000000000014        0x4 LONG 0x0 start
@@ -69,7 +69,7 @@ Linker script and memory map
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
-.text           0x0000000000000000      0x7c0 load address 0x0000000000000020
+.text           0x0000000000000000      0x7d0 load address 0x0000000000000020
  *(.text)
  .text          0x0000000000000000       0x1e ../lib/crtso.o
                 0x0000000000000000                start
@@ -100,32 +100,33 @@ Linker script and memory map
                 0x000000000000049f                callm1
                 0x00000000000004d6                len
                 0x00000000000004ef                callm3
- .text          0x0000000000000538       0x2f ../lib/libsys.a(catchsig.o)
-                0x0000000000000538                begsig
- .text          0x0000000000000567       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000567                send
-                0x000000000000056c                receive
-                0x0000000000000571                send_rec
-                0x0000000000000571                sendrec
- .text          0x0000000000000583       0x3b ../lib/libsys.a(strcmp.o)
-                0x0000000000000583                strcmp
- .text          0x00000000000005be       0x27 ../lib/libsys.a(stderr.o)
-                0x00000000000005be                std_err
- .text          0x00000000000005e5      0x139 ../lib/libsys.a(prints.o)
-                0x00000000000005fe                prints
- .text          0x000000000000071e       0x35 ../lib/libsys.a(strcat.o)
-                0x000000000000071e                strcat
- .text          0x0000000000000753       0x2a ../lib/libsys.a(strcpy.o)
-                0x0000000000000753                strcpy
- .text          0x000000000000077d       0x1f ../lib/libsys.a(rindex.o)
-                0x000000000000077d                rindex
- .text          0x000000000000079c       0x24 ../lib/libsys.a(write.o)
-                0x000000000000079c                write
-                0x00000000000007c0                . = ALIGN (0x10)
+ .text          0x0000000000000538       0x3b ../lib/libsys.a(strcmp.o)
+                0x0000000000000538                strcmp
+ .text          0x0000000000000573       0x27 ../lib/libsys.a(stderr.o)
+                0x0000000000000573                std_err
+ .text          0x000000000000059a      0x139 ../lib/libsys.a(prints.o)
+                0x00000000000005b3                prints
+ .text          0x00000000000006d3       0x35 ../lib/libsys.a(strcat.o)
+                0x00000000000006d3                strcat
+ .text          0x0000000000000708       0x2a ../lib/libsys.a(strcpy.o)
+                0x0000000000000708                strcpy
+ .text          0x0000000000000732       0x1f ../lib/libsys.a(rindex.o)
+                0x0000000000000732                rindex
+ .text          0x0000000000000751       0x31 ../lib/libsys.a(catchsig.o)
+                0x0000000000000751                begsig
+ .text          0x0000000000000782       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000782                send
+                0x0000000000000787                receive
+                0x000000000000078c                send_rec
+                0x000000000000078c                sendrec
+ .text          0x000000000000079e       0x24 ../lib/libsys.a(write.o)
+                0x000000000000079e                write
+                0x00000000000007d0                . = ALIGN (0x10)
+ *fill*         0x00000000000007c2        0xe 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
-                0x00000000000007e0                _begindata = (_begintext + .)
+                0x00000000000007f0                _begindata = (_begintext + .)
 
-.data           0x0000000000000000       0xcd load address 0x00000000000007e0
+.data           0x0000000000000000       0xcd load address 0x00000000000007f0
  *(.data)
  .data          0x0000000000000000        0x4 ../lib/crtso.o
                 0x0000000000000000                brksize
@@ -141,21 +142,21 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(unlink.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strcmp.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(stderr.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(prints.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strcat.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(strcpy.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(rindex.o)
  .data          0x0000000000000004        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strcmp.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(stderr.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(prints.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strcat.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(strcpy.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(rindex.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(write.o)
  *(.rodata*)
  .rodata.str1.1
                 0x0000000000000006       0xc7 rmdir.o
                 0x00000000000000cd                _begbss = .
 
-.bss            0x00000000000000ce       0xbe load address 0x00000000000008ae
+.bss            0x00000000000000ce       0xbe load address 0x00000000000008be
  *(.bss)
  .bss           0x00000000000000ce        0x0 ../lib/crtso.o
  .bss           0x00000000000000ce        0x2 rmdir.o
@@ -170,14 +171,14 @@ Linker script and memory map
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(unlink.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(message.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(call.o)
- .bss           0x00000000000000d0        0x0 ../lib/libsys.a(catchsig.o)
- .bss           0x00000000000000d0        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(strcmp.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(stderr.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(prints.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(strcat.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(strcpy.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(rindex.o)
+ .bss           0x00000000000000d0        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x00000000000000d0        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000000d0        0x0 ../lib/libsys.a(write.o)
  *(COMMON)
  COMMON         0x00000000000000d0       0x20 ../lib/libsys.a(signal.o)

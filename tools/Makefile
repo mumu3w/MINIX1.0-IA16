@@ -10,7 +10,8 @@ CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 #		-DDEBUG
 
 all : bootblok.bin build minixfsutils mkfs \
-		fsck.out init.out fsck.sep init.sep 
+		fsck.out init.out fsck.sep init.sep \
+		Image.out Image.sep ram.out ram.sep test.out
 
 Image.out : ../kernel/kernel.out ../mm/mm.out ../fs/fs.out fsck.out init.out bootblok.bin build
 	./build bootblok.bin ../kernel/kernel.out ../mm/mm.out \
@@ -34,15 +35,17 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /bin/chmem ../cmds/chmem.out
 	./minixfsutils ram.out put /bin/mount ../cmds/mount.out
 	./minixfsutils ram.out put /bin/mkdir ../cmds/mkdir.out
+	./minixfsutils ram.out put /bin/chmod ../cmds/chmod.out
+	./minixfsutils ram.out put /bin/mkfs ../cmds/mkfs.out
 	./minixfsutils ram.out put /etc/passwd ./passwd
 	./minixfsutils ram.out put /etc/rc ./rc
 	./minixfsutils ram.out put /etc/message ./message
 	./minixfsutils ram.out put /etc/ttys ./ttys
 	
 test.out : mkfs minixfsutils
-	dd if=/dev/zero of=test.out bs=1024 count=360
-	sync
-	./mkfs 720 test.out
+	#dd if=/dev/zero of=test.out bs=1024 count=360
+	#sync
+	#./mkfs 720 test.out
 	./minixfsutils test.out put /run ../test/run
 	./minixfsutils test.out put /hello ../test/hello.out
 	./minixfsutils test.out put /setjmp ../test/setjmp.out
@@ -78,7 +81,9 @@ ram.sep : mkfs minixfsutils
 	./minixfsutils ram.sep put /bin/mined ../cmds/mined.sep
 	./minixfsutils ram.sep put /bin/chmem ../cmds/chmem.sep
 	./minixfsutils ram.sep put /bin/mount ../cmds/mount.sep
-	./minixfsutils ram.out put /bin/mkdir ../cmds/mkdir.sep
+	./minixfsutils ram.sep put /bin/mkdir ../cmds/mkdir.sep
+	./minixfsutils ram.sep put /bin/chmod ../cmds/chmod.sep
+	./minixfsutils ram.sep put /bin/mkfs ../cmds/mkfs.sep
 	./minixfsutils ram.sep put /etc/passwd ./passwd
 	./minixfsutils ram.sep put /etc/rc ./rc
 	./minixfsutils ram.sep put /etc/message ./message

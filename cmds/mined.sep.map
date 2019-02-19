@@ -19,9 +19,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(unlink.o)     mined1.o (unlink)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(wait.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(ioctl.o) (callx)
+../lib/libsys.a(isatty.o)     mined1.o (isatty)
 ../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
 ../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
-../lib/libsys.a(isatty.o)     mined1.o (isatty)
 ../lib/libsys.a(fstat.o)      ../lib/libsys.a(isatty.o) (fstat)
 
 Allocating common symbols
@@ -265,19 +265,19 @@ Linker script and memory map
                 0x0000000000003dad                callm1
                 0x0000000000003de4                len
                 0x0000000000003dfd                callm3
- .text          0x0000000000003e46       0x2f ../lib/libsys.a(catchsig.o)
-                0x0000000000003e46                begsig
- .text          0x0000000000003e75       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000003e75                send
-                0x0000000000003e7a                receive
-                0x0000000000003e7f                send_rec
-                0x0000000000003e7f                sendrec
- .text          0x0000000000003e91       0x28 ../lib/libsys.a(isatty.o)
-                0x0000000000003e91                isatty
- .text          0x0000000000003eb9       0x22 ../lib/libsys.a(fstat.o)
-                0x0000000000003eb9                fstat
+ .text          0x0000000000003e46       0x28 ../lib/libsys.a(isatty.o)
+                0x0000000000003e46                isatty
+ .text          0x0000000000003e6e       0x31 ../lib/libsys.a(catchsig.o)
+                0x0000000000003e6e                begsig
+ .text          0x0000000000003e9f       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000003e9f                send
+                0x0000000000003ea4                receive
+                0x0000000000003ea9                send_rec
+                0x0000000000003ea9                sendrec
+ .text          0x0000000000003ebb       0x22 ../lib/libsys.a(fstat.o)
+                0x0000000000003ebb                fstat
                 0x0000000000003ee0                . = ALIGN (0x10)
- *fill*         0x0000000000003edb        0x5 
+ *fill*         0x0000000000003edd        0x3 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x0000000000003f00                _begindata = (_begintext + .)
 
@@ -316,9 +316,9 @@ Linker script and memory map
  .data          0x000000000000022a        0x0 ../lib/libsys.a(unlink.o)
  .data          0x000000000000022a        0x0 ../lib/libsys.a(message.o)
  .data          0x000000000000022a        0x0 ../lib/libsys.a(call.o)
+ .data          0x000000000000022a        0x0 ../lib/libsys.a(isatty.o)
  .data          0x000000000000022a        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x000000000000022c        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x000000000000022c        0x0 ../lib/libsys.a(isatty.o)
  .data          0x000000000000022c        0x0 ../lib/libsys.a(fstat.o)
  *(.rodata*)
  .rodata.str1.1
@@ -355,9 +355,9 @@ Linker script and memory map
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(unlink.o)
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(message.o)
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(call.o)
+ .bss           0x00000000000007cc        0x0 ../lib/libsys.a(isatty.o)
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(catchsig.o)
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x00000000000007cc        0x0 ../lib/libsys.a(isatty.o)
  .bss           0x00000000000007cc        0x0 ../lib/libsys.a(fstat.o)
  *(COMMON)
  COMMON         0x00000000000007cc      0xc2a mined1.o

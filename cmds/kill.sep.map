@@ -3,11 +3,11 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(kill.o)       kill.o (kill)
 ../lib/libsys.a(exit.o)       ../lib/crtso.o (exit)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(kill.o) (callm1)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(strcmp.o)     kill.o (strcmp)
 ../lib/libsys.a(prints.o)     kill.o (prints)
 ../lib/libsys.a(atoi.o)       kill.o (atoi)
 ../lib/libsys.a(itoa.o)       kill.o (itoa)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(write.o)      ../lib/libsys.a(prints.o) (write)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(call.o) (M)
 
@@ -67,19 +67,19 @@ Linker script and memory map
                 0x000000000000013d                callm1
                 0x0000000000000174                len
                 0x000000000000018d                callm3
- .text          0x00000000000001d6       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000001d6                send
-                0x00000000000001db                receive
-                0x00000000000001e0                send_rec
-                0x00000000000001e0                sendrec
- .text          0x00000000000001f2       0x3b ../lib/libsys.a(strcmp.o)
-                0x00000000000001f2                strcmp
- .text          0x000000000000022d      0x139 ../lib/libsys.a(prints.o)
-                0x0000000000000246                prints
- .text          0x0000000000000366       0xb5 ../lib/libsys.a(atoi.o)
-                0x0000000000000366                atoi
- .text          0x000000000000041b       0xd1 ../lib/libsys.a(itoa.o)
-                0x000000000000041b                itoa
+ .text          0x00000000000001d6       0x3b ../lib/libsys.a(strcmp.o)
+                0x00000000000001d6                strcmp
+ .text          0x0000000000000211      0x139 ../lib/libsys.a(prints.o)
+                0x000000000000022a                prints
+ .text          0x000000000000034a       0xb5 ../lib/libsys.a(atoi.o)
+                0x000000000000034a                atoi
+ .text          0x00000000000003ff       0xd1 ../lib/libsys.a(itoa.o)
+                0x00000000000003ff                itoa
+ .text          0x00000000000004d0       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000004d0                send
+                0x00000000000004d5                receive
+                0x00000000000004da                send_rec
+                0x00000000000004da                sendrec
  .text          0x00000000000004ec       0x24 ../lib/libsys.a(write.o)
                 0x00000000000004ec                write
  .text          0x0000000000000510        0x0 ../lib/libsys.a(message.o)
@@ -96,11 +96,11 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(kill.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(exit.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
- .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(strcmp.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(prints.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(atoi.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(itoa.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sendrec.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(write.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  *(.rodata*)
@@ -115,11 +115,11 @@ Linker script and memory map
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(kill.o)
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(exit.o)
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(call.o)
- .bss           0x0000000000000032        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(strcmp.o)
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(prints.o)
  .bss           0x0000000000000032        0x0 ../lib/libsys.a(atoi.o)
  .bss           0x0000000000000032        0xa ../lib/libsys.a(itoa.o)
+ .bss           0x000000000000003c        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x000000000000003c        0x0 ../lib/libsys.a(write.o)
  .bss           0x000000000000003c        0x0 ../lib/libsys.a(message.o)
  *(COMMON)

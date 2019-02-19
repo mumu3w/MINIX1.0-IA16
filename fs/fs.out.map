@@ -2,10 +2,10 @@ Archive member included to satisfy reference by file (symbol)
 
 ../lib/libsys.a(divmodsi3.o)  write.o (__divsi3)
 ../lib/libsys.a(ldivmod.o)    ../lib/libsys.a(divmodsi3.o) (ldivmod)
-../lib/libsys.a(printk.o)     cache.o (printk)
-../lib/libsys.a(syslib.o)     read.o (sys_copy)
 ../lib/libsys.a(getutils.o)   main.o (get_base)
 ../lib/libsys.a(sendrec.o)    pipe.o (send)
+../lib/libsys.a(printk.o)     cache.o (printk)
+../lib/libsys.a(syslib.o)     read.o (sys_copy)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(syslib.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(syslib.o) (callx)
 
@@ -206,28 +206,28 @@ Linker script and memory map
  .text          0x0000000000003cac       0xda ../lib/libsys.a(ldivmod.o)
                 0x0000000000003cac                ldivmod
                 0x0000000000003cc8                ludivmod
- .text          0x0000000000003d86      0x347 ../lib/libsys.a(printk.o)
-                0x0000000000003d86                printk
- .text          0x00000000000040cd      0x19a ../lib/libsys.a(syslib.o)
-                0x00000000000040cd                sys_xit
-                0x00000000000040ef                sys_getsp
-                0x0000000000004117                sys_sig
-                0x000000000000413e                sys_fork
-                0x0000000000004162                sys_exec
-                0x0000000000004184                sys_newmap
-                0x00000000000041a6                sys_copy
-                0x00000000000041d4                sys_times
-                0x000000000000422c                sys_abort
-                0x0000000000004244                tell_fs
- .text          0x0000000000004267       0x2d ../lib/libsys.a(getutils.o)
-                0x0000000000004267                get_base
-                0x000000000000426a                get_size
-                0x000000000000426e                get_tot_mem
- .text          0x0000000000004294       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000004294                send
-                0x0000000000004299                receive
-                0x000000000000429e                send_rec
-                0x000000000000429e                sendrec
+ .text          0x0000000000003d86       0x2d ../lib/libsys.a(getutils.o)
+                0x0000000000003d86                get_base
+                0x0000000000003d89                get_size
+                0x0000000000003d8d                get_tot_mem
+ .text          0x0000000000003db3       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000003db3                send
+                0x0000000000003db8                receive
+                0x0000000000003dbd                send_rec
+                0x0000000000003dbd                sendrec
+ .text          0x0000000000003dcf      0x347 ../lib/libsys.a(printk.o)
+                0x0000000000003dcf                printk
+ .text          0x0000000000004116      0x19a ../lib/libsys.a(syslib.o)
+                0x0000000000004116                sys_xit
+                0x0000000000004138                sys_getsp
+                0x0000000000004160                sys_sig
+                0x0000000000004187                sys_fork
+                0x00000000000041ab                sys_exec
+                0x00000000000041cd                sys_newmap
+                0x00000000000041ef                sys_copy
+                0x000000000000421d                sys_times
+                0x0000000000004275                sys_abort
+                0x000000000000428d                tell_fs
  .text          0x00000000000042b0        0x0 ../lib/libsys.a(message.o)
  .text          0x00000000000042b0       0xc8 ../lib/libsys.a(call.o)
                 0x00000000000042b0                callx
@@ -268,10 +268,10 @@ Linker script and memory map
  .data          0x0000000000004452        0x0 write.o
  .data          0x0000000000004452        0x0 ../lib/libsys.a(divmodsi3.o)
  .data          0x0000000000004452        0x0 ../lib/libsys.a(ldivmod.o)
- .data          0x0000000000004452        0x0 ../lib/libsys.a(printk.o)
- .data          0x0000000000004452        0x0 ../lib/libsys.a(syslib.o)
  .data          0x0000000000004452        0x0 ../lib/libsys.a(getutils.o)
  .data          0x0000000000004452        0x0 ../lib/libsys.a(sendrec.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(printk.o)
+ .data          0x0000000000004452        0x0 ../lib/libsys.a(syslib.o)
  .data          0x0000000000004452        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000004452        0x0 ../lib/libsys.a(call.o)
  *(.rodata*)
@@ -324,10 +324,10 @@ Linker script and memory map
  .bss           0x000000000000494c        0x0 write.o
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(divmodsi3.o)
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(ldivmod.o)
- .bss           0x000000000000494c        0x0 ../lib/libsys.a(printk.o)
- .bss           0x000000000000494c        0x0 ../lib/libsys.a(syslib.o)
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(getutils.o)
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(sendrec.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(printk.o)
+ .bss           0x000000000000494c        0x0 ../lib/libsys.a(syslib.o)
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(message.o)
  .bss           0x000000000000494c        0x0 ../lib/libsys.a(call.o)
  *(COMMON)

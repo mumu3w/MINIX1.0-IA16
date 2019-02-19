@@ -1,5 +1,6 @@
 Archive member included to satisfy reference by file (symbol)
 
+../lib/libsys.a(setjmp.o)     sh1.o (setjmp)
 ../lib/libsys.a(chdir.o)      sh3.o (chdir)
 ../lib/libsys.a(close.o)      sh1.o (close)
 ../lib/libsys.a(exec.o)       sh3.o (execve)
@@ -23,15 +24,14 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(unlink.o)     sh5.o (unlink)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(wait.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(lseek.o) (callx)
-../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
-../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(abort.o)      sh1.o (abort)
 ../lib/libsys.a(strlen.o)     sh1.o (strlen)
 ../lib/libsys.a(strcmp.o)     sh1.o (strcmp)
 ../lib/libsys.a(strncpy.o)    sh4.o (strncpy)
-../lib/libsys.a(setjmp.o)     sh1.o (setjmp)
 ../lib/libsys.a(isatty.o)     sh1.o (isatty)
 ../lib/libsys.a(geteuid.o)    sh1.o (geteuid)
+../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
+../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
 ../lib/libsys.a(fstat.o)      ../lib/libsys.a(isatty.o) (fstat)
 
 Allocating common symbols
@@ -263,85 +263,85 @@ Linker script and memory map
                 0x0000000000004e68                scraphere
                 0x0000000000004ec5                memcpy
  .text          0x0000000000004ee9        0x0 sh6.o
- .text          0x0000000000004ee9       0x1c ../lib/libsys.a(chdir.o)
-                0x0000000000004ee9                chdir
- .text          0x0000000000004f05       0x20 ../lib/libsys.a(close.o)
-                0x0000000000004f05                close
- .text          0x0000000000004f25      0x1f9 ../lib/libsys.a(exec.o)
-                0x0000000000004f25                execve
-                0x000000000000508b                execl
-                0x00000000000050a3                execle
-                0x00000000000050ca                execv
-                0x00000000000050e1                execn
- .text          0x000000000000511e       0x24 ../lib/libsys.a(read.o)
-                0x000000000000511e                read
- .text          0x0000000000005142       0x29 ../lib/libsys.a(stat.o)
-                0x0000000000005142                stat
- .text          0x000000000000516b       0x1b ../lib/libsys.a(creat.o)
-                0x000000000000516b                creat
- .text          0x0000000000005186       0x1d ../lib/libsys.a(exit.o)
-                0x0000000000005186                exit
- .text          0x00000000000051a3       0x15 ../lib/libsys.a(getpid.o)
-                0x00000000000051a3                getpid
- .text          0x00000000000051b8       0x1b ../lib/libsys.a(open.o)
-                0x00000000000051b8                open
- .text          0x00000000000051d3       0x20 ../lib/libsys.a(umask.o)
-                0x00000000000051d3                umask
- .text          0x00000000000051f3       0x24 ../lib/libsys.a(wait.o)
-                0x00000000000051f3                wait
- .text          0x0000000000005217       0x26 ../lib/libsys.a(dup2.o)
-                0x0000000000005217                dup2
- .text          0x000000000000523d       0x15 ../lib/libsys.a(fork.o)
-                0x000000000000523d                fork
- .text          0x0000000000005252       0x3e ../lib/libsys.a(lseek.o)
-                0x0000000000005252                lseek
- .text          0x0000000000005290       0x18 ../lib/libsys.a(sync.o)
-                0x0000000000005290                sync
- .text          0x00000000000052a8       0x24 ../lib/libsys.a(write.o)
-                0x00000000000052a8                write
- .text          0x00000000000052cc       0x53 ../lib/libsys.a(brk.o)
-                0x00000000000052cc                brk
-                0x00000000000052fd                sbrk
- .text          0x000000000000531f       0x20 ../lib/libsys.a(dup.o)
-                0x000000000000531f                dup
- .text          0x000000000000533f       0x35 ../lib/libsys.a(pipe.o)
-                0x000000000000533f                pipe
- .text          0x0000000000005374       0x42 ../lib/libsys.a(signal.o)
-                0x0000000000005374                signal
- .text          0x00000000000053b6       0x1c ../lib/libsys.a(unlink.o)
-                0x00000000000053b6                unlink
- .text          0x00000000000053d2        0x0 ../lib/libsys.a(message.o)
- .text          0x00000000000053d2       0xc8 ../lib/libsys.a(call.o)
-                0x00000000000053d2                callx
-                0x0000000000005401                callm1
-                0x0000000000005438                len
-                0x0000000000005451                callm3
- .text          0x000000000000549a       0x2f ../lib/libsys.a(catchsig.o)
-                0x000000000000549a                begsig
- .text          0x00000000000054c9       0x1c ../lib/libsys.a(sendrec.o)
-                0x00000000000054c9                send
-                0x00000000000054ce                receive
-                0x00000000000054d3                send_rec
-                0x00000000000054d3                sendrec
- .text          0x00000000000054e5        0xb ../lib/libsys.a(abort.o)
-                0x00000000000054e5                abort
- .text          0x00000000000054f0       0x19 ../lib/libsys.a(strlen.o)
-                0x00000000000054f0                strlen
- .text          0x0000000000005509       0x3b ../lib/libsys.a(strcmp.o)
-                0x0000000000005509                strcmp
- .text          0x0000000000005544       0x28 ../lib/libsys.a(strncpy.o)
-                0x0000000000005544                strncpy
- .text          0x000000000000556c       0x38 ../lib/libsys.a(setjmp.o)
-                0x000000000000556c                setjmp
-                0x000000000000557e                longjmp
- .text          0x00000000000055a4       0x28 ../lib/libsys.a(isatty.o)
-                0x00000000000055a4                isatty
- .text          0x00000000000055cc       0x1c ../lib/libsys.a(geteuid.o)
-                0x00000000000055cc                geteuid
- .text          0x00000000000055e8       0x22 ../lib/libsys.a(fstat.o)
-                0x00000000000055e8                fstat
+ .text          0x0000000000004ee9       0x38 ../lib/libsys.a(setjmp.o)
+                0x0000000000004ee9                setjmp
+                0x0000000000004efb                longjmp
+ .text          0x0000000000004f21       0x1c ../lib/libsys.a(chdir.o)
+                0x0000000000004f21                chdir
+ .text          0x0000000000004f3d       0x20 ../lib/libsys.a(close.o)
+                0x0000000000004f3d                close
+ .text          0x0000000000004f5d      0x1f9 ../lib/libsys.a(exec.o)
+                0x0000000000004f5d                execve
+                0x00000000000050c3                execl
+                0x00000000000050db                execle
+                0x0000000000005102                execv
+                0x0000000000005119                execn
+ .text          0x0000000000005156       0x24 ../lib/libsys.a(read.o)
+                0x0000000000005156                read
+ .text          0x000000000000517a       0x29 ../lib/libsys.a(stat.o)
+                0x000000000000517a                stat
+ .text          0x00000000000051a3       0x1b ../lib/libsys.a(creat.o)
+                0x00000000000051a3                creat
+ .text          0x00000000000051be       0x1d ../lib/libsys.a(exit.o)
+                0x00000000000051be                exit
+ .text          0x00000000000051db       0x15 ../lib/libsys.a(getpid.o)
+                0x00000000000051db                getpid
+ .text          0x00000000000051f0       0x1b ../lib/libsys.a(open.o)
+                0x00000000000051f0                open
+ .text          0x000000000000520b       0x20 ../lib/libsys.a(umask.o)
+                0x000000000000520b                umask
+ .text          0x000000000000522b       0x24 ../lib/libsys.a(wait.o)
+                0x000000000000522b                wait
+ .text          0x000000000000524f       0x26 ../lib/libsys.a(dup2.o)
+                0x000000000000524f                dup2
+ .text          0x0000000000005275       0x15 ../lib/libsys.a(fork.o)
+                0x0000000000005275                fork
+ .text          0x000000000000528a       0x3e ../lib/libsys.a(lseek.o)
+                0x000000000000528a                lseek
+ .text          0x00000000000052c8       0x18 ../lib/libsys.a(sync.o)
+                0x00000000000052c8                sync
+ .text          0x00000000000052e0       0x24 ../lib/libsys.a(write.o)
+                0x00000000000052e0                write
+ .text          0x0000000000005304       0x53 ../lib/libsys.a(brk.o)
+                0x0000000000005304                brk
+                0x0000000000005335                sbrk
+ .text          0x0000000000005357       0x20 ../lib/libsys.a(dup.o)
+                0x0000000000005357                dup
+ .text          0x0000000000005377       0x35 ../lib/libsys.a(pipe.o)
+                0x0000000000005377                pipe
+ .text          0x00000000000053ac       0x42 ../lib/libsys.a(signal.o)
+                0x00000000000053ac                signal
+ .text          0x00000000000053ee       0x1c ../lib/libsys.a(unlink.o)
+                0x00000000000053ee                unlink
+ .text          0x000000000000540a        0x0 ../lib/libsys.a(message.o)
+ .text          0x000000000000540a       0xc8 ../lib/libsys.a(call.o)
+                0x000000000000540a                callx
+                0x0000000000005439                callm1
+                0x0000000000005470                len
+                0x0000000000005489                callm3
+ .text          0x00000000000054d2        0xb ../lib/libsys.a(abort.o)
+                0x00000000000054d2                abort
+ .text          0x00000000000054dd       0x19 ../lib/libsys.a(strlen.o)
+                0x00000000000054dd                strlen
+ .text          0x00000000000054f6       0x3b ../lib/libsys.a(strcmp.o)
+                0x00000000000054f6                strcmp
+ .text          0x0000000000005531       0x28 ../lib/libsys.a(strncpy.o)
+                0x0000000000005531                strncpy
+ .text          0x0000000000005559       0x28 ../lib/libsys.a(isatty.o)
+                0x0000000000005559                isatty
+ .text          0x0000000000005581       0x1c ../lib/libsys.a(geteuid.o)
+                0x0000000000005581                geteuid
+ .text          0x000000000000559d       0x31 ../lib/libsys.a(catchsig.o)
+                0x000000000000559d                begsig
+ .text          0x00000000000055ce       0x1c ../lib/libsys.a(sendrec.o)
+                0x00000000000055ce                send
+                0x00000000000055d3                receive
+                0x00000000000055d8                send_rec
+                0x00000000000055d8                sendrec
+ .text          0x00000000000055ea       0x22 ../lib/libsys.a(fstat.o)
+                0x00000000000055ea                fstat
                 0x0000000000005610                . = ALIGN (0x10)
- *fill*         0x000000000000560a        0x6 
+ *fill*         0x000000000000560c        0x4 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x0000000000005630                _begindata = (_begintext + .)
 
@@ -365,6 +365,7 @@ Linker script and memory map
  .data          0x00000000000000ce        0x4 sh4.o
  .data          0x00000000000000d2        0x0 sh5.o
  .data          0x00000000000000d2        0x0 sh6.o
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(setjmp.o)
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(chdir.o)
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(close.o)
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(exec.o)
@@ -388,15 +389,14 @@ Linker script and memory map
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(unlink.o)
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(message.o)
  .data          0x00000000000000d2        0x0 ../lib/libsys.a(call.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(abort.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(strlen.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(strcmp.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(strncpy.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(isatty.o)
+ .data          0x00000000000000d2        0x0 ../lib/libsys.a(geteuid.o)
  .data          0x00000000000000d2        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x00000000000000d4        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(abort.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(strlen.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(strcmp.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(strncpy.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(setjmp.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(isatty.o)
- .data          0x00000000000000d4        0x0 ../lib/libsys.a(geteuid.o)
  .data          0x00000000000000d4        0x0 ../lib/libsys.a(fstat.o)
  *(.rodata*)
  .rodata.str1.1
@@ -424,6 +424,7 @@ Linker script and memory map
  .bss           0x00000000000007e0        0x4 sh4.o
  .bss           0x00000000000007e4        0x4 sh5.o
  .bss           0x00000000000007e8        0x0 sh6.o
+ .bss           0x00000000000007e8        0x0 ../lib/libsys.a(setjmp.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(chdir.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(close.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(exec.o)
@@ -447,15 +448,14 @@ Linker script and memory map
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(unlink.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(message.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(call.o)
- .bss           0x00000000000007e8        0x0 ../lib/libsys.a(catchsig.o)
- .bss           0x00000000000007e8        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(abort.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(strlen.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(strcmp.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(strncpy.o)
- .bss           0x00000000000007e8        0x0 ../lib/libsys.a(setjmp.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(isatty.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(geteuid.o)
+ .bss           0x00000000000007e8        0x0 ../lib/libsys.a(catchsig.o)
+ .bss           0x00000000000007e8        0x0 ../lib/libsys.a(sendrec.o)
  .bss           0x00000000000007e8        0x0 ../lib/libsys.a(fstat.o)
  *(COMMON)
  COMMON         0x00000000000007e8       0x1e sh1.o

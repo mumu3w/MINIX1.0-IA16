@@ -18,14 +18,15 @@ begsig:
         push %ds
         push %es
 
-        mov %sp, %bp
-        mov 18(%bp), %bx
+        mov %sp, %bx
+        mov 18(%bx), %bx
+        mov %bx, %ax
         dec %bx
         add %bx, %bx
         mov vectab(%bx), %bx
         pushw M+MTYPE
         push %ax
-        call %bx
+        call *%bx
 
         pop %ax
         popw M+MTYPE

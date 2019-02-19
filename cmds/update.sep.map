@@ -7,9 +7,9 @@ Archive member included to satisfy reference by file (symbol)
 ../lib/libsys.a(signal.o)     update.o (signal)
 ../lib/libsys.a(message.o)    ../lib/libsys.a(signal.o) (M)
 ../lib/libsys.a(call.o)       ../lib/libsys.a(signal.o) (callx)
+../lib/libsys.a(sleep.o)      update.o (sleep)
 ../lib/libsys.a(catchsig.o)   ../lib/libsys.a(signal.o) (begsig)
 ../lib/libsys.a(sendrec.o)    ../lib/libsys.a(call.o) (sendrec)
-../lib/libsys.a(sleep.o)      update.o (sleep)
 ../lib/libsys.a(alarm.o)      ../lib/libsys.a(sleep.o) (alarm)
 ../lib/libsys.a(pause.o)      ../lib/libsys.a(sleep.o) (pause)
 
@@ -75,21 +75,21 @@ Linker script and memory map
                 0x0000000000000150                callm1
                 0x0000000000000187                len
                 0x00000000000001a0                callm3
- .text          0x00000000000001e9       0x2f ../lib/libsys.a(catchsig.o)
-                0x00000000000001e9                begsig
- .text          0x0000000000000218       0x1c ../lib/libsys.a(sendrec.o)
-                0x0000000000000218                send
-                0x000000000000021d                receive
-                0x0000000000000222                send_rec
-                0x0000000000000222                sendrec
- .text          0x0000000000000234       0x1f ../lib/libsys.a(sleep.o)
-                0x0000000000000235                sleep
- .text          0x0000000000000253       0x1d ../lib/libsys.a(alarm.o)
-                0x0000000000000253                alarm
- .text          0x0000000000000270       0x15 ../lib/libsys.a(pause.o)
-                0x0000000000000270                pause
+ .text          0x00000000000001e9       0x1f ../lib/libsys.a(sleep.o)
+                0x00000000000001ea                sleep
+ .text          0x0000000000000208       0x31 ../lib/libsys.a(catchsig.o)
+                0x0000000000000208                begsig
+ .text          0x0000000000000239       0x1c ../lib/libsys.a(sendrec.o)
+                0x0000000000000239                send
+                0x000000000000023e                receive
+                0x0000000000000243                send_rec
+                0x0000000000000243                sendrec
+ .text          0x0000000000000255       0x1d ../lib/libsys.a(alarm.o)
+                0x0000000000000255                alarm
+ .text          0x0000000000000272       0x15 ../lib/libsys.a(pause.o)
+                0x0000000000000272                pause
                 0x0000000000000290                . = ALIGN (0x10)
- *fill*         0x0000000000000285        0xb 
+ *fill*         0x0000000000000287        0x9 
                 0x0000000000000001                ASSERT ((. <= 0xfff8), Error: text too large for a .sep file.)
                 0x00000000000002b0                _begindata = (_begintext + .)
 
@@ -106,9 +106,9 @@ Linker script and memory map
  .data          0x0000000000000004        0x0 ../lib/libsys.a(signal.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(message.o)
  .data          0x0000000000000004        0x0 ../lib/libsys.a(call.o)
+ .data          0x0000000000000004        0x0 ../lib/libsys.a(sleep.o)
  .data          0x0000000000000004        0x2 ../lib/libsys.a(catchsig.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(sendrec.o)
- .data          0x0000000000000006        0x0 ../lib/libsys.a(sleep.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(alarm.o)
  .data          0x0000000000000006        0x0 ../lib/libsys.a(pause.o)
  *(.rodata*)
@@ -127,9 +127,9 @@ Linker script and memory map
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(signal.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(message.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(call.o)
+ .bss           0x000000000000001a        0x0 ../lib/libsys.a(sleep.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(catchsig.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(sendrec.o)
- .bss           0x000000000000001a        0x0 ../lib/libsys.a(sleep.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(alarm.o)
  .bss           0x000000000000001a        0x0 ../lib/libsys.a(pause.o)
  *(COMMON)
