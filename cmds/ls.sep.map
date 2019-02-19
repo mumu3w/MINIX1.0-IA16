@@ -84,7 +84,7 @@ Linker script and memory map
                 0x000000000000000c        0x4 LONG 0x28a SIZEOF (.data)
                 0x0000000000000010        0x4 LONG 0x464e SIZEOF (.bss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x5cd8 ((SIZEOF (.data) + SIZEOF (.bss)) + 0x1400)
+                0x0000000000000018        0x4 LONG 0x68d8 ((((SIZEOF (.data) + SIZEOF (.bss)) + 0x2000) / 0x2) * 0x2)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
@@ -270,11 +270,12 @@ Linker script and memory map
  COMMON         0x00000000000040d8      0x800 ../lib/libsys.a(printdat.o)
                 0x00000000000040d8                __stdin
                 0x00000000000044d8                __stdout
+                0x00000000000048d8                . = ALIGN (0x2)
                 0x00000000000048d8                _endbss = .
 
 /DISCARD/
  *(.comment)
-                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: data too large for a .sep file.)
+                0x0000000000000001                ASSERT ((. <= 0xdff8), Error: data too large for a .sep file.)
 LOAD ../lib/crtso.o
 LOAD ls.o
 LOAD ../lib/libsys.a

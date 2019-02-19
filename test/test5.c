@@ -6,7 +6,7 @@ int errct;
 
 int func1(), func10(), func8(), funcalrm(), func11();
 int childsigs, parsigs, alarms;
-int zero[1024];
+  int zero[1024];
 
 main()
 {

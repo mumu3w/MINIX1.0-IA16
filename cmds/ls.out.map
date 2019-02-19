@@ -84,7 +84,7 @@ Linker script and memory map
                 0x000000000000000c        0x4 LONG 0x289 (_begbss - _begdata)
                 0x0000000000000010        0x4 LONG 0x464e (_endbss - _begbss)
                 0x0000000000000014        0x4 LONG 0x0 start
-                0x0000000000000018        0x4 LONG 0x7a14 ((_endbss - _begtext) + 0x1400)
+                0x0000000000000018        0x4 LONG 0x8614 ((((_endbss - _begtext) + 0x2000) / 0x2) * 0x2)
                 0x000000000000001c        0x4 LONG 0x0
                 0x0000000000000020                _begintext = ALIGN (0x20)
 
@@ -267,11 +267,12 @@ Linker script and memory map
  COMMON         0x0000000000005e14      0x800 ../lib/libsys.a(printdat.o)
                 0x0000000000005e14                __stdin
                 0x0000000000006214                __stdout
+                0x0000000000006614                . = ALIGN (0x2)
                 0x0000000000006614                _endbss = .
 
 /DISCARD/
  *(.comment)
-                0x0000000000000001                ASSERT ((. <= 0xebf8), Error: too large for a .out file.)
+                0x0000000000000001                ASSERT ((. <= 0xdff8), Error: too large for a .out file.)
 LOAD ../lib/crtso.o
 LOAD ls.o
 LOAD ../lib/libsys.a

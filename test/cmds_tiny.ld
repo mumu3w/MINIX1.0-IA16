@@ -16,7 +16,7 @@ SECTIONS {
 		LONG (_begbss - _begdata);	/* size of data-segment in bytes */
 		LONG (_endbss - _begbss);	/* size of bss (stack) segment   */
 		LONG (start);					/* entry point */
-		LONG (_endbss - _begtext + 5120);/* total memory allocated */
+		LONG ((_endbss - _begtext + 8192) / 2 * 2);/* total memory allocated */
 		LONG (0);							/* symbol table size */
 		}
     
@@ -24,8 +24,8 @@ SECTIONS {
     .text 0 : AT(_begintext) { _begtext = .; *(.text) 
                               _begdata = .; *(.data) *(.rodata*) }
     _begbss = .; 
-    .bss : { *(.bss) *(COMMON) } 
+    .bss : { *(.bss) *(COMMON); . = ALIGN(0x2); } 
     _endbss = .;
     /DISCARD/ : { *(.comment) }
-    ASSERT(. <= (0xfff8 - 5120), "Error: too large for a .out file.")
+    ASSERT(. <= (0xfff8 - 8192), "Error: too large for a .out file.")
 }

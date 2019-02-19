@@ -23,7 +23,7 @@ data_org:
 .section .data
 .global brksize
 brksize:
-        .word _endbss
+        .word _endbss + 2
 .global sp_limit
 sp_limit:
         .word 0

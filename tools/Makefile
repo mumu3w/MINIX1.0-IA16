@@ -21,7 +21,7 @@ Image.sep : ../kernel/kernel.sep ../mm/mm.sep ../fs/fs.sep fsck.sep init.sep boo
 	./build bootblok.bin ../kernel/kernel.sep ../mm/mm.sep \
 			../fs/fs.sep init.sep fsck.sep Image.sep
 			
-ram.out : mkfs minixfsutils
+ram.out : mkfs minixfsutils 
 	dd if=/dev/zero of=ram.out bs=1024 count=360
 	sync
 	./mkfs 360 ram.out
@@ -42,10 +42,12 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /etc/message ./message
 	./minixfsutils ram.out put /etc/ttys ./ttys
 	
-test.out : mkfs minixfsutils
+test.out : mkfs minixfsutils ../test/*.*
 	#dd if=/dev/zero of=test.out bs=1024 count=360
 	#sync
 	#./mkfs 720 test.out
+	rm -fr test.out
+	unzip test.zip
 	./minixfsutils test.out put /run ../test/run
 	./minixfsutils test.out put /hello ../test/hello.out
 	./minixfsutils test.out put /setjmp ../test/setjmp.out

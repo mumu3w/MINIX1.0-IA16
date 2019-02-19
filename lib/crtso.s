@@ -30,7 +30,7 @@ start:
 .section .data
 .global brksize
 brksize:
-        .word _endbss
+        .word _endbss + 2
 .global environ
 environ:
         .word 0

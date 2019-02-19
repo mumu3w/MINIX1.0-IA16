@@ -63,21 +63,21 @@ segment .text
 ;===========================================================================
 start:
 Minix:				; this is the entry point for the Minix	kernel.
-	jmp short M0		; skip over the	next word(s)
-	nop			; build	writes the ds value at text address 4
+    jmp short M0	; skip over the	next word(s)
+    nop				; build	writes the ds value at text address 4
         nop
 ker_ds:	DW  0		; this word will contain kernel's ds value
-				; and it forces	relocation for dos2out
+                    ; and it forces	relocation for dos2out
      M0:cli			; disable interrupts
-	mov ax,cs		; set up segment registers
-	mov ds,ax		; set up ds
-	mov ax,[cs:ker_ds]	; build	has loaded this	word with ds value
-	mov ds,ax		; ds now contains proper value
-	mov ss,ax		; ss now contains proper value
-	mov [scan_code],bx     ; save scan code for '=' key from bootstrap
-	mov sp,k_stack	        ; set sp to point to the top of	the
-	add sp,K_STACK_BYTES    ; kernel stack
-	call main		; start	the main program of Minix
+    mov ax,cs		; set up segment registers
+    mov ds,ax		; set up ds
+    mov ax,[cs:ker_ds]	; build	has loaded this	word with ds value
+    mov ds,ax		; ds now contains proper value
+    mov ss,ax		; ss now contains proper value
+    mov [scan_code],bx		; save scan code for '=' key from bootstrap
+    mov sp,k_stack			; set sp to point to the top of	the
+    add sp,K_STACK_BYTES	; kernel stack
+    call main			; start	the main program of Minix
 
      M1:jmp M1			; this should never be executed
 
@@ -85,171 +85,171 @@ ker_ds:	DW  0		; this word will contain kernel's ds value
 ;===========================================================================
 ;				s_call
 ;===========================================================================
-s_call:                        ; System calls are vectored here.
-	call save		; save the machine state
-	mov bp,[proc_ptr]	; use bp to access sys call parameters
-	push word[bp+2]		; push(pointer to user message)	(was bx)
-	push word[bp]		; push(src/dest) (was ax)
-	push word[cur_proc] 	; push caller
-	push word[bp+4]		; push(SEND/RECEIVE/BOTH) (was cx)
-	call sys_call		; sys_call(function, caller, src_dest, m_ptr)
-	jmp restart		; jump to code to restart proc/task running
+s_call:					; System calls are vectored here.
+    call save			; save the machine state
+    mov bp,[proc_ptr]	; use bp to access sys call parameters
+    push word[bp+2]		; push(pointer to user message)	(was bx)
+    push word[bp]		; push(src/dest) (was ax)
+    push word[cur_proc]	; push caller
+    push word[bp+4]		; push(SEND/RECEIVE/BOTH) (was cx)
+    call sys_call		; sys_call(function, caller, src_dest, m_ptr)
+    jmp restart			; jump to code to restart proc/task running
 
 
 ;===========================================================================
 ;				tty_int
 ;===========================================================================
-tty_int:			; Interrupt routine for	terminal input.
-	call save		; save the machine state
-	call keyboard		; process a _keyboard interrupt
-	jmp  restart		; continue execution
+tty_int:				; Interrupt routine for	terminal input.
+    call save			; save the machine state
+    call keyboard		; process a _keyboard interrupt
+    jmp  restart		; continue execution
 
 
 ;===========================================================================
 ;				lpr_int
 ;===========================================================================
-lpr_int:			; Interrupt routine for	terminal input.
-	call save		; save the machine state
-	call pr_char		; process a line printer interrupt
-	jmp  restart		; continue execution
+lpr_int:				; Interrupt routine for	terminal input.
+    call save			; save the machine state
+    call pr_char		; process a line printer interrupt
+    jmp  restart		; continue execution
 
 
 ;===========================================================================
 ;				disk_int
 ;===========================================================================
-disk_int:			; Interrupt routine for	the floppy disk.
-	call save               ; save the machine state
-	mov  word[int_mess+2],DISKINT          ; build	message	for disk task
-	mov  ax,int_mess	; prepare to call interrupt[FLOPPY, &intmess]
-	push ax                 ; push second parameter
-	mov  ax,FLOPPY		; prepare to push first	parameter
-	push ax			; push first parameter
-	call interrupt		; this is the call
-	jmp  restart		; continue execution
+disk_int:				; Interrupt routine for	the floppy disk.
+    call save			; save the machine state
+    mov  word[int_mess+2],DISKINT	; build	message	for disk task
+    mov  ax,int_mess	; prepare to call interrupt[FLOPPY, &intmess]
+    push ax				; push second parameter
+    mov  ax,FLOPPY		; prepare to push first	parameter
+    push ax				; push first parameter
+    call interrupt		; this is the call
+    jmp  restart		; continue execution
 
 ;*===========================================================================*
 ;*				wini_int				     *
 ;*===========================================================================*
-wini_int:			; Interrupt routine for the winchester disk.
-	call save		; save the machine state
-	mov  word[int_mess+2],DISKINT   ; build message for winchester task
-	mov  ax,int_mess	; prepare to call interrupt(WINI, &intmess)
-	push ax			; push second parameter
-	mov  ax,WINI		; prepare to push first parameter
-	push ax			; push first parameter
-	call interrupt		; this is the call
-	jmp  restart		; continue execution    
+wini_int:				; Interrupt routine for the winchester disk.
+    call save			; save the machine state
+    mov  word[int_mess+2],DISKINT	; build message for winchester task
+    mov  ax,int_mess	; prepare to call interrupt(WINI, &intmess)
+    push ax				; push second parameter
+    mov  ax,WINI		; prepare to push first parameter
+    push ax				; push first parameter
+    call interrupt		; this is the call
+    jmp  restart		; continue execution    
 
 ;===========================================================================
 ;				clock_int
 ;===========================================================================
-clock_int:			; Interrupt routine for	the clock.
-	call save               ; save the machine state
-	mov word[int_mess+2],CLOCK_TICK        ; build message for clock task
-	mov ax,int_mess	; prepare to call interrupt(CLOCK,&intmess)
-	push ax                 ; push second parameter
-	mov  ax,CLOCK		; prepare to push first	parameter
-	push ax			; push first parameter
-	call interrupt		; this is the call
-	jmp  restart		; continue execution
+clock_int:				; Interrupt routine for	the clock.
+    call save			; save the machine state
+    mov word[int_mess+2],CLOCK_TICK	; build message for clock task
+    mov ax,int_mess		; prepare to call interrupt(CLOCK,&intmess)
+    push ax				; push second parameter
+    mov  ax,CLOCK		; prepare to push first	parameter
+    push ax				; push first parameter
+    call interrupt		; this is the call
+    jmp  restart		; continue execution
 
 
 ;===========================================================================
 ;				surprise
 ;===========================================================================
 surprise:			; This is where	unexpected interrupts come.
-	call save		; save the machine state
-	call unexpected_int    ; go _panic
-	jmp  restart		; never	executed
+    call save		; save the machine state
+    call unexpected_int	; go _panic
+    jmp  restart		; never	executed
 
 
 ;===========================================================================
 ;				trp
 ;===========================================================================
 trp:				; This is where	unexpected traps come.
-	call save		; save the machine state
-	call trap		; print	a message
-	jmp restart		; this error is	not fatal
+    call save		; save the machine state
+    call trap		; print	a message
+    jmp restart		; this error is	not fatal
 
 
 ;===========================================================================
 ;				divide					     
 ;===========================================================================
-divide:                        ; This is where divide overflow traps come.
-	call save		; save the machine state
-	call div_trap		; print a message
-	jmp restart		; this error is not fatal
+divide:				; This is where divide overflow traps come.
+    call save		; save the machine state
+    call div_trap	; print a message
+    jmp restart		; this error is not fatal
 
 
 ;===========================================================================
 ;				save
 ;===========================================================================
 save:				; save the machine state in the	proc table.
-	push ds			; stack: psw/cs/pc/ret addr/ds
-	push cs			; prepare to restore ds
-	pop ds			; ds has now been set to cs
-	mov ds,[ker_ds]		; word 4 in kernel text	space contains ds value
-	pop word[ds_save]       ; stack: psw/cs/pc/ret addr
-	pop word[ret_save]      ; stack: psw/cs/pc
-	mov [bx_save],bx        ; save bx for later ; we need a	free register
-	mov bx,[proc_ptr]	; start	save set up; make bx point to save area
-	add bx,OFF		; bx points to place to	store cs
-	pop word[bx+PC-OFF]     ; store	pc in proc table
-	pop word[bx+csreg-OFF]	; store	cs in proc table
-	pop word[bx+PSW-OFF]    ; store	psw
-	mov [bx+ssreg-OFF],ss	; store	ss
-	mov [bx+spreg-OFF],sp	; sp as	it was prior to	interrupt
-	mov sp,bx		; now use sp to	point into proc	table/task save
-	mov bx,ds		; about	to set ss
-	mov ss,bx		; set ss
-	push word[ds_save]      ; start	saving all the registers, sp first
-	push es			; save es between sp and bp
-	mov es,bx		; es now references kernel memory too
-	push bp			; save bp
-	push di			; save di
-	push si			; save si
-	push dx			; save dx
-	push cx			; save cx
-	push word[bx_save]      ; save original	bx
-	push ax                 ; all registers now saved
-	mov sp,k_stack         ; temporary stack for interrupts
-	add sp,K_STACK_BYTES    ; set sp to top of temporary stack
-	mov word[splimit],k_stack     ; limit for temporary stack
+    push ds			; stack: psw/cs/pc/ret addr/ds
+    push cs			; prepare to restore ds
+    pop ds			; ds has now been set to cs
+    mov ds,[ker_ds]		; word 4 in kernel text	space contains ds value
+    pop word[ds_save]       ; stack: psw/cs/pc/ret addr
+    pop word[ret_save]      ; stack: psw/cs/pc
+    mov [bx_save],bx        ; save bx for later ; we need a	free register
+    mov bx,[proc_ptr]	; start	save set up; make bx point to save area
+    add bx,OFF		; bx points to place to	store cs
+    pop word[bx+PC-OFF]     ; store	pc in proc table
+    pop word[bx+csreg-OFF]	; store	cs in proc table
+    pop word[bx+PSW-OFF]    ; store	psw
+    mov [bx+ssreg-OFF],ss	; store	ss
+    mov [bx+spreg-OFF],sp	; sp as	it was prior to	interrupt
+    mov sp,bx		; now use sp to	point into proc	table/task save
+    mov bx,ds		; about	to set ss
+    mov ss,bx		; set ss
+    push word[ds_save]      ; start	saving all the registers, sp first
+    push es			; save es between sp and bp
+    mov es,bx		; es now references kernel memory too
+    push bp			; save bp
+    push di			; save di
+    push si			; save si
+    push dx			; save dx
+    push cx			; save cx
+    push word[bx_save]      ; save original	bx
+    push ax                 ; all registers now saved
+    mov sp,k_stack         	; temporary stack for interrupts
+    add sp,K_STACK_BYTES    ; set sp to top of temporary stack
+    mov word[splimit],k_stack     ; limit for temporary stack
         add ax,8
-	mov [splimit],ax       ; splimit checks for stack overflow
-	mov ax,[ret_save]       ; ax = address to return to
-	jmp ax			; return to caller; Note: sp points to saved ax
+    mov [splimit],ax		; splimit checks for stack overflow
+    mov ax,[ret_save]		; ax = address to return to
+    jmp ax			; return to caller; Note: sp points to saved ax
 
 
 ;===========================================================================
 ;				restart
 ;===========================================================================
 restart:			; This routine sets up and runs	a proc or task.
-	cmp word[cur_proc],IDLE; restart user; if cur_proc = IDLE, go idle
-	je idle		; no user is runnable, jump to idle routine
-	cli			; disable interrupts
-	mov sp,[proc_ptr]	; return to user, fetch	regs from proc table
-	pop ax			; start	restoring registers
-	pop bx			; restore bx
-	pop cx			; restore cx
-	pop dx			; restore dx
-	pop si			; restore si
-	pop di			; restore di
-	mov [lds_low],bx        ; lds_low contains bx
-	mov bx,sp		; bx points to saved bp	register
-	mov bp,[bx+SPLIM-ROFF]	; splimit = p_splimit
-	mov [splimit],bp       ; ditto
-	mov bp,[bx+dsreg-ROFF]	; bp = ds
-	mov [lds_low+2],bp	; lds_low+2 contains ds
-	pop bp			; restore bp
-	pop es			; restore es
-	mov sp,[bx+spreg-ROFF]	; restore sp
-	mov ss,[bx+ssreg-ROFF]	; restore ss using the value of	ds
-	push word[bx+PSW-ROFF]	; push psw (flags)
-	push word[bx+csreg-ROFF]; push cs
-	push word[bx+PC-ROFF]	; push pc
-	lds  bx,[DWORD lds_low] ; restore ds and bx in one fell swoop
-	iret			; return to user or task
+    cmp word[cur_proc],IDLE; restart user; if cur_proc = IDLE, go idle
+    je idle		; no user is runnable, jump to idle routine
+    cli			; disable interrupts
+    mov sp,[proc_ptr]	; return to user, fetch	regs from proc table
+    pop ax			; start	restoring registers
+    pop bx			; restore bx
+    pop cx			; restore cx
+    pop dx			; restore dx
+    pop si			; restore si
+    pop di			; restore di
+    mov [lds_low],bx        ; lds_low contains bx
+    mov bx,sp				; bx points to saved bp	register
+    mov bp,[bx+SPLIM-ROFF]	; splimit = p_splimit
+    mov [splimit],bp       	; ditto
+    mov bp,[bx+dsreg-ROFF]	; bp = ds
+    mov [lds_low+2],bp		; lds_low+2 contains ds
+    pop bp			; restore bp
+    pop es			; restore es
+    mov sp,[bx+spreg-ROFF]	; restore sp
+    mov ss,[bx+ssreg-ROFF]	; restore ss using the value of	ds
+    push word[bx+PSW-ROFF]	; push psw (flags)
+    push word[bx+csreg-ROFF]; push cs
+    push word[bx+PC-ROFF]	; push pc
+    lds  bx,[DWORD lds_low] ; restore ds and bx in one fell swoop
+    iret					; return to user or task
 
         
 ;===========================================================================
@@ -258,7 +258,7 @@ restart:			; This routine sets up and runs	a proc or task.
 idle:				; executed when	there is no work
         sti			; enable interrupts
 L3:	wait			; just idle while waiting for interrupt
-        jmp L3			; loop until interrupt
+        jmp L3		; loop until interrupt
 
         
 ;===========================================================================
@@ -266,14 +266,14 @@ L3:	wait			; just idle while waiting for interrupt
 ;===========================================================================      
 segment .begdata                ; DATABEG ensures it is the beginning of all data
 sizes:	  DW	526Fh           ; this must be the first data entry (magic nr)
-	  times 7 dw 0          ; space	for build table	- total	16b
+      times 7 dw 0          	; space	for build table	- total	16b
 
 segment .data
-splimit: DW	0               ; stack	limit for current task (kernel only)
+splimit: DW	0               	; stack	limit for current task (kernel only)
 bx_save:  DW	0               ; storage for bx
 ds_save:  DW	0               ; storage for ds
 ret_save: DW	0               ; storage for return address
 lds_low:  DW	0,0             ; storage used for restoring ds:bx
-brksize: DW	_endbss          ; first	free memory in kernel
+brksize: DW	_endbss + 2			; first	free memory in kernel
 ttyomess: DB	"RS232 interrupt",0
 

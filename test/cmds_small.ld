@@ -16,7 +16,7 @@ SECTIONS {
     LONG (SIZEOF(.data)); /* size of data-segment in bytes */
     LONG (SIZEOF(.bss));  /* size of bss (stack) segment   */
     LONG (start);         /* entry point */
-    LONG (SIZEOF(.data) + SIZEOF(.bss) + 5120);/* total memory allocated */
+    LONG ((SIZEOF(.data) + SIZEOF(.bss) + 8192) / 2 * 2);/* total memory allocated */
     /* total memory allocated to program (? data+bss+malloc+stack) */
     /* mm/exec.c   new_base = alloc_mem(text_clicks + tot_clicks); */
     LONG (0);             /* symbol table size */
@@ -28,8 +28,8 @@ SECTIONS {
   _begindata = _begintext + .;
   .data 0 : AT(_begindata) { *(.data) *(.rodata*) }
   _begbss = .;
-  .bss : { *(.bss) *(COMMON) }
+  .bss : { *(.bss) *(COMMON); . = ALIGN(0x2); }
   _endbss = .;
   /DISCARD/ : { *(.comment) }
-  ASSERT(. <= 0xfff8 - 5120, "Error: data too large for a .sep file.")
+  ASSERT(. <= 0xfff8 - 8192, "Error: data too large for a .sep file.")
 }
