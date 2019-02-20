@@ -1,2 +1,4 @@
+/bin/getlf "Please insert /user diskette in drive 1.  Then hit RETURN."
+/bin/mount /dev/fd1 /user
 /bin/cat /etc/message
 /bin/update  &

@@ -25,6 +25,7 @@ ram.out : mkfs minixfsutils
 	#dd if=/dev/zero of=ram.out bs=1024 count=360
 	#sync
 	#./mkfs 360 ram.out
+	rm -fr ram.out
 	unzip root.zip
 	mv root.img ram.out
 	./minixfsutils ram.out put /bin/sh ../cmds/sh.out
@@ -40,6 +41,7 @@ ram.out : mkfs minixfsutils
 	./minixfsutils ram.out put /bin/chmod ../cmds/chmod.out
 	./minixfsutils ram.out put /bin/mkfs ../cmds/mkfs.out
 	./minixfsutils ram.out put /bin/clr ../cmds/clr.out
+	./minixfsutils ram.out put /bin/getlf ../cmds/getlf.out
 	./minixfsutils ram.out put /etc/passwd ./passwd
 	./minixfsutils ram.out put /etc/rc ./rc
 	./minixfsutils ram.out put /etc/message ./message
@@ -77,6 +79,7 @@ ram.sep : mkfs minixfsutils
 	#dd if=/dev/zero of=ram.sep bs=1024 count=360
 	#sync
 	#./mkfs 360 ram.sep
+	rm -fr ram.sep
 	unzip root.zip
 	mv root.img ram.sep
 	./minixfsutils ram.sep put /bin/sh ../cmds/sh.sep
@@ -92,6 +95,7 @@ ram.sep : mkfs minixfsutils
 	./minixfsutils ram.sep put /bin/chmod ../cmds/chmod.sep
 	./minixfsutils ram.sep put /bin/mkfs ../cmds/mkfs.sep
 	./minixfsutils ram.sep put /bin/clr ../cmds/clr.sep
+	./minixfsutils ram.sep put /bin/getlf ../cmds/getlf.sep
 	./minixfsutils ram.sep put /etc/passwd ./passwd
 	./minixfsutils ram.sep put /etc/rc ./rc
 	./minixfsutils ram.sep put /etc/message ./message
