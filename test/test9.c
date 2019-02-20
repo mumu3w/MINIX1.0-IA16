@@ -4,6 +4,8 @@
 # include "stdio.h"
 # include "signal.h"
 
+#define register  
+
 int	whichtest;
 int	nerrors;
 char *tmpa;
@@ -54,7 +56,7 @@ e(n) {
 }
 
 test1() {
-  register p;
+  register int p;
 
   whichtest = 1;
   p = 200;
@@ -63,7 +65,7 @@ test1() {
 }
 
 test2() {
-  register p,q;
+  register int p,q;
 
   whichtest = 2;
   p = 200; q = 300;
@@ -73,7 +75,7 @@ test2() {
 }
   
 test3() {
-  register p,q,r;
+  register int p,q,r;
 
   whichtest = 3;
   p = 200; q = 300; r = 400;
@@ -128,7 +130,7 @@ addr() {
 }
 
 garbage() {
-  register	i,j,k;
+  register	int i,j,k;
   register char	*p,*q,*r;
   char *a;
   int t;
@@ -189,7 +191,7 @@ garbage() {
 
 level1() {
   register char *p;
-  register i;
+  register int i;
 
   i = 1000;
   p = &buf[10];
@@ -200,7 +202,7 @@ level1() {
 
 level2() {
   register char *p;
-  register i;
+  register int i;
 
   i = 0200;
   p = &buf[2];
@@ -210,7 +212,7 @@ level2() {
 
 dolev() {
   register char *p;
-  register	i;
+  register int i;
 
   i = 010;
   p = &buf[3];
