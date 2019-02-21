@@ -30,5 +30,5 @@ kernel.sep : $(OBJS) ../tools/kernel_small.ld
 	nasm -f elf $<
 	
 clean :
-	rm -fr *.tmp *.o *.out *.map
+	rm -fr *.tmp *.o *.out *.map *.sep
 
