@@ -193,8 +193,7 @@ PRIVATE void copy_ridx_to_fs(void)
   * If necessary, it can be moved somewhere else in bss_end by expanding
   * the size of the (used) array. 
   */
-  fs_bss_end = (proc_addr(FS_PROC_NR))->p_map[T].mem_len + 
-                (proc_addr(FS_PROC_NR))->p_map[D].mem_len;
+  fs_bss_end = (proc_addr(FS_PROC_NR))->p_map[D].mem_len;
   fs_bss_end = fs_bss_end << CLICK_SHIFT;
   fs_bss_end = fs_bss_end - 16;
   root_idx = get_root_idx();
