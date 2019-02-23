@@ -38,7 +38,8 @@ segment .text
 
 phys_copy:
         pushf                   ; save flags
-        cli                     ; disable interrupts
+        ;cli                     ; disable interrupts
+        cld
         push bp                 ; save the registers
         push ax                 ; save ax
         push bx                 ; save bx

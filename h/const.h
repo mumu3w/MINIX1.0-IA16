@@ -9,13 +9,13 @@
 
 #define EXTERN        extern	/* used in *.h files */
 #define PRIVATE       static	/* PRIVATE x limits the scope of x */
-#define PUBLIC			/* PUBLIC is the opposite of PRIVATE */
-#define FORWARD 		/* some compilers require this to be 'static' */
+#define PUBLIC			        /* PUBLIC is the opposite of PRIVATE */
+#define FORWARD 		        /* some compilers require this to be 'static' */
 
 #define TRUE               1	/* used for turning integers into Booleans */
 #define FALSE              0	/* used for turning integers into Booleans */
 
-#define HZ	          60	/* clock freq (software settable on IBM-PC) */
+#define HZ	              60    /* clock freq (software settable on IBM-PC) */
 #define BLOCK_SIZE      1024	/* # bytes in a disk block */
 #define SUPER_USER   (uid) 0	/* uid of superuser */
 
@@ -49,7 +49,7 @@
 #define WRITING            1	/* copy data from user */
 #define ABS             -999	/* this process means absolute memory */
 
-#define WORD_SIZE          2		/* number of bytes per word */
+#define WORD_SIZE          2    /* number of bytes per word */
 
 #define NIL_PTR   (char *) 0	/* generally useful expression */
 
@@ -58,9 +58,20 @@
 #define SIG_PUSH_BYTES	      8	/* how many bytes pushed by signal */
 #define MAX_ISTACK_BYTES   1024	/* maximum initial stack size for EXEC */
 
-/* Device numbers of root (RAM) and boot (fd0) devices. */
-#define ROOT_DEV (dev_nr)   256	/* major-minor device number of root dev */
-#define BOOT_DEV (dev_nr)   512	/* major-minor device number of boot diskette */
+/* Device numbers for minor dev 0 of winchester, floppy, and RAM disk.
+ * These are used to determine where to find the root filesystem;
+ * see load_ram in kernel/main.c for algorithm. - JER 7/29/87
+ */
+#define DEV_RAM		 ((dev_nr) 0x0100)
+#define DEV_FLOPPY	 ((dev_nr) 0x0200)
+#define DEV_WINI 	 ((dev_nr) 0x0300)
+
+/* Device numbers of root and boot devices. */
+#define ROOT_DEV   ((dev_nr) root_dev) /* major-minor device number of root dev */
+#define BOOT_DEV ((dev_nr) DEV_FLOPPY) /* major-minor device number of boot diskette */
+
+/* Minimum number of blocks for RAM disk (size if root != RAM) */
+#define RAM_MIN		          0
 
 /* Flag bits for i_mode in the inode. */
 #define I_TYPE          0170000	/* this field gives inode type */

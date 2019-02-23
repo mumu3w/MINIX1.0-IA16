@@ -29,6 +29,8 @@
 #define PC_AT           0xFC	/* IBM code for PC-AT (in BIOS at 0xFFFFE) */
 
 PRIVATE set_vec(int vec_nr, int (*addr)(), phys_clicks base_click);
+PRIVATE int get_root_idx();
+PRIVATE void copy_ridx_to_fs(void);
 
 /*===========================================================================*
  *                                   main                                    * 
@@ -135,6 +137,8 @@ PUBLIC main()
   /* Put a ptr to proc table in a known place so it can be found in /dev/mem */
   set_vec( (BASE - 4)/4, proc, (phys_clicks) 0);
 
+  copy_ridx_to_fs();
+
   bill_ptr = proc_addr(HARDWARE);	/* it has to point somewhere */
   pick_proc();
 
@@ -142,6 +146,61 @@ PUBLIC main()
   port_out(INT_CTLMASK, 0);	/* do not mask out any interrupts in 8259A */
   port_out(INT2_MASK, 0);	/* same for second interrupt controller */
   restart();
+}
+
+
+/*===========================================================================*
+ *                           get root device index                           * 
+ *===========================================================================*/
+PRIVATE int get_root_idx()
+{
+  int root_idx;
+
+#ifdef i8088
+  extern int scan_code; /* scan code of key user typed to start us */
+
+  switch (scan_code) {
+    case '=':  /* user typed an '=' */
+	    root_idx = 0;	 /* root will be ram disk */
+	    break;
+
+    default:  /* user typed a digit */
+	    root_idx = scan_code - '0';  /* root will be winchester disk */
+	    break;
+  }
+#else
+  root_idx = 0;	 /* non-8088: use ram disk */
+#endif
+
+  return(root_idx);
+}
+
+
+/*===========================================================================*
+ *                                  copy_ridx_to_fs                          * 
+ *===========================================================================*/
+PRIVATE void copy_ridx_to_fs(void)
+{
+  phys_bytes ridx_kernel_phys, ridx_fs_phys;
+  int root_idx;
+  vir_bytes fs_bss_end;
+  extern phys_bytes umap();
+  
+  /* 
+  * Get index of device to use as root, and put it where fs can find it.
+  * We put it into the 0th word of bss_end in FS, at present, which
+  * contained the magic number for "build," but is unused at boot time.
+  * If necessary, it can be moved somewhere else in bss_end by expanding
+  * the size of the (used) array. 
+  */
+  fs_bss_end = (proc_addr(FS_PROC_NR))->p_map[T].mem_len + 
+                (proc_addr(FS_PROC_NR))->p_map[D].mem_len;
+  fs_bss_end = fs_bss_end << CLICK_SHIFT;
+  fs_bss_end = fs_bss_end - 16;
+  root_idx = get_root_idx();
+  ridx_kernel_phys = umap(proc_addr(HARDWARE), D, (vir_bytes) &root_idx, sizeof(int));
+  ridx_fs_phys = umap(proc_addr(FS_PROC_NR), D, (vir_bytes) fs_bss_end, sizeof(int));
+  phys_copy(ridx_kernel_phys, ridx_fs_phys, (phys_bytes)sizeof(int));
 }
 
 

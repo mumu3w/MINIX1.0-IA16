@@ -21,10 +21,10 @@ SECTIONS {
 		}
     
     _begintext = ALIGN(0x20);
-    .text 0 : AT(_begintext) { _begtext = .; *(.text) 
-                              _begdata = .; *(.begdata) *(.data) *(.rodata*) }
+    .text 0 : AT(_begintext) { _begtext = .; *(.text); . = ALIGN(0x10);
+                              _begdata = .; *(.begdata) *(.data) *(.rodata*) . = ALIGN(0x10);}
     _begbss = .; 
-    .bss : { *(.bss) *(COMMON) } 
+    .bss : { *(.bss) *(COMMON); . = ALIGN(0x10); *(.endbss). = ALIGN(0x10); } 
     _endbss = .;
     /DISCARD/ : { *(.comment) }
   

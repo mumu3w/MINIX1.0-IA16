@@ -25,7 +25,7 @@ SECTIONS {
 	_begindata = _begintext + .;
 	.data 0 : AT(_begindata) { *(.begdata) *(.data) *(.rodata*) }
   _begbss = .;
-	.bss : { *(.bss) *(COMMON) }
+	.bss : { *(.bss) *(COMMON) *(.endbss). = ALIGN(0x10); }
   _endbss = .;
 	/DISCARD/ : { *(.comment) }
   

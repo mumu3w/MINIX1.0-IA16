@@ -22,6 +22,7 @@
 #include "buf.h"
 #include "inode.h"
 #include "super.h"
+#include "glo.h"
 
 #define INT_BITS (sizeof(int)<<3)
 #define BIT_MAP_SHIFT     13	/* (log2 of BLOCK_SIZE) + 3; 13 for 1k blocks */

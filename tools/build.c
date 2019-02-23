@@ -110,15 +110,15 @@ void patch3(void)
 
   init_org  = PROG_ORG;
   init_org += sizes[KERN].text_size+sizes[KERN].data_size+sizes[KERN].bss_size;
-  mm_data = init_org - PROG_ORG + 512L; /* mmÔÚÎÄ¼şÖĞµÄÆ«ÒÆ */
-  mm_data += (u32_t)sizes[MM].text_size; /* mmÊı¾İ¶ÎÔÚÎÄ¼şÖĞµÄÆ«ÒÆ */
+  mm_data = init_org - PROG_ORG + 512L; /* mmåœ¨æ–‡ä»¶ä¸­çš„åç§» */
+  mm_data += (u32_t)sizes[MM].text_size; /* mmæ•°æ®æ®µåœ¨æ–‡ä»¶ä¸­çš„åç§» */
   init_org += sizes[MM].text_size + sizes[MM].data_size + sizes[MM].bss_size;
-  fs_org = init_org - PROG_ORG + 512L; /* fsÔÚÎÄ¼şÖĞµÄÆ«ÒÆ */
-  fs_org += (u32_t)sizes[FS].text_size; /* fsÊı¾İ¶ÎÔÚÎÄ¼şÖĞµÄÆ«ÒÆ */
+  fs_org = init_org - PROG_ORG + 512L; /* fsåœ¨æ–‡ä»¶ä¸­çš„åç§» */
+  fs_org += (u32_t)sizes[FS].text_size; /* fsæ•°æ®æ®µåœ¨æ–‡ä»¶ä¸­çš„åç§» */
   init_org += sizes[FS].text_size + sizes[FS].data_size + sizes[FS].bss_size;
   init_text_size = sizes[INIT].text_size;
   init_data_size = sizes[INIT].data_size + sizes[INIT].bss_size;
-  init_org  >>= CLICK_SHIFT; /* INITÔÚÄÚ´æÖĞµÄÎ»ÖÃ(CS) */
+  init_org  >>= CLICK_SHIFT; /* INITåœ¨å†…å­˜ä¸­çš„ä½ç½®(CS) */
   if (sizes[INIT].sep_id == 0) {
     init_data_size += init_text_size;
     init_text_size = 0;

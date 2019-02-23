@@ -24,6 +24,7 @@
 
 #define M64K     0xFFFF0000L	/* 16 bit mask for DMA check */
 #define INFO               2	/* where in data_org is info from build */
+#define ROOT_IDX	         0  /* where in data_org kernel put boot-dev idx */
 #define MAX_RAM          512	/* maxium RAM disk size in blocks */
 
 PRIVATE get_work();
@@ -229,25 +230,44 @@ PRIVATE load_ram()
   struct super_block *sp;
   block_nr i;
   phys_clicks ram_clicks, init_org, init_text_clicks, init_data_clicks;
+  int load_ram_flag;
+  int root_idx;
   extern phys_clicks data_org[INFO + 2];
   extern struct buf *get_block();
+  extern unsigned bss_end[8];
 
   /* Get size of INIT by reading block on diskette where 'build' put it. */
   init_org = data_org[INFO];
   init_text_clicks = data_org[INFO + 1];
   init_data_clicks = data_org[INFO + 2];
 
-  /* Get size of RAM disk by reading root file system's super block */
-  bp = get_block(BOOT_DEV, SUPER_BLOCK, NORMAL);  /* get RAM super block */
-  copy(super_block, bp->b_data, sizeof(struct super_block));
-  sp = &super_block[0];
-  if (sp->s_magic != SUPER_MAGIC)
-	panic("Diskette in drive 0 is not root file system", NO_NUM);
-  count = sp->s_nzones << sp->s_log_zone_size;	/* # blocks on root dev */
-  if (count > MAX_RAM) panic("RAM disk is too big. # blocks = ", count);
-  ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
-  put_block(bp, FULL_DATA_BLOCK);
+  /* select root device based on user input to fsck */
+  /* get root-device index stored by kernel at end of main() init */
+  root_idx = bss_end[0];
+  
+  if (root_idx == 0)
+    root_dev = DEV_RAM;
+  else
+    root_dev = DEV_WINI + root_idx;
+  
+  /* if root device is ram disk, have to load ram from boot floppy */
+  load_ram_flag = ((root_dev & 0xff00) == DEV_RAM);
 
+  if (load_ram_flag) {
+    /* Get size of RAM disk by reading root file system's super block */
+    bp = get_block(BOOT_DEV, SUPER_BLOCK, NORMAL);  /* get RAM super block */
+    copy(super_block, bp->b_data, sizeof(struct super_block));
+    sp = &super_block[0];
+    if (sp->s_magic != SUPER_MAGIC)
+	  panic("Diskette in drive 0 is not root file system", NO_NUM);
+    count = sp->s_nzones << sp->s_log_zone_size;	/* # blocks on root dev */
+    if (count > MAX_RAM) panic("RAM disk is too big. # blocks = ", count);
+    ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
+    put_block(bp, FULL_DATA_BLOCK);  
+  } else {
+    ram_clicks = RAM_MIN * (BLOCK_SIZE/CLICK_SIZE);
+  }
+  
   /* Tell MM the origin and size of INIT, and the amount of memory used for the
    * system plus RAM disk combined, so it can remove all of it from the map.
    */
@@ -266,20 +286,21 @@ PRIVATE load_ram()
   m1.COUNT = count;
   if (sendrec(MEM, &m1) != OK) panic("Can't report size to MEM", NO_NUM);
 
-  /* Copy the blocks one at a time from the root diskette to the RAM */
-  printf("Loading RAM disk from root diskette.      Loaded:   0K ");
-  for (i = 0; i < count; i++) {
-	bp = get_block(BOOT_DEV, (block_nr) i, NORMAL);
-	bp1 = get_block(ROOT_DEV, i, NO_READ);
-	copy(bp1->b_data, bp->b_data, BLOCK_SIZE);
-	bp1->b_dirt = DIRTY;
-	put_block(bp, I_MAP_BLOCK);
-	put_block(bp1, I_MAP_BLOCK);
-	k_loaded = ( (long) i * BLOCK_SIZE)/1024L;	/* K loaded so far */
-	if (k_loaded % 5 == 0) printf("\b\b\b\b\b%3DK %c", k_loaded, 0);
+  if (load_ram_flag) {
+    /* Copy the blocks one at a time from the root diskette to the RAM */
+    printf("Loading RAM disk from root diskette.      Loaded:   0K ");
+    for (i = 0; i < count; i++) {
+	    bp = get_block(BOOT_DEV, (block_nr) i, NORMAL);
+	    bp1 = get_block(ROOT_DEV, i, NO_READ);
+	    copy(bp1->b_data, bp->b_data, BLOCK_SIZE);
+	    bp1->b_dirt = DIRTY;
+	    put_block(bp, I_MAP_BLOCK);
+	    put_block(bp1, I_MAP_BLOCK);
+	    k_loaded = ( (long) i * BLOCK_SIZE)/1024L;	/* K loaded so far */
+	    if (k_loaded % 5 == 0) printf("\b\b\b\b\b%3DK %c", k_loaded, 0);
+    }
+    printf("\rRAM disk loaded.  Please remove root diskette.           \n\n");
   }
-
-  printf("\rRAM disk loaded.  Please remove root diskette.           \n\n");
 }
 
 

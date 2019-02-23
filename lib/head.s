@@ -29,3 +29,9 @@ brksize:                        # first free memory
 .global sp_limit
 sp_limit:
         .word 0
+
+
+.section .endbss
+.global bss_end
+bss_end:
+        .fill 16, 1, 0

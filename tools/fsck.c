@@ -36,14 +36,14 @@ extern int fmemcmpb(off_t dst_off, seg_t dst_seg, off_t src_off,
 extern void bios_putc(int c);
 extern int bios_getc(void);
 
-void kputc(char c);
+void kputc(int c);
 void kputs(const char *s);
 int kgetc(void);
 void printnum(long n, int base, int sign);
 void do_printk(char *format, va_list ap);
 void printk(char *format, ...);
 
-void kputc(char c)
+void kputc(int c)
 {
     if (c == '\n') {
         bios_putc('\r');
@@ -62,7 +62,7 @@ void kputs(const char *s)
 
 int kgetc(void)
 {
-    char c;
+    int c;
     if ((c = bios_getc()) == '\r') {
         c = '\n';
     }
@@ -196,7 +196,8 @@ void test01(void)
 
 int main()
 {
-    char c;
+    int c;
+    int key;
 #ifdef DEBUG
     test01();
 #endif
@@ -204,12 +205,22 @@ int main()
         printk("\n\n\n\n");
         printk("\nHit key as follows:\n\n");
         printk("    =  start MINIX (root file system in drive 0)\n");
+        printk("[1-9]  start MINIX (root file system on /dev/hd[1-9](Not included 5)\n");
         printk("\n# ");
     
         c = kgetc();
-        switch (c) {
+        key = c & 0xff;
+        switch (key) {
             case '=' :
-                return c;
+            case '1' :
+            case '2' :
+            case '3' :
+            case '4' :
+            case '6' :
+            case '7' :
+            case '8' :
+            case '9' :
+                return key;
             default:
                 printk("Illegal command\n");
                 continue;

@@ -6,6 +6,7 @@ EXTERN int susp_count;		/* number of procs suspended on pipe */
 EXTERN int reviving;		/* number of pipe processes to be revived */
 EXTERN file_pos rdahedpos;	/* position to read ahead */
 EXTERN struct inode *rdahed_inode;	/* pointer to inode to read ahead */
+EXTERN dev_nr root_dev;     /* root file system device number */
 
 /* The parameters of the call are kept here. */
 EXTERN message m;		/* the input message itself */
