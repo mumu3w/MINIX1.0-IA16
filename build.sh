@@ -91,18 +91,6 @@ function tools {
 		echo "Failed to build Image"
 		exit
 	fi
-	echo "Start build rootfs"
-	make ram.sep ram.out 1>>../log.txt 2>&1
-	if [ $? -ne 0 ]; then
-		echo "Failed to build rootfs"
-		exit
-	fi
-	echo "Start build testfs"
-	make test.out 1>>../log.txt 2>&1
-	if [ $? -ne 0 ]; then
-		echo "Failed to build testfs"
-		exit
-	fi
 	cd ..
 }
 

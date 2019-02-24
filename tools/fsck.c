@@ -168,44 +168,16 @@ void printk(char *format, ...)
     va_end(p);
 }
 
-#ifdef DEBUG
-void test01(void)
-{
-    long l1, l2, l3;
-
-    l1 = 12345678;
-    l2 = 87654321;
-    l3 = l1 + l2;
-    printk("\n\nl3 = %D\n", l3);
-    l3 = l2 - l1;
-    printk("l3 = %D\n", l3);
-    l3 = l1 - l2;
-    printk("l3 = %D\n", l3);
-
-    l1 = 12345;
-    l2 = 5678;
-    l3 = l1 * l2;
-    printk("l3 = %D\n", l3);
-    printk("12345 = %D\n", l3 / l2);
-    printk("%D\n", 53450013 % 10);
-    printk("%b\n", 0xf);
-    printk("Copyright (c) %s Mumu3w@outlook.com\n", __DATE__);
-    printk("File %s Line: %d Time: %s\n", __FILE__, __LINE__, __TIME__);
-}
-#endif
-
 int main()
 {
     int c;
     int key;
-#ifdef DEBUG
-    test01();
-#endif
+
     for (;;) {
         printk("\n\n\n\n");
         printk("\nHit key as follows:\n\n");
         printk("    =  start MINIX (root file system in drive 0)\n");
-        printk("[1-9]  start MINIX (root file system on /dev/hd[1-9](Not included 5)\n");
+        printk("[1-9]  start MINIX (root file system on /dev/hd[1-9]\n");
         printk("\n# ");
     
         c = kgetc();

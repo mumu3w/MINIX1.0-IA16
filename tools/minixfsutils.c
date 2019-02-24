@@ -1450,7 +1450,7 @@ int main(int argc, char *argv[])
 
 #ifndef FLOPPY_IMAGE
   struct partition part;
-  rpart(hd_img, 1, &part);
+  rpart(hd_img, 0, &part);
   // printf("start_sect = %d\n", part.start_sect);
   img_t img = (img_t)(hd_img + (part.start_sect * SSIZE));
 #else
