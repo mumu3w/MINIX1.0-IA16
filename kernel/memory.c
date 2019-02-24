@@ -32,7 +32,6 @@
 #include "proc.h"
 
 #define NR_RAMS            4	/* number of RAM-type devices */
-#define EM_ORIGIN   0x100000	/* origin of extended memory on the AT */
 
 PRIVATE message mess;		/* message buffer */
 PRIVATE phys_bytes ram_origin[NR_RAMS];	/* origin of each RAM disk  */

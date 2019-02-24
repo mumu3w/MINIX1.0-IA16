@@ -26,7 +26,6 @@
 #define INFO               2	/* where in data_org is info from build */
 #define ROOT_IDX	         0  /* where in data_org kernel put boot-dev idx */
 #define MAX_RAM         1024	/* maximum RAM disk size in blocks */
-#define EM_ORIGIN   0x100000	/* origin of extended memory RAM disk on AT */
 #define MAX_CRD          100	/* if root fs > MAX_CRD, use extended mem */
 
 PRIVATE get_work();
