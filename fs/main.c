@@ -265,7 +265,8 @@ PRIVATE load_ram()
     ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
     put_block(bp, FULL_DATA_BLOCK);  
   } else {
-    ram_clicks = RAM_MIN * (BLOCK_SIZE/CLICK_SIZE);
+    count = RAM_MIN;
+    ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
   }
   
   /* Tell MM the origin and size of INIT, and the amount of memory used for the
