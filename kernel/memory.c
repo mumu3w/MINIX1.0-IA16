@@ -32,6 +32,7 @@
 #include "proc.h"
 
 #define NR_RAMS            4	/* number of RAM-type devices */
+#define EM_ORIGIN   0x100000	/* origin of extended memory on the AT */
 
 PRIVATE message mess;		/* message buffer */
 PRIVATE phys_bytes ram_origin[NR_RAMS];	/* origin of each RAM disk  */
@@ -93,7 +94,7 @@ register message *m_ptr;	/* pointer to read or write message */
 {
 /* Read or write /dev/null, /dev/mem, /dev/kmem, or /dev/ram. */
 
-  int device, count;
+  int device, count, words, status;
   phys_bytes mem_phys, user_phys;
   struct proc *rp;
   extern phys_clicks get_base();
@@ -116,11 +117,25 @@ register message *m_ptr;	/* pointer to read or write message */
   user_phys = umap(rp, D, (vir_bytes) m_ptr->ADDRESS, (vir_bytes) count);
   if (user_phys == 0) return(E_BAD_ADDR);
 
-  /* Copy the data. */
-  if (m_ptr->m_type == DISK_READ)
-	phys_copy(mem_phys, user_phys, (long) count);
-  else
-	phys_copy(user_phys, mem_phys, (long) count);
+  /* Copy the data. Origin above EM_ORIGIN means AT extended memory */
+  if (ram_origin[device] < EM_ORIGIN) {
+    /* Ordinary case.  RAM disk is below 640K. */
+    /* Copy the data. */
+    if (m_ptr->m_type == DISK_READ)
+	    phys_copy(mem_phys, user_phys, (long) count);
+    else
+	    phys_copy(user_phys, mem_phys, (long) count);
+  } else {
+    /* AT with RAM disk in extended memory (above 1 MB). */
+    if (count & 1) panic("RAM disk got odd byte count\n", m_ptr);
+    words = count >> 1;	/* # words is half # bytes */
+    if (m_ptr->m_type == DISK_READ) {
+    	status = em_xfer(mem_phys, user_phys, words);
+    } else {
+    	status = em_xfer(user_phys, mem_phys, words);
+    }
+    if (status != 0) count = -1;
+  }
   return(count);
 }
 

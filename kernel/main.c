@@ -27,6 +27,7 @@
 #define CPU_TY1       0xFFFF	/* BIOS segment that tells CPU type */
 #define CPU_TY2       0x000E	/* BIOS offset that tells CPU type */
 #define PC_AT           0xFC	/* IBM code for PC-AT (in BIOS at 0xFFFFE) */
+#define EM_VEC          0x15	/* vector for extended memory BIOS calls */
 
 PRIVATE set_vec(int vec_nr, int (*addr)(), phys_clicks base_click);
 PRIVATE int get_root_idx();
@@ -129,10 +130,12 @@ PUBLIC main()
   set_vec(KEYBOARD_VECTOR, tty_int, base_click);
   set_vec(FLOPPY_VECTOR, disk_int, base_click);
   set_vec(PRINTER_VECTOR, lpr_int, base_click);
-  if (pc_at)
-	  set_vec(AT_WINI_VECTOR, wini_int, base_click);
-  else
-	  set_vec(XT_WINI_VECTOR, wini_int, base_click);
+  if (pc_at) {
+    set_vec(AT_WINI_VECTOR, wini_int, base_click);
+    phys_copy(phys_b + 4L*EM_VEC, 4L*EM_VEC, 4L);	/* extended mem vec */
+  } else {
+    set_vec(XT_WINI_VECTOR, wini_int, base_click);
+  }
 
   /* Put a ptr to proc table in a known place so it can be found in /dev/mem */
   set_vec( (BASE - 4)/4, proc, (phys_clicks) 0);

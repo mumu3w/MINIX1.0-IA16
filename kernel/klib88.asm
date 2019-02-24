@@ -20,6 +20,7 @@ global phys_copy, cp_mess, port_out, port_in, _lock, unlock, restore
 global build_sig, get_chrome, vid_copy, get_byte
 global reboot, wreboot, portw_in, portw_out  
 global port_read, port_write
+global em_xfer
 
 ; The following external procedure is called in this file.
 extern panic
@@ -595,6 +596,130 @@ resvec:
         mov es,di
     rep movsw
         ret
+
+
+;===========================================================================
+;                		em_xfer
+;===========================================================================
+;
+;  This file contains one routine which transfers words between user memory
+;  and extended memory on an AT or clone.  A BIOS call (INT 15h, Func 87h)
+;  is used to accomplish the transfer.  The BIOS call is "faked" by pushing
+;  the processor flags on the stack and then doing a far call to the actual
+;  BIOS location.  An actual INT 15h would get a MINIX complaint from an
+;  unexpected trap.
+;
+;  NOTE:  WARNING:  CAUTION: ...
+;  Before using this routine, you must find your BIOS address for INT 15h.
+;  The debug command "d 0:54 57" will give you the segment and address of
+;  the BIOS call.  On my machine this generates:
+;      0000:0050      59 F8 00 F0                          Y...
+;  These values are then plugged into the two strange ".word xxxx" lines
+;  near the end of this routine.  They correspond to offset=0xf859 and
+;  seg=0xf000.  The offset is the first two bytes and the segment is the
+;  last two bytes (Note the byte swap).
+;
+;  This particular BIOS routine runs with interrupts off since the 80286
+;  must be placed in protected mode to access the memory above 1 Mbyte.
+;  So there should be no problems using the BIOS call.
+;
+gdt:                    ; Begin global descriptor table
+                        ; Dummy descriptor
+	DW 0		; segment length (limit)
+	DW 0		; bits 15-0 of physical address
+	DB 0		; bits 23-16 of physical address
+	DB 0		; access rights byte
+	DW 0		; reserved
+                        ; descriptor for GDT itself
+	DW 0		; segment length (limit)
+	DW 0		; bits 15-0 of physical address
+	DB 0		; bits 23-16 of physical address
+	DB 0		; access rights byte
+	DW 0		; reserved
+src:                    ; source descriptor
+srcsz:	DW 0		; segment length (limit)
+srcl:	DW 0		; bits 15-0 of physical address
+srch:	DB 0		; bits 23-16 of physical address
+	DB 93h		; access rights byte
+	DW 0		; reserved
+tgt:                    ; target descriptor
+tgtsz:	DW 0		; segment length (limit)
+tgtl:	DW 0		; bits 15-0 of physical address
+tgth:	DB 0		; bits 23-16 of physical address
+	DB 93h		; access rights byte
+	DW 0		; reserved
+                        ; BIOS CS descriptor
+	DW 0		; segment length (limit)
+	DW 0		; bits 15-0 of physical address
+	DB 0		; bits 23-16 of physical address
+	DB 0		; access rights byte
+	DW 0		; reserved
+                        ; stack segment descriptor
+	DW 0		; segment length (limit)
+	DW 0		; bits 15-0 of physical address
+	DB 0		; bits 23-16 of physical address
+	DB 0		; access rights byte
+	DW 0		; reserved
+
+;
+;
+;  Execute a transfer between user memory and extended memory.
+;
+;  status = em_xfer(source, dest, count);
+;
+;    Where:
+;       status => return code (0 => OK)
+;       source => Physical source address (32-bit)
+;       dest   => Physical destination address (32-bit)
+;       count  => Number of words to transfer
+;
+;
+;
+em_xfer:
+
+	push	bp		; Save registers
+	mov	bp,sp
+	push	si
+	push	es
+	push	cx
+;
+;  Pick up source and destination addresses and update descriptor tables
+;
+	mov ax,[bp+4]
+	mov WORD[cs:srcl],ax
+	mov ax,[bp+6]
+	mov BYTE[cs:srch],al
+	mov ax,[bp+8]
+	mov WORD[cs:tgtl],ax
+	mov ax,[bp+10]
+	mov BYTE[cs:tgth],al
+;
+;  Update descriptor table segment limits
+;
+	mov cx,[bp+12]
+	mov ax,cx
+	add ax,ax
+	mov WORD[cs:tgtsz],ax
+	mov WORD[cs:srcsz],ax
+;
+;  Now do actual DOS call
+;
+	push cs
+	pop es
+	mov si,gdt
+	mov ah,87h
+	pushf
+	int 15h		        ; Do a far call to BIOS routine
+;
+;  All done, return to caller.
+;
+
+	pop	cx		; restore registers
+	pop	es
+	pop	si
+	mov	sp,bp
+	pop	bp
+	ret
 
 
 segment .data

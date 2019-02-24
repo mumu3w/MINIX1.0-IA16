@@ -25,7 +25,9 @@
 #define M64K     0xFFFF0000L	/* 16 bit mask for DMA check */
 #define INFO               2	/* where in data_org is info from build */
 #define ROOT_IDX	         0  /* where in data_org kernel put boot-dev idx */
-#define MAX_RAM          512	/* maxium RAM disk size in blocks */
+#define MAX_RAM         1024	/* maximum RAM disk size in blocks */
+#define EM_ORIGIN   0x100000	/* origin of extended memory RAM disk on AT */
+#define MAX_CRD          100	/* if root fs > MAX_CRD, use extended mem */
 
 PRIVATE get_work();
 PRIVATE fs_init();
@@ -230,6 +232,7 @@ PRIVATE load_ram()
   struct super_block *sp;
   block_nr i;
   phys_clicks ram_clicks, init_org, init_text_clicks, init_data_clicks;
+  phys_bytes base;
   int load_ram_flag;
   int root_idx;
   extern phys_clicks data_org[INFO + 2];
@@ -240,6 +243,9 @@ PRIVATE load_ram()
   init_org = data_org[INFO];
   init_text_clicks = data_org[INFO + 1];
   init_data_clicks = data_org[INFO + 2];
+  base = (phys_bytes) init_org + (phys_bytes) init_text_clicks + 
+                                  (phys_bytes) init_data_clicks;
+  base = base << CLICK_SHIFT;
 
   /* select root device based on user input to fsck */
   /* get root-device index stored by kernel at end of main() init */
@@ -265,9 +271,22 @@ PRIVATE load_ram()
     ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
     put_block(bp, FULL_DATA_BLOCK);  
   } else {
-    count = RAM_MIN;
-    ram_clicks = count * (BLOCK_SIZE/CLICK_SIZE);
+    count = MAX_RAM;
+    ram_clicks = 0;
   }
+
+#ifdef i8088
+  /* There are two possibilities now (by convention):  
+   *    count < MAX_CRD  ==> RAM disk is in core
+   *    count >=MAX_CRD  ==> RAM disk is in extended memory (AT only)
+   * In the latter case, tell MM that RAM disk size is 0 and tell the ram disk
+   * driver than the device begins at 1MB.
+   */
+  if (count > MAX_CRD) {
+	ram_clicks = 0;		/* MM does not have to allocate any core */
+	base = EM_ORIGIN;	/* tell RAM disk driver RAM disk origin */
+  }
+#endif
   
   /* Tell MM the origin and size of INIT, and the amount of memory used for the
    * system plus RAM disk combined, so it can remove all of it from the map.
@@ -282,10 +301,13 @@ PRIVATE load_ram()
   /* Tell RAM driver where RAM disk is and how big it is. */
   m1.m_type = DISK_IOCTL;
   m1.DEVICE = RAM_DEV;
-  m1.POSITION = (long) init_org + (long) init_text_clicks + init_data_clicks;
-  m1.POSITION = m1.POSITION << CLICK_SHIFT;
+  m1.POSITION = base;
   m1.COUNT = count;
   if (sendrec(MEM, &m1) != OK) panic("Can't report size to MEM", NO_NUM);
+#ifdef i8088
+  if (ram_clicks == 0) 	
+	printf("RAM disk of %d blocks is in extended memory\n\n", count);
+#endif
 
   if (load_ram_flag) {
     /* Copy the blocks one at a time from the root diskette to the RAM */
