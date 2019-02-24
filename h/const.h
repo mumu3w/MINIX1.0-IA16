@@ -71,7 +71,7 @@
 #define BOOT_DEV ((dev_nr) DEV_FLOPPY) /* major-minor device number of boot diskette */
 
 /* Minimum number of blocks for RAM disk (size if root != RAM) */
-#define RAM_MIN		          0
+#define RAM_MIN		          100
 
 /* Flag bits for i_mode in the inode. */
 #define I_TYPE          0170000	/* this field gives inode type */
