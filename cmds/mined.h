@@ -30,9 +30,9 @@ extern char *pos_string;	/* Absolute cursor positioning */
 #define SHIFT_SIZE	25		/* Number of chars to shift */
 #define SHIFT_MARK	'!'		/* Char indicating that line continues*/
 #define MAX_CHARS	1024		/* Maximum chars on one line */
-		    /* LINE_START must be rounded up to the lowest SHIFT_SIZE */
+                    /* LINE_START must be rounded up to the lowest SHIFT_SIZE */
 #define LINE_START	(((-MAX_CHARS - 1) / SHIFT_SIZE) * SHIFT_SIZE \
-  				   - SHIFT_SIZE)
+                                     - SHIFT_SIZE)
 #define LINE_END	(MAX_CHARS + 1)	/* Highest x-coordinate for line */
 
 #define LINE_LEN	(XMAX + 1)	/* Number of characters on line */
@@ -112,8 +112,8 @@ typedef struct Line LINE;
  */
 struct regex {
   union {
-  	char *err_mess;
-  	int *expression;
+          char *err_mess;
+          int *expression;
   } result;
   char status;
   char *start_ptr;
@@ -214,18 +214,18 @@ extern long chars_saved;		/* Nr of chars saved in buffer */
  * Functions handling status_line. ON means in reverse video.
  */
 #define status_line(str1, str2)	(void) bottom_line(ON, (str1), \
-						    (str2), NIL_PTR, FALSE)
+                                                    (str2), NIL_PTR, FALSE)
 #define error(str1, str2)	(void) bottom_line(ON, (str1), \
-						    (str2), NIL_PTR, FALSE)
+                                                    (str2), NIL_PTR, FALSE)
 #define get_string(str1,str2, fl) bottom_line(ON, (str1), NIL_PTR, (str2), fl)
 #define clear_status()		(void) bottom_line(OFF, NIL_PTR, NIL_PTR, \
-						    NIL_PTR, FALSE)
+                                                    NIL_PTR, FALSE)
 
 /*
  * Print info about current file and buffer.
  */
 #define fstatus(mess, cnt)	file_status((mess), (cnt), file_name, \
-					     nlines, writable, modified)
+                                             nlines, writable, modified)
 
 /*
  * Get real shift value.
