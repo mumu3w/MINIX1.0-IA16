@@ -588,9 +588,8 @@ wreboot:
         
 ; Restore the interrupt vectors in low core.
 resvec:
-
         cld
-        mov cx,2*65
+        mov cx,2*71
         mov si,vec_table
         xor di,di
         mov es,di

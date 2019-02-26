@@ -16,7 +16,7 @@ LONG (SIZEOF(.text));	/* size of text segment in bytes */
 LONG (SIZEOF(.data));	/* size of data-segment in bytes */
 LONG (SIZEOF(.bss));	/* size of bss (stack) segment   */
 LONG (start);					/* entry point */
-LONG (SIZEOF(.text) + SIZEOF(.data) + SIZEOF(.bss));/* total memory allocated */
+LONG (SIZEOF(.data) + SIZEOF(.bss));/* total memory allocated */
 LONG (0);							/* symbol table size */
 }
 
