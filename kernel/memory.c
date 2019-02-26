@@ -63,26 +63,26 @@ PUBLIC mem_task()
    * it out, and sends a reply.
    */
   while (TRUE) {
-	/* First wait for a request to read or write. */
-	receive(ANY, &mess);
-	if (mess.m_source < 0)
-		panic("mem task got message from ", mess.m_source);
-	caller = mess.m_source;
-	proc_nr = mess.PROC_NR;
+    /* First wait for a request to read or write. */
+    receive(ANY, &mess);
+    if (mess.m_source < 0)
+        panic("mem task got message from ", mess.m_source);
+    caller = mess.m_source;
+    proc_nr = mess.PROC_NR;
 
-	/* Now carry out the work.  It depends on the opcode. */
-	switch(mess.m_type) {
-	    case DISK_READ:	r = do_mem(&mess);	break;
-	    case DISK_WRITE:	r = do_mem(&mess);	break;
-	    case DISK_IOCTL:	r = do_setup(&mess);	break;
-	    default:		r = EINVAL;		break;
-	}
+    /* Now carry out the work.  It depends on the opcode. */
+    switch(mess.m_type) {
+        case DISK_READ:	r = do_mem(&mess);	break;
+        case DISK_WRITE:	r = do_mem(&mess);	break;
+        case DISK_IOCTL:	r = do_setup(&mess);	break;
+        default:		r = EINVAL;		break;
+    }
 
-	/* Finally, prepare and send the reply message. */
-	mess.m_type = TASK_REPLY;
-	mess.REP_PROC_NR = proc_nr;
-	mess.REP_STATUS = r;
-	send(caller, &mess);
+    /* Finally, prepare and send the reply message. */
+    mess.m_type = TASK_REPLY;
+    mess.REP_PROC_NR = proc_nr;
+    mess.REP_STATUS = r;
+    send(caller, &mess);
   }
 }
 
@@ -123,17 +123,17 @@ register message *m_ptr;	/* pointer to read or write message */
     /* Ordinary case.  RAM disk is below 640K. */
     /* Copy the data. */
     if (m_ptr->m_type == DISK_READ)
-	    phys_copy(mem_phys, user_phys, (long) count);
+        phys_copy(mem_phys, user_phys, (long) count);
     else
-	    phys_copy(user_phys, mem_phys, (long) count);
+        phys_copy(user_phys, mem_phys, (long) count);
   } else {
     /* AT with RAM disk in extended memory (above 1 MB). */
     if (count & 1) panic("RAM disk got odd byte count\n", m_ptr);
     words = count >> 1;	/* # words is half # bytes */
     if (m_ptr->m_type == DISK_READ) {
-    	status = em_xfer(mem_phys, user_phys, words);
+        status = em_xfer(mem_phys, user_phys, words);
     } else {
-    	status = em_xfer(user_phys, mem_phys, words);
+        status = em_xfer(user_phys, mem_phys, words);
     }
     if (status != 0) count = -1;
   }
