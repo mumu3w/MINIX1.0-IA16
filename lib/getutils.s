@@ -10,7 +10,8 @@
 
 .global get_base
 get_base:                       # return click at which prog starts
-        mov %ds, %ax
+        # mov %ds, %ax
+	mov %cs, %ax
         ret
 
 .global get_size

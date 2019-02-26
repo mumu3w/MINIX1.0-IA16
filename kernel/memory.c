@@ -54,7 +54,9 @@ PUBLIC mem_task()
 
   /* Initialize this task. */
   ram_origin[KMEM_DEV] = (phys_bytes) get_base() << CLICK_SHIFT;
-  ram_limit[KMEM_DEV] = (sizes[0] + sizes[1]) << CLICK_SHIFT;
+  /* ram_limit[KMEM_DEV] = (sizes[0] + sizes[1]) << CLICK_SHIFT; */
+  ram_limit[KMEM_DEV] = ram_origin[KMEM_DEV] + 
+                        ((sizes[0] + sizes[1]) << CLICK_SHIFT);
   ram_limit[MEM_DEV] = MEM_BYTES;
 
   /* Here is the main loop of the memory task.  It waits for a message, carries
