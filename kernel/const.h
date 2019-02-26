@@ -15,7 +15,7 @@
 #define CS_REG             9	/* proc[i].p_reg[CSREG] is saved cs */
 #define SS_REG            10	/* proc[i].p_reg[SSREG] is saved ss */
 
-#define VECTOR_BYTES     284	/* bytes of interrupt vectors to save */
+#define VECTOR_BYTES    1024	/* bytes of interrupt vectors to save */
 #define MEM_BYTES    655360L	/* memory size for /dev/mem */
 
 /* Interrupt vectors */

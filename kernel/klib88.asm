@@ -589,7 +589,7 @@ wreboot:
 ; Restore the interrupt vectors in low core.
 resvec:
         cld
-        mov cx,2*71
+        mov cx,2*256
         mov si,vec_table
         xor di,di
         mov es,di
@@ -724,6 +724,6 @@ em_xfer:
 segment .data
 lockvar:        DW      0       ; place to store flags for lock()/restore()
 tmp:            DW      0       ; count of bytes already copied
-vec_table:      times   142 DW 0; storage for interrupt vectors
+vec_table:      times   512 DW 0; storage for interrupt vectors
 stkoverrun:     DB      "Kernel stack overrun,  task = ",0          
 
