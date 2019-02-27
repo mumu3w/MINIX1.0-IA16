@@ -56,7 +56,7 @@
 #define MAX_WIN_RETRY  10000	/* max # times to try to output to WIN */
 #define PART_TABLE     0x1C6	/* IBM partition table starts here in sect 0 */
 #define DEV_PER_DRIVE      5	/* hd0 + hd1 + hd2 + hd3 + hd4 = 5 */
-#define SAFETY_CONST 0xAAAAAAAAL /* table integrity check */
+#define SAFETY_CONST 0xAAAAAAAAL/* table integrity check */
 
 /* Variables. */
 PRIVATE struct wini {		/* main drive struct, one entry per drive */
@@ -76,12 +76,12 @@ PRIVATE struct wini {		/* main drive struct, one entry per drive */
 } wini[NR_DEVICES];
 
 PRIVATE int w_need_reset = FALSE;	 /* set to 1 when controller must be reset */
-PRIVATE int nr_drives;		 /* Number of drives */
+PRIVATE int nr_drives;          /* Number of drives */
 
 PRIVATE message w_mess;		/* message buffer for in and out */
 
 /* this buffer is sort of a waste of space, I think? */
-PRIVATE unsigned char buf[BLOCK_SIZE]; /* Buffer used by the startup routine */
+PRIVATE unsigned char buf[BLOCK_SIZE];  /* Buffer used by the startup routine */
 
 PRIVATE struct param {
 	int nr_cyl;		/* Number of cylinders */
@@ -98,6 +98,7 @@ PRIVATE copy_prt(int drive);
 PRIVATE sort(register struct wini *wn);
 PRIVATE swap(register struct wini *first, register struct wini *second);
 
+
 /*===========================================================================*
  *				winchester_task				     * 
  *===========================================================================*/
@@ -106,10 +107,6 @@ PUBLIC winchester_task()
 /* Main program of the winchester disk driver task. */
 
   int r, caller, proc_nr;
-
-#ifdef DEBUG
-  printf("Winchester task has started\n");
-#endif
 
   /* First initialize the controller */
   init_params();
@@ -161,9 +158,6 @@ message *m_ptr;			/* pointer to read or write w_message */
   int csectors;
   int nr_sectors;
   extern phys_bytes umap();
-#ifdef WN_SAFETY
-  extern long wn_low_safety, wn_low_xor;
-#endif
 
   /* Decode the w_message parameters. */
   device = m_ptr->DEVICE;
@@ -183,28 +177,6 @@ message *m_ptr;			/* pointer to read or write w_message */
 	return(EOF);
   sector += wn->wn_low;
   nr_sectors = wn->wn_trksize;
-
-#ifdef WN_SAFETY
-  /* try to insure errant program can't destroy another partition */
-
-  if (wn->wn_opcode != DISK_READ) /* allow reads of DOS partition */
-  {
-    if ((wn_low_safety^SAFETY_CONST) != wn_low_xor)
-    {
-      printf("safety: %X xor: %X computed xor: %X\n",
-	wn_low_safety, wn_low_xor, wn_low_safety^SAFETY_CONST);
-      printf("winchester: driver tables appear overwritten\n");
-      return(EIO);
-    }
-
-    if (sector < wn_low_safety)
-    {
-      printf("winchester: tried to write sector below safety boundary\n",
-		sector);
-      return(EIO);
-    }
-  }
-#endif
 
   wn->wn_cylinder = sector / (wn->wn_heads * nr_sectors);
   wn->wn_sector =  (sector % nr_sectors);
@@ -231,11 +203,6 @@ message *m_ptr;			/* pointer to read or write w_message */
 	if (w_need_reset) w_reset();
 
 	/* Perform the transfer. */
-#ifdef DEBUG
-	printf("diskio(%d,%x,%x,%x,%x,%x,%x,%x,%x)\n",
-		fRW, wn->wn_cylinder, wn->wn_sector, wn->wn_head,
-	  	csectors, wn->wn_drive, sb, ib, wn->wn_trksize);
-#endif
 	r = diskio(fRW, wn->wn_cylinder, wn->wn_sector, wn->wn_head,
 		   csectors, wn->wn_drive, sb, ib, wn->wn_trksize);
 	if (r == OK) break;	/* if successful, exit loop */
@@ -251,19 +218,6 @@ message *m_ptr;			/* pointer to read or write w_message */
   return(r == OK ? BLOCK_SIZE : EIO);
 }
 
-#ifdef DEBUG
-
-/* debug code */
-
-diskdebug(ax,bx,cx,dx)
-int ax,bx,cx,dx;
-{
-	printf("BIOS call would have: ax=%04x, bx=%04x, cx=%04x, dx=%04x\n",
-		ax,bx,cx,dx);
-	return(0);
-}
-
-#endif
 
 /*===========================================================================*
  *				w_reset					     * 
@@ -276,6 +230,7 @@ PRIVATE w_reset()
 
   return(win_init());
 }
+
 
 /*============================================================================*
  *				init_params				      *
@@ -337,6 +292,7 @@ PRIVATE init_params()
   }
 }
 
+
 /*============================================================================*
  *				copy_prt				      *
  *============================================================================*/
@@ -350,9 +306,6 @@ int drive;
   register int i, offset;
   struct wini *wn;
   long adjust;
-#ifdef WN_SAFETY
-  extern long wn_low_safety, wn_low_xor;
-#endif
 
   for (i=0; i<4; i++) {
 	adjust = 0;
@@ -367,12 +320,8 @@ int drive;
 	wn->wn_size = *(long *)&buf[offset + sizeof(long)] - adjust;
   }
   sort(&wini[drive + 1]);
-
-#ifdef WN_SAFETY
-  wn_low_safety = wini[2].wn_low;
-  wn_low_xor = wn_low_safety ^ SAFETY_CONST;
-#endif
 }
+
 
 PRIVATE sort(wn)
 register struct wini *wn;
@@ -386,6 +335,7 @@ register struct wini *wn;
 		else if (wn[j].wn_low > wn[j+1].wn_low && wn[j+1].wn_low != 0)
 			swap(&wn[j], &wn[j+1]);
 }
+
 
 PRIVATE swap(first, second)
 register struct wini *first, *second;

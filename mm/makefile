@@ -13,11 +13,11 @@ OBJS	= alloc.o break.o exec.o forkexit.o getset.o main.o \
 
 all : mm.out mm.sep
 
-mm.out : $(OBJS) ../tools/kernel_tiny.ld
+mm.out : $(OBJS) ../tools/kernel_tiny.ld ../lib/libsys.a
 	$(LD) -T ../tools/kernel_tiny.ld -e start -o mm.out \
 		../lib/head.o $(OBJS) -L../lib -lsys -M > mm.out.map
 
-mm.sep : $(OBJS) ../tools/kernel_small.ld
+mm.sep : $(OBJS) ../tools/kernel_small.ld ../lib/libsys.a
 	$(LD) -T ../tools/kernel_small.ld -e start -o mm.sep \
 		../lib/head.o $(OBJS) -L../lib -lsys -M > mm.sep.map
 	

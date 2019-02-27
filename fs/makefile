@@ -14,11 +14,11 @@ OBJS	= cache.o filedes.o link.o misc.o open.o pipe.o putc.o stadir.o \
 
 all : fs.out fs.sep
 
-fs.out : $(OBJS) ../tools/kernel_tiny.ld
+fs.out : $(OBJS) ../tools/kernel_tiny.ld ../lib/libsys.a
 	$(LD) -T ../tools/kernel_tiny.ld -e start -o fs.out \
 			../lib/head.o $(OBJS) -L../lib -lsys -M > fs.out.map
 
-fs.sep : $(OBJS) ../tools/kernel_small.ld
+fs.sep : $(OBJS) ../tools/kernel_small.ld ../lib/libsys.a
 	$(LD) -T ../tools/kernel_small.ld -e start -o fs.sep \
 			../lib/head.o $(OBJS) -L../lib -lsys -M > fs.sep.map
 	

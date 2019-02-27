@@ -76,14 +76,14 @@ PRIVATE struct wini {		/* main drive struct, one entry per drive */
   vir_bytes wn_address;		/* user virtual address */
 } wini[NR_DEVICES];
 
-PRIVATE int w_need_reset = FALSE;	 /* set to 1 when controller must be reset */
-PRIVATE int nr_drives;		 /* Number of drives */
+PRIVATE int w_need_reset = FALSE;       /* set to 1 when controller must be reset */
+PRIVATE int nr_drives;          /* Number of drives */
 
 PRIVATE message w_mess;		/* message buffer for in and out */
 
 PRIVATE int command[8];		/* Common command block */
 
-PRIVATE unsigned char buf[BLOCK_SIZE]; /* Buffer used by the startup routine */
+PRIVATE unsigned char buf[BLOCK_SIZE];  /* Buffer used by the startup routine */
 
 PRIVATE int w_do_rdwt(message *m_ptr);
 PRIVATE int w_transfer(register struct wini *wn);
@@ -223,13 +223,11 @@ register struct wini *wn;	/* pointer to the drive struct */
   if (wn->wn_opcode == DISK_READ) {
 	for (i=0; i<BLOCK_SIZE/SECTOR_SIZE; i++) {
 		receive(HARDWARE, &w_mess);
-    //for (j=0; j<256; j++)
-    //    portw_in(WIN_REG1, &buf[i*512+j*2]);
 		if (win_results() != OK) {
 			w_need_reset = TRUE;
 			return(ERR);
 		}
-    port_read(WIN_REG1, usr_buf, (unsigned) SECTOR_SIZE);
+                port_read(WIN_REG1, usr_buf, (unsigned) SECTOR_SIZE);
 		usr_buf += SECTOR_SIZE;
 	}
 	r = OK;
@@ -241,9 +239,7 @@ register struct wini *wn;	/* pointer to the drive struct */
 		return(ERR);
 	}
 	for (i=0; i<BLOCK_SIZE/SECTOR_SIZE; i++) {
-    //for (j=0; j<256; j++)
-    //    portw_out(WIN_REG1, *(int *)&buf[i*512+j*2]);
-    port_write(WIN_REG1, usr_buf, (unsigned) SECTOR_SIZE);
+                port_write(WIN_REG1, usr_buf, (unsigned) SECTOR_SIZE);
 		usr_buf += SECTOR_SIZE;
 		receive(HARDWARE, &w_mess);
 		if (win_results() != OK) {
@@ -258,6 +254,7 @@ register struct wini *wn;	/* pointer to the drive struct */
 	w_need_reset = TRUE;
   return(r);
 }
+
 
 /*===========================================================================*
  *				w_reset					     * 
@@ -294,6 +291,7 @@ PRIVATE w_reset()
   w_need_reset = FALSE;
   return(win_init());
 }
+
 
 /*===========================================================================*
  *				win_init				     * 
@@ -351,6 +349,7 @@ PRIVATE win_init()
   return(OK);
 }
 
+
 /*============================================================================*
  *				win_results				      *
  *============================================================================*/
@@ -370,6 +369,7 @@ PRIVATE win_results()
   return(OK);
 }
 
+
 /*============================================================================*
  *				drive_busy				      *
  *============================================================================*/
@@ -388,6 +388,7 @@ PRIVATE drive_busy()
   }
   return(OK);
 }
+
 
 /*============================================================================*
  *				com_out					      *
@@ -411,6 +412,7 @@ PRIVATE com_out()
 	unlock();
 	return(OK);
 }
+
 
 /*============================================================================*
  *				init_params				      *
@@ -480,6 +482,7 @@ PRIVATE init_params()
   }
 }
 
+
 /*============================================================================*
  *				copy_params				      *
  *============================================================================*/
@@ -504,6 +507,7 @@ register struct wini *dest;
   sectors = (long)dest[0].wn_maxsec;
   dest[0].wn_size = cyl * heads * sectors;
 }
+
 
 /*============================================================================*
  *				copy_prt				      *
@@ -534,6 +538,7 @@ int drive;
   sort(&wini[drive + 1]);
 }
 
+
 sort(wn)
 register struct wini wn[];
 {
@@ -549,6 +554,7 @@ register struct wini wn[];
 			wn[j+1] = tmp;
 		}
 }
+
 
 delay()
 {
