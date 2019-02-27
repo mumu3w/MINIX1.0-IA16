@@ -21,6 +21,7 @@ global build_sig, get_chrome, vid_copy, get_byte
 global reboot, wreboot, portw_in, portw_out  
 global port_read, port_write
 global em_xfer
+global diskio, win_init, hdisk_params
 
 ; The following external procedure is called in this file.
 extern panic
@@ -596,6 +597,114 @@ resvec:
     rep movsw
         ret
 
+%ifdef BIOS_WINI
+;===========================================================================
+;                       diskio - (copied from fsck1)
+;===========================================================================
+; diskio(RW, cyl, sector, head, #sectors, drv, sb, ib, trksiz)
+;	 4    6     8      10      12     14   16  18    20
+; Do not issue a BIOS call that crosses a track boundary
+diskio:
+	push	bp
+	mov	bp,sp
+	push	si
+	push	di
+	mov	word[tmp1],0    ; tmp1 = # sectors actually transferred
+	mov	di,[12+bp]	; di = # sectors to transfer
+	mov	[tmp2],di       ; di = # sectors to transfer
+d0:
+	mov	ax,[6+bp]	; cylinder
+	mov	cl,ah		; cl = hi-order bits of cylinder
+	ror	cl,1		; BIOS expects hi bits in a funny place
+	ror	cl,1		; 
+	mov	ch,al		; cx = sector # in BIOS format
+	mov	dh,[10+bp]	; dh = head
+	and	cl,0C0H		; mask off any garbage bits
+	or	cl,[8+bp]	; cl = sector # in low 6 bits
+	inc	cl		; BIOS counts sectors starting at 1
+	mov	dl,[14+bp]	; dl = drive code (0-3 or 0x80 - 0x81)
+	or	dl,80H		; force "hard disk" bit on
+	push	es		; set es with sb of buffer
+	mov	bx,[16+bp]
+	mov	es,bx
+	mov	bx,[18+bp]	; bx = ib of buffer
+	mov	ah,[4+bp]	; ah = READING or WRITING
+	add	ah,2		; BIOS codes are 2 and 3, not 0 and 1
+	mov	al,[12+bp]	; al = # sectors to transfer
+	mov	[tmp],ax        ; save, al is # sectors to read/write
+	int 13h			; call the hard disk BIOS
+	pop	es		; restore es saved when setting sb above
+;	cmp	ah,0		; ah!=0 means BIOS detected error (no, cy does)
+;	jne	d2		; exit with error
+	jc	d2fail		; if carry set, error occurred
+	mov	ax,[tmp]        ; fetch count of sectors transferred
+	xor	ah,ah		; count is in ax
+	add	[tmp1],ax       ; tmp1 accumulates sectors transferred
+	mov	si,[tmp1]       ; are we done yet?
+	cmp	si,[tmp2]	
+	je	d2ok		; jump if done
+	inc	word [8+bp]	; next time around, start 1 sector higher
+	add	word[18+bp],200h; move up in buffer by 512 bytes (ib 4 bits)
+	jmp	d0
+d2ok:
+	xor	ah,ah		; indicate "read OK" to driver
+d2fail:	
+	xor	al,al		; move 1-byte BIOS error code into integer
+	xchg	ah,al		; return value for C caller
+	pop	di
+	pop	si
+	pop	bp
+	ret
+
+;===========================================================================
+;	hdisk_params - get hard disk params (semi) legally
+;===========================================================================
+; hdisk_params(drive, pparams)
+hdisk_params:
+	push	bp
+	mov	bp,sp
+	mov	dl,[4+bp]	; drive number
+	or	dl,80H		; indicate fixed disk
+	mov	ah,08H		; request parameters
+	push	es
+	int 13h			; call the hard disk BIOS
+	pop	es
+	mov	bx,[6+bp]	; near pointer to parameter block
+	mov	[2+bx],dh	; maximum head number
+	mov	byte [3+bx],0   ; 256 head disk?
+	inc	word [2+bx] 	; convert to number of heads
+	mov	[6+bx],cl	; number of sectors
+	and	byte [6+bx],3fH ; mask off cyl # bits
+	mov	byte [7+bx],0
+	rol	cl,1		; get cyl # high order bits
+	rol	cl,1
+	and	cl,03H
+	xchg	cl,ch		; put in proper order
+	mov	[0+bx],cx	; store in parameter block
+	xor	dh,dh
+	mov	[4+bx],dx	; number of drives
+	pop	bp		; done
+	ret
+
+win_init:
+	push	bp
+	mov	bp,sp
+	mov	ah,00H		; BIOS reset
+	mov	dl,80H
+	push	es
+	int 13h			; call the hard disk BIOS
+	pop	es
+	jc	wi0		; return error if carry set
+	mov	ah,11H		; drive recalibrate
+	mov	dl,80H
+	push	es
+	int 13h			; call hard disk BIOS
+	pop	es
+	jc	wi0		; return error if carry set
+	xor	ax,ax		; return "OK"
+wi0:	pop	bp
+	ret
+%endif
 
 ;===========================================================================
 ;                		em_xfer
@@ -724,6 +833,8 @@ em_xfer:
 segment .data
 lockvar:        DW      0       ; place to store flags for lock()/restore()
 tmp:            DW      0       ; count of bytes already copied
+tmp1:           DW      0
+tmp2:           DW      0
 vec_table:      times   512 DW 0; storage for interrupt vectors
 stkoverrun:     DB      "Kernel stack overrun,  task = ",0          
 

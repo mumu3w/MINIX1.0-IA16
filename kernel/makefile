@@ -6,10 +6,10 @@ AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
 CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
-		-march=i8086 -mcmodel=small -Di8088 -I./
+		-march=i8086 -mcmodel=small -Di8088 -DBIOS_WINI -I./
 	
 OBJS	= mpx88.o klib88.o clock.o dmp.o floppy.o main.o memory.o printer.o proc.o system.o \
-		table.o tty.o wini.o
+		table.o tty.o bios_wini.o
 
 all : kernel.out kernel.sep 
 
@@ -27,7 +27,7 @@ kernel.sep : $(OBJS) ../tools/kernel_small.ld
 	$(CC) $(CFLAGS) -c $<
 	
 %.o : %.asm
-	nasm -f elf $<
+	nasm -DBIOS_WINI -f elf $<
 	
 clean :
 	rm -fr *.tmp *.o *.out *.map *.sep

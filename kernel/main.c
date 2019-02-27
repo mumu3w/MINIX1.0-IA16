@@ -122,8 +122,19 @@ PUBLIC main()
   phys_copy(0L, phys_b, (long) VECTOR_BYTES);	/* save all the vectors */
 
   /* Set up the new interrupt vectors. */
-  for (t = 0; t < 16; t++) set_vec(t, surprise, base_click);
-  for (t = 16; t < 256; t++) set_vec(t, trp, base_click);
+  for (t = 0; t < 16; t++) {
+/* #ifdef BIOS_WINI
+    if (pc_at) if (t==AT_WINI_VECTOR) continue;
+    else if (t==XT_WINI_VECTOR) continue;
+#endif */
+    set_vec(t, surprise, base_click);
+  }
+  for (t = 16; t < 256; t++) {
+#ifdef BIOS_WINI
+    if (t==0x13 || (t>=0x40 && t<=0x5f)) continue;
+#endif
+    set_vec(t, trp, base_click);
+  }
   set_vec(DIVIDE_VECTOR, divide, base_click);
   set_vec(SYS_VECTOR, s_call, base_click);
   set_vec(CLOCK_VECTOR, clock_int, base_click);
@@ -132,9 +143,10 @@ PUBLIC main()
   set_vec(PRINTER_VECTOR, lpr_int, base_click);
   /* extended mem vec */
   if (pc_at) phys_copy(phys_b + 4L*EM_VEC, 4L*EM_VEC, 4L);
+#ifndef BIOS_WINI
   if (pc_at) set_vec(AT_WINI_VECTOR, wini_int, base_click);
   else set_vec(XT_WINI_VECTOR, wini_int, base_click);
-
+#endif
   /* Put a ptr to proc table in a known place so it can be found in /dev/mem */
   set_vec( (BASE - 4)/4, proc, (phys_clicks) 0);
 
