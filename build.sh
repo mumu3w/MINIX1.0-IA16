@@ -83,12 +83,31 @@ function cmds {
 	cd ..
 }
 
+function cmds2 {
+	cd cmds2
+	#echo "  Start compiling cmds2"
+	make all 1>>../log.txt 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Failed to compile cmds2"
+		exit
+	fi
+	cd ..
+}
+
 function image {
 	cd tools
 	echo "        Build Image"
 	make Image.sep Image.out 1>>../log.txt 2>&1
 	if [ $? -ne 0 ]; then
 		echo "Failed to build Image"
+		exit
+	fi
+	cd ..
+        cd tools2
+	echo "        Build rootfs.img"
+	make 1>>../log.txt 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Failed to build rootfs.img"
 		exit
 	fi
 	cd ..
@@ -101,7 +120,7 @@ function system {
 
 function commands {
 	echo "        Build commands."
-        lib; cmds; tests;
+        lib; cmds; cmds2; tests;
 }
 
 function all {

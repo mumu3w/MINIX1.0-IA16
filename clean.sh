@@ -33,6 +33,14 @@ cd cmds
 make clean 1>>/dev/null 2>&1
 cd ..
 
+cd cmds2
+make clean 1>>/dev/null 2>&1
+cd ..
+
+cd tools2
+make clean 1>>/dev/null 2>&1
+cd ..
+
 rm -fr log.txt 1>>/dev/null 2>&1
 }
 

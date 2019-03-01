@@ -22,7 +22,8 @@ cmds.out : cat.out getlf.out ls.out mknod.out mount.out pwd.out \
 		diff.out dosread.out od.out pr.out printenv.out rev.out \
 		readfs.out shar.out size.out sleep.out sort.out split.out \
 		tail.out tar.out tee.out test.out tr.out uniq.out uudecode.out \
-		uuencode.out wc.out su.out stty.out sum.out chown.out
+		uuencode.out wc.out su.out stty.out sum.out chown.out roff.out \
+		lpr.out 
 		
 cmds.sep : cat.sep getlf.sep ls.sep mknod.sep mount.sep pwd.sep \
 		touch.sep update.sep cp.sep login.sep mkdir.sep more.sep \
@@ -34,7 +35,8 @@ cmds.sep : cat.sep getlf.sep ls.sep mknod.sep mount.sep pwd.sep \
 		diff.sep dosread.sep od.sep pr.sep printenv.sep rev.sep \
 		readfs.sep shar.sep size.sep sleep.sep sort.sep split.sep \
 		tail.sep tar.sep tee.sep test.sep tr.sep uniq.sep uudecode.sep \
-		uuencode.sep wc.sep su.sep stty.sep sum.sep chown.sep
+		uuencode.sep wc.sep su.sep stty.sep sum.sep chown.sep roff.sep \
+		lpr.sep
 
 sh.out : sh1.o sh2.o sh3.o sh4.o sh5.o sh6.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \

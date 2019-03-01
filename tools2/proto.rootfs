@@ -1,0 +1,134 @@
+boot
+9000 3000
+d--777 2 1
+        bin	d--755 2 1
+        	cat	---755 2 1 ../cmds/cat.sep
+        	cc	---755 2 1 ../cmds/cc.sep
+        	cp	---755 2 1 ../cmds/cp.sep
+        	getlf	---755 2 1 ../cmds/getlf.sep
+        	kill	---755 2 1 ../cmds/kill.sep
+        	ls	---755 2 1 ../cmds/ls.sep
+        	mkdir	-u-755 0 1 ../cmds/mkdir.sep
+        	mined	---755 2 1 ../cmds/mined.sep
+        	rm	---755 2 1 ../cmds/rm.sep
+        	sh	---755 2 1 ../cmds/sh.sep
+        	sync	---755 2 1 ../cmds/sync.sep
+        $
+        dev	d--755 2 1
+        	ram	b--640 2 1 1 0 640
+        	mem	b--640 2 1 1 1 640
+        	kmem	b--640 2 1 1 2 640
+        	null	b--666 2 1 1 3 0
+        	fd0	b--666 2 1 2 0 360
+        	fd1	b--666 2 1 2 1 360
+        	at0	b--666 2 1 2 0 1200
+        	at1	b--666 2 1 2 1 1200
+        	hd0	b--600 2 1 3 0 0
+        	hd1	b--600 2 1 3 1 0
+        	hd2	b--600 2 1 3 2 0
+        	hd3	b--600 2 1 3 3 0
+        	hd4	b--600 2 1 3 4 0
+        	tty0	c--666 2 1 4 0
+        	tty	c--666 2 1 5 0
+        	lp	c--222 2 1 6 0
+        $
+        etc	d--755 2 1
+        	mount	-u-755 0 1 ../cmds/mount.sep
+        	umount	-u-755 0 1 ../cmds/umount.sep
+        	update	---755 2 1 ../cmds/update.sep
+        	passwd	---644 2 1 passwd
+        	rc	---644 2 1 rc
+        	message	---644 2 1 message
+        	ttys	---644 2 1 ttys
+        $
+        lib	d--755 2 1
+        $
+        home	d--755 2 1
+                u	d--700 10 10
+                        .profile ---600 10 3   .profile
+                $
+        $
+        mnt	d--755 2 1
+        $
+        root	d--700 0 0
+        $
+        tmp	d--777 2 1
+        $
+        user	d--755 2 1
+                bin	d--755 2 1
+	                gres	---755 2 1	../cmds/gres.sep
+	                rev	---755 2 1	../cmds/rev.sep
+	                roff	---755 2 1	../cmds/roff.sep
+	                shar	---755 2 1	../cmds/shar.sep
+	                tar	---755 2 1	../cmds/tar.sep
+                $
+                test	d--777 2 1
+	                test0	-u-755 0 1	../test/test0.out
+	                test1	-u-755 0 1	../test/test1.out
+	                test2	-u-755 0 1	../test/test2.out
+	                test3	-u-755 0 1	../test/test3.out
+	                test4	-u-755 0 1	../test/test4.out
+	                test5	-u-755 0 1	../test/test5.out
+	                test6	-u-755 0 1	../test/test6.out
+	                test7	-u-755 0 1	../test/test7.out
+	                test8	-u-755 0 1	../test/test8.out
+	                test9	-u-755 0 1	../test/test9.out
+	                test10	-u-755 0 1	../test/test10.out
+	                t10a	-u-755 0 1	../test/t10a.out
+	                test11	-u-755 0 1	../test/test11.out
+	                t11a	-u-755 0 1	../test/t11a.out
+	                t11b	-u-755 0 1	../test/t11b.out
+	                run	---755 2 1	../test/run
+	        $
+                doc	d--755 2 1
+	                READ_ME	---644 2 1	../doc/READ_ME
+                $
+        $
+        usr	d--755 2 1
+                bin	d--755 2 1
+        	        ar	---755 2 1 ../cmds/ar.sep
+        	        basename ---755 2 1 ../cmds/basename.sep
+        	        chmem	---755 2 1 ../cmds/chmem.sep
+        	        chmod	---755 2 1 ../cmds/chmod.sep
+        	        chown	---755 2 1 ../cmds/chown.sep
+        	        clr	---755 2 1 ../cmds/clr.sep
+        	        cmp	---755 2 1 ../cmds/cmp.sep
+        	        comm	---755 2 1 ../cmds/comm.sep
+        	        date	---755 2 1 ../cmds2/date.sep
+        	        dd	---755 2 1 ../cmds/dd.sep
+        	        df	-u-755 0 1 ../cmds/df.sep
+        	        dosread	---755 2 1 ../cmds/dosread.sep
+        	        echo	---755 2 1 ../cmds/echo.sep
+        	        grep	---755 2 1 ../cmds/grep.sep
+        	        head	---755 2 1 ../cmds/head.sep
+        	        libpack	---755 2 1 ../cmds/libpack.sep
+        	        libupack ---755 2 1 ../cmds/libupack.sep
+        	        ln	---755 2 1 ../cmds/ln.sep
+        	        login	---755 2 1 ../cmds/login.sep
+        	        lpr	---755 2 1 ../cmds/lpr.sep
+        	        make	---755 2 1 ../cmds/make.sep
+        	        mkfs	---755 2 1 ../cmds/mkfs.sep
+        	        mknod	---755 2 1 ../cmds/mknod.sep
+        	        mv	---755 2 1 ../cmds/mv.sep
+        	        od	---755 2 1 ../cmds/od.sep
+        	        passwd	-u-755 0 1 ../cmds/passwd.sep
+        	        pr	---755 2 1 ../cmds/pr.sep
+        	        pwd	---755 2 1 ../cmds/pwd.sep
+        	        rmdir	-u-755 0 1 ../cmds/rmdir.sep
+        	        size	---755 2 1 ../cmds/size.sep
+        	        sleep	---755 2 1 ../cmds/sleep.sep
+        	        sort	---755 2 1 ../cmds/sort.sep
+        	        split	---755 2 1 ../cmds/split.sep
+        	        stty	---755 2 1 ../cmds/stty.sep
+        	        su	-u-755 0 1 ../cmds/su.sep
+        	        sum	---755 2 1 ../cmds/sum.sep
+        	        tail	---755 2 1 ../cmds/tail.sep
+        	        tee	---755 2 1 ../cmds/tee.sep
+        	        time	---755 2 1 ../cmds/time.sep
+        	        touch	---755 2 1 ../cmds/touch.sep
+        	        tr	---755 2 1 ../cmds/tr.sep
+        	        uniq	---755 2 1 ../cmds/uniq.sep
+        	        wc	---755 2 1 ../cmds/wc.sep
+                $
+        $
+$
