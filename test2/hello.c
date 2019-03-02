@@ -22,8 +22,7 @@ int main(int argc, char **argv, char **envp)
     for (; *envp != NULL; envp++) {
         myprintk("%s\n", *envp);
     }
-
-    while(1){;}
+    
     return 0;
 }
 
