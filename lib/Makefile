@@ -41,7 +41,8 @@ all : libsys.a
 
 libsys.a : $(OBJS) $(CRTS) $(OBJS1) $(OBJS2)
 	$(AR) xv $(LIBGCCA) $(LIBGCCS)
-	$(AR) rcs libsys.a $(OBJS) $(OBJS1) $(OBJS2) $(LIBGCCS)
+	$(AR) rcs libsys.a $(OBJS)
+	$(AR) rcs libc.a $(OBJS) $(OBJS1) $(OBJS2) $(LIBGCCS)
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

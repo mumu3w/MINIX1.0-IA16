@@ -83,6 +83,26 @@ d--777 2 1
                         double0	---755 2 1	../test/double.out
                         double1	---755 2 1	../test/double.sep 
 	        $
+                test2	d--777 2 1
+                        tassert	---755 2 1	../lib2/_test/tassert.out
+                        tctype	---755 2 1	../lib2/_test/tctype.out
+                        terrno	---755 2 1	../lib2/_test/terrno.out
+                        tfloat	---755 2 1	../lib2/_test/tfloat.out
+                        tlimits	---755 2 1	../lib2/_test/tlimits.out
+                        tlocale	---755 2 1	../lib2/_test/tlocale.out
+                        tmath1	---755 2 1	../lib2/_test/tmath1.out
+                        tmath2	---755 2 1	../lib2/_test/tmath2.out
+                        tmath3	---755 2 1	../lib2/_test/tmath3.out
+                        tsetjmp	---755 2 1	../lib2/_test/tsetjmp.out
+                        tsignal	---755 2 1	../lib2/_test/tsignal.out
+                        tstdarg	---755 2 1	../lib2/_test/tstdarg.out
+                        tstddef	---755 2 1	../lib2/_test/tstddef.out
+                        tstdio1	---755 2 1	../lib2/_test/tstdio1.out
+                        tstdio2	---755 2 1	../lib2/_test/tstdio2.out
+                        tstdlib	---755 2 1	../lib2/_test/tstdlib.out
+                        tstring	---755 2 1	../lib2/_test/tstring.out
+                        ttime	---755 2 1	../lib2/_test/ttime.out
+                $
                 doc	d--755 2 1
 	                READ_ME	---644 2 1	../doc/READ_ME
                 $

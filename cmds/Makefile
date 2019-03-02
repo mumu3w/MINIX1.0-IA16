@@ -40,27 +40,27 @@ cmds.sep : cat.sep getlf.sep ls.sep mknod.sep mount.sep pwd.sep \
 
 sh.out : sh1.o sh2.o sh3.o sh4.o sh5.o sh6.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \
-		../lib/crtso.o $^ -L../lib -lsys -M > $@.map
+		../lib/crtso.o $^ -L../lib -lc -M > $@.map
 		
 sh.sep : sh1.o sh2.o sh3.o sh4.o sh5.o sh6.o
 	$(LD) -T ../test/cmds_small.ld -e start -o $@ \
-		../lib/crtso.o $^ -L../lib -lsys -M > $@.map
+		../lib/crtso.o $^ -L../lib -lc -M > $@.map
 		
 mined.out : mined1.o mined2.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \
-		../lib/crtso.o $^ -L../lib -lsys -M > $@.map
+		../lib/crtso.o $^ -L../lib -lc -M > $@.map
 		
 mined.sep : mined1.o mined2.o
 	$(LD) -T ../test/cmds_small.ld -e start -o $@ \
-		../lib/crtso.o $^ -L../lib -lsys -M > $@.map
+		../lib/crtso.o $^ -L../lib -lc -M > $@.map
 	
 %.out : %.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \
-		../lib/crtso.o $< -L../lib -lsys -M > $@.map
+		../lib/crtso.o $< -L../lib -lc -M > $@.map
 		
 %.sep : %.o
 	$(LD) -T ../test/cmds_small.ld -e start -o $@ \
-		../lib/crtso.o $< -L../lib -lsys -M > $@.map
+		../lib/crtso.o $< -L../lib -lc -M > $@.map
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

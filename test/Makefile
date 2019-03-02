@@ -23,11 +23,11 @@ all : hello.out hello.sep setjmp.out setjmp.sep \
 	
 %.out : %.o
 	$(LD) -T cmds_tiny.ld -e start -o $@ \
-		../lib/crtso.o $< -L../lib -lsys -M > $@.map
+		../lib/crtso.o $< -L../lib -lc -M > $@.map
 		
 %.sep : %.o
 	$(LD) -T cmds_small.ld -e start -o $@ \
-		../lib/crtso.o $< -L../lib -lsys -M > $@.map
+		../lib/crtso.o $< -L../lib -lc -M > $@.map
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
