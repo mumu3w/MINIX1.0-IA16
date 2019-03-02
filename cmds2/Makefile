@@ -6,13 +6,13 @@ AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
 CFLAGS = -O0 -nostdinc -nostdlib -fno-builtin -ffreestanding \
-		-march=i8086 -mtune=i8086 -mcmodel=small -I../MINIX1.0-IA16/include
+		-march=i8086 -mtune=i8086 -mcmodel=small -I../include
 
 all : cmds.out cmds.sep
 
-cmds.out : date.out
+cmds.out : date.out date2.out
 		
-cmds.sep : date.sep
+cmds.sep : date.sep date2.sep
 	
 %.out : %.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \

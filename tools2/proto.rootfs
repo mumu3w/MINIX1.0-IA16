@@ -1,5 +1,5 @@
 boot
-9000 3000
+8200 3000
 d--777 2 1
         bin	d--755 2 1
         	cat	---755 2 1 ../cmds/cat.sep
@@ -94,7 +94,7 @@ d--777 2 1
         	        clr	---755 2 1 ../cmds/clr.sep
         	        cmp	---755 2 1 ../cmds/cmp.sep
         	        comm	---755 2 1 ../cmds/comm.sep
-        	        date	---755 2 1 ../cmds2/date.sep
+        	        date	---755 2 1 ../cmds2/date2.sep
         	        dd	---755 2 1 ../cmds/dd.sep
         	        df	-u-755 0 1 ../cmds/df.sep
         	        dosread	---755 2 1 ../cmds/dosread.sep

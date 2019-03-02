@@ -36,6 +36,11 @@
 #include "glo.h"
 #include "proc.h"
 
+struct tm {
+        int tm_sec, tm_min, tm_hour;
+        int tm_mday, tm_mon, tm_year;
+};
+
 /* Constant definitions. */
 #define MILLISEC         100	/* how often to call the scheduler (msec) */
 #define SCHED_RATE (MILLISEC*HZ/1000)	/* number of ticks per schedule */
@@ -60,6 +65,10 @@ PRIVATE do_set_time(message *m_ptr);
 PRIVATE do_clocktick();
 PRIVATE accounting();
 PRIVATE init_clock();
+PRIVATE void init_boot_time(void);
+PRIVATE long kernel_mktime(struct tm *time);
+PRIVATE int leap_year(int year);
+
 
 /*===========================================================================*
  *				clock_task				     *
@@ -73,6 +82,7 @@ PUBLIC clock_task()
   int opcode;
 
   init_clock();			/* initialize clock tables */
+  init_boot_time();
 
   /* Main loop of the clock task.  Get work, process it, sometimes reply. */
   while (TRUE) {
@@ -246,3 +256,73 @@ PRIVATE init_clock()
   port_out(TIMER0, high_byte);		/* load timer high byte */
 }
 #endif
+
+
+/*===========================================================================*
+ *				init_boot_time				     *
+ *===========================================================================*/
+PRIVATE void init_boot_time(void)
+{
+#define BCD_TO_BIN(val) ((val)=((val)&15) + ((val)>>4)*10)
+
+  extern unsigned char cmos_read();
+
+  struct tm time;
+
+  do {
+          time.tm_sec = cmos_read(0x80);
+          time.tm_min = cmos_read(0x82);
+          time.tm_hour = cmos_read(0x84);
+          time.tm_mday = cmos_read(0x87);
+          time.tm_mon = cmos_read(0x88);
+          time.tm_year = cmos_read(0x89);
+  } while (time.tm_sec != cmos_read(0x80));
+  
+  BCD_TO_BIN(time.tm_sec);
+  BCD_TO_BIN(time.tm_min);
+  BCD_TO_BIN(time.tm_hour);
+  BCD_TO_BIN(time.tm_mday);
+  BCD_TO_BIN(time.tm_mon);
+  BCD_TO_BIN(time.tm_year);
+  
+  boot_time = kernel_mktime(&time);
+}
+
+
+/*===========================================================================*
+ *				kernel_mktime				     *
+ *===========================================================================*/
+PRIVATE long kernel_mktime(struct tm *time)
+{
+#define	MINU	        60L             /* # seconds in a minute */
+#define	HOUR	 (60 * 60L)             /* # seconds in an hour */
+#define	DAY	(24 * HOUR)             /* # seconds in a day */
+#define	YEAR	(365 * DAY)             /* # seconds in a year */
+
+  int days[] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+  long ct = 0;
+  
+  time->tm_year -= (time->tm_year < 70 ? -30 : 70);
+  ct += (time->tm_year * YEAR);
+  ct += (((time->tm_year + 1) / 4) * DAY);
+  
+  ct = ct + days[time->tm_mon - 1] * DAY;
+  if (leap_year(time->tm_year + 1970) && time->tm_mon > 2) ct += DAY;
+  
+  ct += ((time->tm_mday - 1) * DAY);
+  ct += time->tm_hour * HOUR;
+  ct += time->tm_min * MINU;
+  ct += time->tm_sec;
+  
+  return ct;
+}
+
+
+/*===========================================================================*
+ *				leap_year				     *
+ *===========================================================================*/
+PRIVATE int leap_year(int year)
+{
+  if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) return 1;
+  else return 0;
+}

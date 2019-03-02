@@ -19,7 +19,7 @@
 global phys_copy, cp_mess, port_out, port_in, _lock, unlock, restore
 global build_sig, get_chrome, vid_copy, get_byte
 global reboot, wreboot, portw_in, portw_out  
-global port_read, port_write
+global port_read, port_write, cmos_read
 global em_xfer
 global diskio, win_init, hdisk_params
 
@@ -170,6 +170,28 @@ cp_mess:
         pop es                  ; restore es
         pop bp                  ; restore bp
         ret                     ; that's all folks!
+
+
+;===========================================================================
+;                               cmos_read
+;===========================================================================
+; unsigned char cmos_read(value).
+
+cmos_read:
+        push bx
+        mov bx, sp
+        push dx
+        mov ax, [bx+4]
+        xor ah, ah
+        mov dx, 0x70            ; port
+        out dx, al
+        nop
+        mov dx, 0x71            ; port
+        in al, dx
+        xor ah, ah
+        pop dx
+        pop bx
+        ret
 
 
 ;===========================================================================
