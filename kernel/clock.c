@@ -66,7 +66,7 @@ PRIVATE do_clocktick();
 PRIVATE accounting();
 PRIVATE init_clock();
 PRIVATE void init_boot_time(void);
-PRIVATE long kernel_mktime(struct tm *time);
+PRIVATE real_time kernel_mktime(struct tm *time);
 PRIVATE int leap_year(int year);
 
 
@@ -263,7 +263,7 @@ PRIVATE init_clock()
  *===========================================================================*/
 PRIVATE void init_boot_time(void)
 {
-#define BCD_TO_BIN(val) ((val)=((val)&15) + ((val)>>4)*10)
+#define BCD_TO_BIN(val) ((val)=((val)&0xf) + ((val)>>4)*10)
 
   extern unsigned char cmos_read();
 
@@ -292,7 +292,7 @@ PRIVATE void init_boot_time(void)
 /*===========================================================================*
  *				kernel_mktime				     *
  *===========================================================================*/
-PRIVATE long kernel_mktime(struct tm *time)
+PRIVATE real_time kernel_mktime(struct tm *time)
 {
 #define	MINU	        60L             /* # seconds in a minute */
 #define	HOUR	 (60 * 60L)             /* # seconds in an hour */
@@ -300,7 +300,7 @@ PRIVATE long kernel_mktime(struct tm *time)
 #define	YEAR	(365 * DAY)             /* # seconds in a year */
 
   int days[] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
-  long ct = 0;
+  real_time ct = 0;
   
   time->tm_year -= (time->tm_year < 70 ? -30 : 70);
   ct += (time->tm_year * YEAR);

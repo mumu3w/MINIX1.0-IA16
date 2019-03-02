@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
         } else {
                 time(&ct);
                 to_time(ct, &year, &month, &day, &hour, &minute, &second);
-                printf("%s %02d %d %02d:%02d:%02d\n", months[month], day, year, 
+                printf("%s %02d %d %02d:%02d:%02d\n", months[month-1], day, year, 
                                                         hour, minute, second);
         }
         return 0;
@@ -64,46 +64,28 @@ static void to_time(long ct, int *year, int *month, int *day,
         // *year = *month = *day = *hour = *minute = *second = 0;
         
         for (i = 1970; ; i++) {
-                if (leap_year(i)) {
-                        leap = DAY; 
-                } else {
-                        leap = 0;
-                }
-                if (ct - YEAR - leap < 0) {
-                       break; 
-                }
+                if (leap_year(i)) {leap = DAY; } 
+                else { leap = 0; }
+                if (ct - YEAR - leap < 0) { break; }
                 ct -= (YEAR + leap);
         }
         *year = i;
         
-        if (leap_year(*year)) {
-                days_per_month[1]++;
-        }
+        if (leap_year(*year)) {days_per_month[1]++;}
         i = 0;
-        while (ct >= (days_per_month[i] * DAY)) {
-                ct -= (days_per_month[i++] * DAY);
-        }
+        while (ct >= (days_per_month[i] * DAY)) {ct -= (days_per_month[i++] * DAY);}
         *month = i+1;
         
         i = 1;
-        while (ct >= DAY) {
-                ct -= DAY;
-                i++;
-        }
+        while (ct >= DAY) { ct -= DAY; i++; }
         *day = i;
         
         i = 0;
-        while (ct >= HOUR) {
-                ct -= HOUR;
-                i++;
-        }
+        while (ct >= HOUR) { ct -= HOUR; i++; }
         *hour = i;
         
         i = 0;
-        while (ct >= 60L) {
-                ct -= 60L;
-                i++;
-        }
+        while (ct >= 60L) { ct -= 60L; i++; }
         *minute = i;
         
         
@@ -149,9 +131,7 @@ static int str2num(const char *time_str, int *year, int *month,
         j = d_strlen(time_str);
         for (i = 0; i < j; i++) {
                 c = *(time_str+i);
-                if (!d_isdigit(c)) {
-                        return 1;
-                }
+                if (!d_isdigit(c)) { return 1; }
         }
         
         i = d_strlen(time_str);

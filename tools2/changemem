@@ -1,0 +1,23 @@
+: The default stack size is 1K.  The following commands need more.
+b=../cmds
+t=../test
+./chmem2 =2000 $b/cc.sep
+./chmem2 =2000 $b/time.sep
+./chmem2 =2000 $b/tail.sep
+./chmem2 =30000 $b/sort.sep
+./chmem2 =16000 $b/mkfs.sep
+./chmem2 =8000 $b/dd.sep
+./chmem2 =8000 $b/rmdir.sep
+./chmem2 =8000 $b/mkdir.sep
+./chmem2 =32000 $b/dosread.sep
+./chmem2 =20000 $b/make.sep
+./chmem2 =8000 $b/gres.sep
+./chmem2 =8000 $b/grep.sep
+./chmem2 =8000 $b/sh.sep
+./chmem2 =8000 $b/gres.sep
+./chmem2 =8000 $b/mv.sep
+./chmem2 =8000 $b/rm.sep
+./chmem2 =8000 $b/pr.sep
+./chmem2 =64000 $b/libpack.sep
+./chmem2 =64000 $b/libupack.sep
+./chmem2 =64000 $b/mined.sep

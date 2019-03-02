@@ -10,9 +10,9 @@ CFLAGS = -O0 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 
 all : cmds.out cmds.sep
 
-cmds.out : date.out date2.out
+cmds.out : date.out date2.out chmem.out
 		
-cmds.sep : date.sep date2.sep
+cmds.sep : date.sep date2.sep chmem.sep
 	
 %.out : %.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \

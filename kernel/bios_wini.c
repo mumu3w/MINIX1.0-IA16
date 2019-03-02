@@ -40,7 +40,6 @@
  * errant program from causing the DOS partition to be overwritten.  It
  * assumes your DOS partition is partition 1 (the first one).
  */
-//#define WN_SAFETY	/* */
 
 /* Parameters for the disk drive. */
 #define SECTOR_SIZE      512	/* physical sector size in bytes */

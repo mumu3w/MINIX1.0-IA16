@@ -34,7 +34,7 @@ subr()
 				wait(&s);
 				wait(&s);
 			} else {
-				fd = open("/dev/fd0", 0);
+				fd = open("/dev/hd0", 0);
 				lseek(fd, 20480L*nextb, 0);
 				for (i= 0; i<10; i++) read(fd,buf,1024);
 				nextb++;

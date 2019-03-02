@@ -12,7 +12,8 @@ CFLAGS = -O0 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 all : hello.out hello.sep setjmp.out setjmp.sep \
 	t10a.out t11b.out test10.out test1.out test3.out \
 	test5.out test7.out test9.out t11a.out test0.out \
-	test11.out test2.out test4.out test6.out test8.out
+	test11.out test2.out test4.out test6.out test8.out \
+	double.out double.sep
 	
 #test9.out : test9.c
 #	$(CC) -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \

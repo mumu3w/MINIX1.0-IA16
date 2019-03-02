@@ -36,6 +36,7 @@ d--777 2 1
         	mount	-u-755 0 1 ../cmds/mount.sep
         	umount	-u-755 0 1 ../cmds/umount.sep
         	update	---755 2 1 ../cmds/update.sep
+                group	---644 2 1 group
         	passwd	---644 2 1 passwd
         	rc	---644 2 1 rc
         	message	---644 2 1 message
@@ -79,6 +80,8 @@ d--777 2 1
 	                t11a	-u-755 0 1	../test/t11a.out
 	                t11b	-u-755 0 1	../test/t11b.out
 	                run	---755 2 1	../test/run
+                        double0	---755 2 1	../test/double.out
+                        double1	---755 2 1	../test/double.sep 
 	        $
                 doc	d--755 2 1
 	                READ_ME	---644 2 1	../doc/READ_ME
@@ -88,7 +91,7 @@ d--777 2 1
                 bin	d--755 2 1
         	        ar	---755 2 1 ../cmds/ar.sep
         	        basename ---755 2 1 ../cmds/basename.sep
-        	        chmem	---755 2 1 ../cmds/chmem.sep
+        	        chmem	---755 2 1 ../cmds2/chmem.sep
         	        chmod	---755 2 1 ../cmds/chmod.sep
         	        chown	---755 2 1 ../cmds/chown.sep
         	        clr	---755 2 1 ../cmds/clr.sep
@@ -110,6 +113,7 @@ d--777 2 1
         	        mkfs	---755 2 1 ../cmds/mkfs.sep
         	        mknod	---755 2 1 ../cmds/mknod.sep
         	        mv	---755 2 1 ../cmds/mv.sep
+                        more	---755 2 1 ../cmds/more.sep
         	        od	---755 2 1 ../cmds/od.sep
         	        passwd	-u-755 0 1 ../cmds/passwd.sep
         	        pr	---755 2 1 ../cmds/pr.sep

@@ -30,10 +30,18 @@ OBJS2	= ftell.o mktemp.o qsort.o sprintf.o abs.o fclose.o fwrite.o rand.o \
 		
 CRTS	= head.o crtso.o
 
+# Floating point number
+LIBGCCS	=  _addsub_df.o _mul_df.o _div_df.o _df_to_si.o _thenan_df.o _muldi3.o \
+		_lshrdi3.o _ashldi3.o _pack_df.o _unpack_df.o _eq_df.o _ne_df.o \
+		_gt_df.o _lt_df.o _fpcmp_parts_df.o
+
+LIBGCCA	= /usr/lib/x86_64-linux-gnu/gcc/ia16-elf/6.3.0/libgcc.a
+
 all : libsys.a
 
 libsys.a : $(OBJS) $(CRTS) $(OBJS1) $(OBJS2)
-	$(AR) rcs libsys.a $(OBJS) $(OBJS1) $(OBJS2)
+	$(AR) xv $(LIBGCCA) $(LIBGCCS)
+	$(AR) rcs libsys.a $(OBJS) $(OBJS1) $(OBJS2) $(LIBGCCS)
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

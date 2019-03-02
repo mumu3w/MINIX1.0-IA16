@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
         } else {
                 time(&ct);
                 to_time(ct, &year, &month, &day, &hour, &minute, &second);
-                printf("%s %02d %d %02d:%02d:%02d\n", months[month], day, year, 
+                printf("%s %02d %d %02d:%02d:%02d\n", months[month-1], day, year, 
                                                         hour, minute, second);
         }
         return 0;
