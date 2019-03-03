@@ -8,7 +8,7 @@ OBJDUMP = ia16-elf-objdump
 CFLAGS = -O0 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mtune=i8086 -mcmodel=small -I../lib2/_headers
 
-all : hello.out setjmp.out double.out
+all : hello.out setjmp.out double.out sin_cos.out
 	
 %.out : %.o
 	$(LD) -T ../test/cmds_tiny.ld -e start -o $@ \

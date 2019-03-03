@@ -3,7 +3,7 @@
 function lib {
 	cd lib
 	#echo "  Start compiling lib"
-	make all 1>>../log.txt 2>&1
+	make $1 1>>../log.txt 2>&1
 	if [ $? -ne 0 ]; then
 		echo "Failed to compile lib"
 		exit
@@ -115,12 +115,12 @@ function image {
 
 function system {
 	echo "        Build system."
-        lib; kernel; mm; fs; init_fsck;
+        lib libsys.a; kernel; mm; fs; init_fsck;
 }
 
 function commands {
 	echo "        Build commands."
-        lib; cmds; cmds2; tests;
+        lib libc.a; cmds; cmds2; tests;
 }
 
 function all {

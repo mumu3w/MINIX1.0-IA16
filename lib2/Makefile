@@ -5,7 +5,7 @@ AS = ia16-elf-as
 AR = ia16-elf-ar
 OBJCOPY = ia16-elf-objcopy
 OBJDUMP = ia16-elf-objdump
-CFLAGS = -O0 -nostdinc -nostdlib -fno-builtin -ffreestanding \
+CFLAGS = -O1 -nostdinc -nostdlib -fno-builtin -ffreestanding \
 		-march=i8086 -mcmodel=small -I./_headers 
 
 # Floating point number

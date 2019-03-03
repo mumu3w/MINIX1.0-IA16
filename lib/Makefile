@@ -32,9 +32,11 @@ CRTS	= head.o crtso.o
 
 all : libsys.a
 
-libsys.a : $(OBJS) $(CRTS) $(OBJS1) $(OBJS2)
-	$(AR) rcs libsys.a $(OBJS)
+libc.a : $(OBJS) $(CRTS) $(OBJS1) $(OBJS2)
 	$(AR) rcs libc.a $(OBJS) $(OBJS1) $(OBJS2)
+
+libsys.a : $(OBJS) $(CRTS)
+	$(AR) rcs libsys.a $(OBJS)
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<

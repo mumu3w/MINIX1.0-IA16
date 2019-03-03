@@ -82,9 +82,7 @@ d--777 2 1
 	                run	---755 2 1	../test/run
 	        $
                 test2	d--777 2 1
-                        hello	---755 2 1	../test2/hello.out
-                        setjmp	---755 2 1	../test2/setjmp.out
-                        double	---755 2 1	../test2/double.out
+                    sin_cos	---755 2 1	../test2/sin_cos.out
                 $
                 doc	d--755 2 1
 	                READ_ME	---644 2 1	../doc/READ_ME
